@@ -1,0 +1,3 @@
+d28f78867c75d461d80294084d88f1802be68f3684f0c7432015cb7583a44a55  current-release.pdf
+153e13bbcb02daedb1d9debce6fe19f8cb65fd13c981cc926af3b9a1e7eefbf5  release-manifest.json
+23cae4fe13ff9946ee2d07d40691f4701df11da91b8c98d4896b7a969b084c48  output-inspection.json

@@ -1,0 +1,13 @@
+{
+  "schema_version": "1.0",
+  "profile": "bilingual-edition",
+  "preset": "parallel-edition",
+  "hierarchy": "structured",
+  "publication_unit_metadata": "available",
+  "grid": "asymmetric-scholarly",
+  "side_material": "outer-margin",
+  "apparatus": "available",
+  "locator": "source-defined",
+  "parallel_text": "profile-controlled",
+  "description": "Parallel-text presentation that keeps alignment semantics stable while the profile controls facing, column, sequential, or dominant-language layouts."
+}

@@ -1,0 +1,54 @@
+{
+  "id": "edited-collection",
+  "version": "1.0.0-alpha",
+  "extends": "pse-core",
+  "generator_supported": true,
+  "capabilities": [
+    "prose",
+    "edited-volume",
+    "chapter-contributors",
+    "numbered-chapters",
+    "sections",
+    "running-heads",
+    "footnotes",
+    "index",
+    "margin-objects",
+    "apparatus"
+  ],
+  "required_metadata": [
+    "title",
+    "author",
+    "language",
+    "publication_year"
+  ],
+  "required_fonts": [],
+  "open_font_policy": true,
+  "schema_version": "1.1",
+  "description": "Edited-volume presentation profile with chapter-level contributor credits backed by generic contributor semantics.",
+  "module_policy": {
+    "contributor-metadata": {
+      "status": "required",
+      "default_enabled": true
+    },
+    "index": {
+      "status": "recommended",
+      "default_enabled": true
+    },
+    "structural-hierarchy": {
+      "status": "required",
+      "default_enabled": true
+    },
+    "publication-unit-metadata": {
+      "status": "required",
+      "default_enabled": true
+    },
+    "margin-objects": {
+      "status": "optional",
+      "default_enabled": false
+    },
+    "apparatus": {
+      "status": "optional",
+      "default_enabled": false
+    }
+  }
+}

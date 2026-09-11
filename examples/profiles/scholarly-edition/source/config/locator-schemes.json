@@ -1,0 +1,16 @@
+{
+  "schema_version": "1.0",
+  "schemes": {
+    "canonical": {
+      "schema_version": "1.0",
+      "id": "synthetic-sequence",
+      "order": [
+        "A1",
+        "A2",
+        "B1"
+      ],
+      "require_complete": true,
+      "strict_order": true
+    }
+  }
+}

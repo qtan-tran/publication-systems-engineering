@@ -1,0 +1,45 @@
+name: qa-regression
+
+on:
+  pull_request:
+    paths:
+      - "core/**"
+      - "profiles/**"
+      - "tools/pse_cli/**"
+      - "tests/**"
+      - "examples/synthetic/**"
+      - "pyproject.toml"
+      - ".github/workflows/qa-regression.yml"
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  full-regression:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install runtime dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            texlive-luatex texlive-latex-extra texlive-fonts-recommended texlive-bibtex-extra \
+            biber fonts-sil-gentiumplus poppler-utils
+          python -m pip install -e .
+      - name: Runtime preflight
+        run: pse doctor --deep
+      - name: Full regression
+        run: pse regression --output tests/_output/ci-regression-report.json
+      - name: Upload QA report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pse-qa-regression-report
+          path: |
+            tests/_output/ci-regression-report.json
+            tests/_output/visual-basic-book/

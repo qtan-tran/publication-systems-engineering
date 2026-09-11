@@ -1,0 +1,11 @@
+{
+  "schema_version": "1.0",
+  "profile": "basic-book",
+  "fixture": "tests/fixtures/profile-books/basic-book",
+  "render_dpi": 144,
+  "pages": [
+    {"name": "title-page", "page": 1, "file": "title-page.png"},
+    {"name": "chapter-opening", "page": 5, "file": "chapter-opening.png"},
+    {"name": "body-page", "page": 6, "file": "body-page.png"}
+  ]
+}

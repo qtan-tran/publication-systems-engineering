@@ -1,0 +1,59 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{pse-module-parallel-text}[2026/09/11 v1.7.0-alpha PSE parallel-text semantics]
+\RequirePackage{expl3}\RequirePackage{xparse}
+\providecommand{\PSEParallelSegmentPresentation}[3]{\par\smallskip\noindent #3\par\smallskip}
+\providecommand{\PSEParallelNotePresentation}[3]{\footnote{#3}}
+\providecommand{\PSEParallelTranslationNotePresentation}[2]{\PSEParallelNotePresentation{#1}{translation}{#2}}
+\providecommand{\PSEParallelAlignmentPresentation}[3]{}
+\ExplSyntaxOn
+\prop_new:N \g_pse_parallel_source_prop
+\prop_new:N \g_pse_parallel_target_prop
+\prop_new:N \g_pse_parallel_alignment_prop
+\prop_new:N \g_pse_parallel_locator_prop
+\prop_new:N \g_pse_parallel_note_prop
+\cs_new_protected:Npn \pse_parallel_segment:nnn #1#2#3 {
+  \str_case:nnF {#1} {
+   {source}{\prop_if_in:NnTF \g_pse_parallel_source_prop {#2}{\PackageError{pse-module-parallel-text}{Duplicate source segment `#2'}{Segment ids must be unique within each role.}}{\prop_gput:Nnn \g_pse_parallel_source_prop {#2}{#3}}}
+   {target}{\prop_if_in:NnTF \g_pse_parallel_target_prop {#2}{\PackageError{pse-module-parallel-text}{Duplicate target segment `#2'}{Segment ids must be unique within each role.}}{\prop_gput:Nnn \g_pse_parallel_target_prop {#2}{#3}}}
+  }{\PackageError{pse-module-parallel-text}{Unknown segment role `#1'}{Use source or target.}}
+  \PSEParallelSegmentPresentation{#1}{#2}{#3}
+}
+\cs_new_protected:Npn \pse_parallel_collect:NNn #1#2#3 {
+  \tl_clear:N #2
+  \clist_map_inline:nn {#3} {
+    \prop_get:NnNT #1 {##1} \l_tmpa_tl {
+      \tl_if_empty:NF #2 {\tl_put_right:Nn #2 {\par\medskip}}
+      \tl_put_right:NV #2 \l_tmpa_tl
+    }
+  }
+}
+\cs_new_protected:Npn \pse_parallel_align:nnn #1#2#3 {
+ \prop_if_in:NnTF \g_pse_parallel_alignment_prop {#1}{\PackageError{pse-module-parallel-text}{Duplicate alignment id `#1'}{Alignment ids must be unique.}}{%
+   \prop_gput:Nnn \g_pse_parallel_alignment_prop {#1}{#2 => #3}
+   \pse_parallel_collect:NNn \g_pse_parallel_source_prop \l_tmpb_tl {#2}
+   \pse_parallel_collect:NNn \g_pse_parallel_target_prop \l_tmpc_tl {#3}
+   \PSEParallelAlignmentPresentation{#1}{\tl_use:N \l_tmpb_tl}{\tl_use:N \l_tmpc_tl}
+ }
+}
+\cs_new_protected:Npn \pse_parallel_locator:nn #1#2 {
+  \prop_if_in:NnTF \g_pse_parallel_alignment_prop {#1}{
+    \prop_if_in:NnTF \g_pse_parallel_locator_prop {#1}
+      {\PackageError{pse-module-parallel-text}{Duplicate locator for alignment `#1'}{Each alignment may declare at most one locator.}}
+      {\prop_gput:Nnn \g_pse_parallel_locator_prop {#1}{#2}}
+  }{\PackageError{pse-module-parallel-text}{Unknown alignment `#1'}{Declare the alignment before attaching a locator.}}
+}
+\cs_new_protected:Npn \pse_parallel_note:nnn #1#2#3 {
+  \prop_if_in:NnTF \g_pse_parallel_alignment_prop {#1}{
+    \tl_set:Nx \l_tmpa_tl {#1::#2}
+    \prop_if_in:NVTF \g_pse_parallel_note_prop \l_tmpa_tl
+      {\PackageError{pse-module-parallel-text}{Duplicate `#2' note for alignment `#1'}{Use one note per alignment and note kind.}}
+      {\prop_gput:NVn \g_pse_parallel_note_prop \l_tmpa_tl {#3}\PSEParallelNotePresentation{#1}{#2}{#3}}
+  }{\PackageError{pse-module-parallel-text}{Unknown alignment `#1'}{Declare the alignment before attaching a note.}}
+}
+\NewDocumentCommand{\PSEParallelSegment}{m m +m}{\pse_parallel_segment:nnn{#1}{#2}{#3}}
+\NewDocumentCommand{\PSEParallelAlign}{m m m}{\pse_parallel_align:nnn{#1}{#2}{#3}}
+\NewDocumentCommand{\PSEParallelAlignmentLocator}{m m}{\pse_parallel_locator:nn{#1}{#2}}
+\NewDocumentCommand{\PSEParallelNote}{m m +m}{\pse_parallel_note:nnn{#1}{#2}{#3}}
+\NewDocumentCommand{\PSEParallelTranslationNote}{m +m}{\pse_parallel_note:nnn{#1}{translation}{#2}}
+\ExplSyntaxOff
+\endinput

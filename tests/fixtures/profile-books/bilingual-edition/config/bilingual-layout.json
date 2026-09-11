@@ -1,0 +1,7 @@
+{
+  "schema_version": "1.1",
+  "mode": "parallel-columns",
+  "synchronization_policy": "alignment-block",
+  "long_segment_policy": "flow",
+  "show_language_labels": true
+}

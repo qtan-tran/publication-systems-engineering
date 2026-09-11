@@ -1,0 +1,130 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://publication-systems-engineering.invalid/schema/release-audit-index-0.1.schema.json",
+  "title": "PSE Release Audit Index 0.1",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "kind",
+    "generated_utc",
+    "pse_version",
+    "collection_dir",
+    "release_count",
+    "batch_fingerprint",
+    "entries",
+    "batch_status",
+    "historical_artifacts_mutated",
+    "index_is_release_artifact",
+    "scope_note"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "0.1"
+    },
+    "kind": {
+      "const": "pse-release-audit-index"
+    },
+    "generated_utc": {
+      "type": "string",
+      "minLength": 1
+    },
+    "pse_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "collection_dir": {
+      "type": "string",
+      "minLength": 1
+    },
+    "release_count": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "batch_fingerprint": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "entries": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "relative_source_release",
+          "source_release_id",
+          "source_manifest_schema_version",
+          "release_fingerprint",
+          "audit_status",
+          "compatibility_status",
+          "source_manifest_sha256",
+          "source_pdf_sha256",
+          "source_checksum_file_sha256"
+        ],
+        "properties": {
+          "relative_source_release": {
+            "type": "string",
+            "minLength": 1
+          },
+          "source_release_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "source_manifest_schema_version": {
+            "type": "string",
+            "minLength": 1
+          },
+          "release_fingerprint": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "audit_status": {
+            "enum": [
+              "pass",
+              "fail"
+            ]
+          },
+          "compatibility_status": {
+            "enum": [
+              "current",
+              "legacy",
+              "unsupported"
+            ]
+          },
+          "source_manifest_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "source_pdf_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "source_checksum_file_sha256": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "pattern": "^[0-9a-f]{64}$"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "batch_status": {
+      "enum": [
+        "pass",
+        "fail"
+      ]
+    },
+    "historical_artifacts_mutated": {
+      "const": false
+    },
+    "index_is_release_artifact": {
+      "const": false
+    },
+    "scope_note": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "additionalProperties": true
+}

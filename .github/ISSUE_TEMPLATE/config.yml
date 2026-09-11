@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Security guidance
+    url: ../../security/policy
+    about: Review SECURITY.md before disclosing a vulnerability; never place secrets or manuscripts in public issues.

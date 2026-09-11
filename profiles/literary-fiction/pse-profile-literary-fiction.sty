@@ -1,0 +1,42 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{pse-profile-literary-fiction}[2026/09/08 v1.0.0-alpha PSE literary-fiction profile]
+\RequirePackage{titlesec}
+\RequirePackage{fancyhdr}
+\RequirePackage{needspace}
+
+% ---- integrated presentation declaration ---------------------------------
+\PSEConfigureIntegratedPresentation{fiction-reading}{narrative}{deferred}{book}{fallback}{deferred}{none}{none}
+
+% ---- typography role overrides -------------------------------------------
+\renewcommand{\PSETypographyBodyRole}{\rmfamily\normalsize\mdseries\upshape}
+\renewcommand{\PSETypographyDisplayRole}{\sffamily\mdseries\upshape}
+\renewcommand{\PSETypographyChapterTitleRole}{\rmfamily\Large\bfseries\upshape}
+\renewcommand{\PSETypographySectionHeadingRole}{\rmfamily\normalsize\mdseries\itshape}
+\renewcommand{\PSETypographySubsectionHeadingRole}{\rmfamily\normalsize\mdseries\itshape}
+\renewcommand{\PSETypographyMetadataLabelRole}{\PSETypographyDisplayRole\small\bfseries\upshape}
+\renewcommand{\PSETypographyMetadataValueRole}{\rmfamily\small\mdseries\upshape}
+\renewcommand{\PSETypographyRunningHeadRole}{\PSETypographyDisplayRole\scriptsize\mdseries\upshape}
+\renewcommand{\PSETypographyCaptionRole}{\rmfamily\small\mdseries\upshape}
+\renewcommand{\PSETypographyApparatusRole}{\rmfamily\small\mdseries\upshape}
+
+% ---- page-grid configuration ---------------------------------------------
+\PSEConfigurePageGrid{18mm}{22mm}{20mm}{24mm}{10pt}{5.5mm}{10mm}{0mm}
+\PSEApplyPageGrid
+\AtBeginDocument{\PSETypographyBodyRole\linespread{1.06}\selectfont\setlength{\parindent}{1.3em}\setlength{\parskip}{0pt}}
+\widowpenalty=8000 \clubpenalty=8000 \displaywidowpenalty=6000 \raggedbottom
+\titleformat{\chapter}[display]{\normalfont\centering\color{PSEText}}{\sffamily\small\textls[55]{\MakeUppercase{\chaptername}\enspace\thechapter}}{10pt}{\PSETypographyChapterTitleRole}[]
+\titlespacing*{\chapter}{0pt}{32pt}{34pt}
+\titleformat{name=\chapter,numberless}[display]{\normalfont\centering\color{PSEText}}{}{0pt}{\PSETypographyChapterTitleRole}[]
+\titlespacing*{name=\chapter,numberless}{0pt}{32pt}{34pt}
+\titleformat{\section}{\PSETypographySectionHeadingRole\raggedright}{\thesection}{0.65em}{}
+\titlespacing*{\section}{0pt}{18pt}{7pt}
+\pagestyle{fancy}\fancyhf{}\renewcommand{\headrulewidth}{0pt}
+\fancyhead[LE]{\scriptsize\textls[35]{\MakeUppercase{\PSETitle}}}
+\fancyhead[RO]{\scriptsize\nouppercase{\leftmark}}\fancyhead[RE,LO]{\scriptsize\thepage}
+\fancypagestyle{plain}{\fancyhf{}\fancyfoot[C]{\scriptsize\thepage}\renewcommand{\headrulewidth}{0pt}}
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\setlength{\footnotesep}{7.2pt}\setlength{\skip\footins}{11.5pt plus 2pt minus 1pt}
+
+% ---- integrated presentation descriptor binding ----
+\PSEConfigureIntegratedPresentation{fiction-reading}{narrative}{deferred}{book}{fallback}{deferred}{none}{none}
+\endinput

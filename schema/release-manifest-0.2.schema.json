@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://publication-systems-engineering.invalid/schema/release-manifest-0.2.schema.json",
+  "title": "PSE publication release manifest 0.2",
+  "type": "object",
+  "required": ["schema_version", "artifact_type", "release_id", "pse_version", "qa", "reproducibility", "attribution", "output_inspection", "pdf", "signing"],
+  "properties": {
+    "schema_version": {"const": "0.2"},
+    "artifact_type": {"const": "publication_release"},
+    "release_id": {"type": "string", "minLength": 1},
+    "created_utc": {"type": "string", "minLength": 1},
+    "pse_version": {"type": "string", "minLength": 1},
+    "runtime_source": {"type": "string"},
+    "project_revision": {"type": ["string", "null"]},
+    "project_dirty": {"type": ["boolean", "null"]},
+    "framework_revision": {"type": ["string", "null"]},
+    "source_date_epoch": {"type": "integer"},
+    "qa": {"type": "object"},
+    "reproducibility": {"type": "object"},
+    "attribution": {"type": "object"},
+    "output_inspection": {
+      "type": "object",
+      "required": ["file", "schema_version", "sha256", "bound_pdf_sha256", "policy"],
+      "properties": {
+        "file": {"const": "output-inspection.json"},
+        "schema_version": {"const": "0.2"},
+        "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "bound_pdf_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "policy": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["metadata_and_language", "text_extractability", "tagging_reading_order_alt_text_conformance"],
+          "properties": {
+            "metadata_and_language": {"const": "blocking"},
+            "text_extractability": {"const": "human-review-on-nonpass"},
+            "tagging_reading_order_alt_text_conformance": {"const": "evidence-only-not-certified"}
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "pdf": {
+      "type": "object",
+      "required": ["file", "sha256", "pages", "width_mm", "height_mm"],
+      "properties": {
+        "file": {"type": "string", "pattern": "^[A-Za-z0-9._-]+$"},
+        "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "pages": {"type": "integer", "minimum": 1},
+        "width_mm": {"type": "number", "exclusiveMinimum": 0},
+        "height_mm": {"type": "number", "exclusiveMinimum": 0}
+      },
+      "additionalProperties": false
+    },
+    "signing": {"type": "object"}
+  },
+  "additionalProperties": true
+}

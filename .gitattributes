@@ -1,0 +1,15 @@
+# Normalize line endings for all text sources so parser offsets, hashes, and
+# checksums are identical across Linux, macOS, and Windows checkouts.
+* text=auto eol=lf
+
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.pdf binary
+*.ttf binary
+*.otf binary
+*.woff binary
+*.woff2 binary
+*.zip binary
+*.whl binary

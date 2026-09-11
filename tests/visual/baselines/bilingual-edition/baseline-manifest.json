@@ -1,0 +1,10 @@
+{
+  "schema_version": "1.0",
+  "profile": "bilingual-edition",
+  "fixture": "tests/fixtures/profile-books/bilingual-edition",
+  "render_dpi": 144,
+  "pages": [
+    {"name": "title-page", "page": 1, "file": "title-page.png"},
+    {"name": "parallel-columns", "page": 5, "file": "parallel-columns.png"}
+  ]
+}

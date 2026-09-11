@@ -1,0 +1,13 @@
+{
+  "schema_version": "1.0",
+  "profile": "scholarly-edition",
+  "fixture": "tests/fixtures/profile-books/scholarly-edition",
+  "render_dpi": 144,
+  "pages": [
+    {"name": "title-page", "page": 1, "file": "title-page.png"},
+    {"name": "text-locators", "page": 5, "file": "text-locators.png"},
+    {"name": "apparatus", "page": 6, "file": "apparatus.png"},
+    {"name": "bibliography", "page": 7, "file": "bibliography.png"},
+    {"name": "index", "page": 8, "file": "index.png"}
+  ]
+}

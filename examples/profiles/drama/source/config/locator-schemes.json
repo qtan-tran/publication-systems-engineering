@@ -1,0 +1,17 @@
+{
+  "schema_version": "1.0",
+  "schemes": {
+    "dramatic-line": {
+      "schema_version": "1.0",
+      "id": "synthetic-dramatic-lines",
+      "order": [
+        "L1",
+        "L2",
+        "L3",
+        "L4"
+      ],
+      "require_complete": true,
+      "strict_order": true
+    }
+  }
+}

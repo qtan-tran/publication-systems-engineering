@@ -1,0 +1,58 @@
+{
+  "id": "poetry",
+  "version": "1.0.0-alpha",
+  "extends": "pse-core",
+  "generator_supported": true,
+  "capabilities": [
+    "prose",
+    "verse",
+    "stanzas",
+    "verse-lines",
+    "stable-verse-ids",
+    "running-heads",
+    "footnotes",
+    "index",
+    "margin-objects",
+    "apparatus"
+  ],
+  "required_metadata": [
+    "title",
+    "author",
+    "language",
+    "publication_year"
+  ],
+  "required_fonts": [],
+  "open_font_policy": true,
+  "schema_version": "1.1",
+  "description": "Neutral poetry presentation profile with stanza spacing, verse indentation, long-line continuation, optional display numbering, and module-owned stable verse identity.",
+  "module_policy": {
+    "verse-structure": {
+      "status": "required",
+      "default_enabled": true
+    },
+    "index": {
+      "status": "optional",
+      "default_enabled": false
+    },
+    "structural-hierarchy": {
+      "status": "discouraged",
+      "default_enabled": false
+    },
+    "publication-unit-metadata": {
+      "status": "discouraged",
+      "default_enabled": false
+    },
+    "contributor-metadata": {
+      "status": "recommended",
+      "default_enabled": false
+    },
+    "margin-objects": {
+      "status": "optional",
+      "default_enabled": false
+    },
+    "apparatus": {
+      "status": "optional",
+      "default_enabled": false
+    }
+  }
+}

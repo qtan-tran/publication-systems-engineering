@@ -1,0 +1,30 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{pse-module-verse-structure}[2026/09/10 v1.1.0-alpha PSE verse semantics]
+\RequirePackage{expl3}
+\RequirePackage{xparse}
+
+% Presentation hooks are deliberately overridable by profiles. Stable stanza and
+% line identity remain semantic and must not depend on pagination or indentation.
+\providecommand{\PSEVerseStanzaStartPresentation}[1]{\par\medskip}
+\providecommand{\PSEVerseStanzaEndPresentation}{\par\medskip}
+\providecommand{\PSEVerseLinePresentation}[3]{\noindent #3\par}
+
+\ExplSyntaxOn
+\prop_new:N \g_pse_verse_stanzas_prop
+\prop_new:N \g_pse_verse_lines_prop
+\cs_new_protected:Npn \pse_verse_register_stanza:n #1 {
+  \prop_if_in:NnTF \g_pse_verse_stanzas_prop {#1}
+    {\PackageError{pse-module-verse-structure}{Duplicate stanza id `#1'}{Stanza ids must be unique.}}
+    {\prop_gput:Nnn \g_pse_verse_stanzas_prop {#1}{1}}
+}
+\cs_new_protected:Npn \pse_verse_register_line:nnn #1#2#3 {
+  \prop_if_in:NnTF \g_pse_verse_lines_prop {#1}
+    {\PackageError{pse-module-verse-structure}{Duplicate verse line id `#1'}{Verse line ids must be unique.}}
+    {\prop_gput:Nnn \g_pse_verse_lines_prop {#1}{#2}\PSEVerseLinePresentation{#1}{#2}{#3}}
+}
+\NewDocumentEnvironment{PSEStanza}{m}
+  {\pse_verse_register_stanza:n{#1}\PSEVerseStanzaStartPresentation{#1}}
+  {\PSEVerseStanzaEndPresentation}
+\NewDocumentCommand{\PSEVerseLine}{m O{} m}{\pse_verse_register_line:nnn{#1}{#2}{#3}}
+\ExplSyntaxOff
+\endinput

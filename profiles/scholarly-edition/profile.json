@@ -1,0 +1,76 @@
+{
+  "id": "scholarly-edition",
+  "version": "1.1.0-alpha",
+  "extends": "pse-core",
+  "generator_supported": true,
+  "capabilities": [
+    "prose",
+    "numbered-chapters",
+    "sections",
+    "running-heads",
+    "footnotes",
+    "canonical-locators",
+    "apparatus",
+    "multilingual-text",
+    "polytonic-greek",
+    "bibliography",
+    "index",
+    "scholarly-front-matter",
+    "scholarly-back-matter",
+    "margin-objects"
+  ],
+  "required_metadata": [
+    "title",
+    "author",
+    "language",
+    "publication_year"
+  ],
+  "required_fonts": [
+    "Gentium Plus"
+  ],
+  "open_font_policy": true,
+  "schema_version": "1.1",
+  "description": "Generic scholarly-edition foundation with canonical locators, apparatus, multilingual text, bibliography, and index support.",
+  "module_policy": {
+    "canonical-locators": {
+      "status": "required",
+      "default_enabled": true
+    },
+    "apparatus": {
+      "status": "required",
+      "default_enabled": true
+    },
+    "multilingual": {
+      "status": "required",
+      "default_enabled": true
+    },
+    "bibliography": {
+      "status": "required",
+      "default_enabled": true
+    },
+    "index": {
+      "status": "recommended",
+      "default_enabled": true
+    },
+    "scholarly-matter": {
+      "status": "required",
+      "default_enabled": true
+    },
+    "structural-hierarchy": {
+      "status": "recommended",
+      "default_enabled": true
+    },
+    "publication-unit-metadata": {
+      "status": "recommended",
+      "default_enabled": false
+    },
+    "contributor-metadata": {
+      "status": "required",
+      "default_enabled": true
+    },
+    "margin-objects": {
+      "status": "recommended",
+      "default_enabled": true
+    }
+  }
+}

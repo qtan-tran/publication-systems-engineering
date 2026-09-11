@@ -1,0 +1,9 @@
+title: The Measure of a Page
+subtitle: A Synthetic Book for Publication-System Testing
+author: Ada Example
+language: en
+publication_year: 2026
+series: PSE Synthetic Fixtures
+page:
+  width_mm: 126
+  height_mm: 198

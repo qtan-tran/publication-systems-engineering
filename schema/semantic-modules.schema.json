@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "PSE title semantic module activation",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "activate",
+    "config"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "activate": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+      }
+    },
+    "config": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object"
+      }
+    }
+  }
+}

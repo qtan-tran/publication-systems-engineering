@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://publication-systems-engineering.example/schema/documentation-release-evidence-0.1.schema.json",
+  "title": "PSE documentation release evidence 0.1",
+  "type": "object",
+  "required": ["schema_version","artifact_kind","pse_version","source_revision","site_url","file_count","files","claims"],
+  "properties": {
+    "schema_version": {"const":"0.1"},
+    "artifact_kind": {"const":"pse-documentation-release-evidence"},
+    "pse_version": {"type":"string"},
+    "source_revision": {"type":"string"},
+    "site_url": {"type":"string"},
+    "file_count": {"type":"integer","minimum":0},
+    "files": {"type":"array","items":{"type":"object","required":["path","sha256","bytes"],"properties":{"path":{"type":"string"},"sha256":{"type":"string","pattern":"^[0-9a-f]{64}$"},"bytes":{"type":"integer","minimum":0}},"additionalProperties":false}},
+    "claims": {"type":"object","required":["generated_site_integrity","live_deployment_verified","external_timestamp","signature_or_pki"]}
+  },
+  "additionalProperties": false
+}

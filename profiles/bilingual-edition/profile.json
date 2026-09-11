@@ -1,0 +1,62 @@
+{
+  "schema_version": "1.1",
+  "id": "bilingual-edition",
+  "version": "1.7.0-alpha",
+  "extends": "pse-core",
+  "generator_supported": true,
+  "capabilities": [
+    "prose",
+    "bilingual-presentation",
+    "parallel-columns",
+    "facing-pages",
+    "language-role-presentation",
+    "translation-note-presentation",
+    "running-heads",
+    "footnotes",
+    "index",
+    "margin-objects",
+    "sequential-parallel-blocks",
+    "source-dominant-parallel-text",
+    "target-dominant-parallel-text",
+    "apparatus"
+  ],
+  "required_metadata": [
+    "title",
+    "author",
+    "language",
+    "publication_year"
+  ],
+  "required_fonts": [],
+  "open_font_policy": true,
+  "description": "Neutral bilingual/parallel-text presentation profile using the generic parallel-text semantic contract.",
+  "module_policy": {
+    "parallel-text": {
+      "status": "required",
+      "default_enabled": true
+    },
+    "index": {
+      "status": "recommended",
+      "default_enabled": true
+    },
+    "structural-hierarchy": {
+      "status": "recommended",
+      "default_enabled": true
+    },
+    "publication-unit-metadata": {
+      "status": "optional",
+      "default_enabled": false
+    },
+    "contributor-metadata": {
+      "status": "required",
+      "default_enabled": true
+    },
+    "margin-objects": {
+      "status": "recommended",
+      "default_enabled": false
+    },
+    "apparatus": {
+      "status": "recommended",
+      "default_enabled": false
+    }
+  }
+}

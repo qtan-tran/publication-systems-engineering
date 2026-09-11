@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.1",
+  "id": "scholarly-matter",
+  "version": "1.2.0-alpha",
+  "extends": "pse-core",
+  "capabilities": [
+    "scholarly-front-matter",
+    "scholarly-back-matter"
+  ],
+  "build_tools": [],
+  "required_fonts": [],
+  "description": "Generic front- and back-matter primitives for scholarly editions.",
+  "depends_on": [],
+  "api_version": "1",
+  "namespace": "matter",
+  "requires_capabilities": [],
+  "conflicts_with": [],
+  "compatible_profiles": [
+    "*"
+  ],
+  "qa_hooks": []
+}

@@ -1,0 +1,21 @@
+:root {
+  --pse-oxblood: #5e211a;
+  --pse-paper: #f7f3ec;
+  --pse-ink: #241f1c;
+}
+
+[data-md-color-scheme="default"] {
+  --md-primary-fg-color: var(--pse-oxblood);
+  --md-accent-fg-color: var(--pse-oxblood);
+  --md-default-bg-color: var(--pse-paper);
+  --md-default-fg-color: var(--pse-ink);
+}
+
+.md-typeset h1,
+.md-typeset h2 {
+  letter-spacing: -0.015em;
+}
+
+.md-typeset a {
+  text-underline-offset: 0.15em;
+}

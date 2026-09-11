@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.1",
+  "api_version": "1",
+  "id": "structural-hierarchy",
+  "namespace": "structure",
+  "version": "1.0.0-alpha",
+  "extends": "pse-core",
+  "capabilities": [
+    "structural-hierarchy",
+    "bounded-section-depth",
+    "run-in-paragraph-level"
+  ],
+  "requires_capabilities": [],
+  "build_tools": [],
+  "required_fonts": [],
+  "depends_on": [],
+  "conflicts_with": [],
+  "compatible_profiles": [
+    "*"
+  ],
+  "qa_hooks": [],
+  "description": "Reusable prose-structure contract with four section levels inside a chapter: section, subsection, subsubsection, and paragraph."
+}

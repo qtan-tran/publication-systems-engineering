@@ -1,0 +1,7 @@
+{
+  "schema_version": "1.0",
+  "source_language": "fr",
+  "target_language": "en",
+  "require_all_paired": true,
+  "alignment_policy": "one-to-one"
+}

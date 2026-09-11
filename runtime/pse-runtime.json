@@ -1,0 +1,34 @@
+{
+  "schema_version": "0.1",
+  "framework": "publication-systems-engineering",
+  "runtime_version": "1.47.0-alpha",
+  "engine": "LuaLaTeX",
+  "core_path": "core/pse-core.sty",
+  "profiles": {
+    "academic-monograph": "profiles/academic-monograph/pse-profile-academic-monograph.sty",
+    "basic-book": "profiles/basic-book/pse-profile-basic-book.sty",
+    "bilingual-edition": "profiles/bilingual-edition/pse-profile-bilingual-edition.sty",
+    "critical-edition": "profiles/critical-edition/pse-profile-critical-edition.sty",
+    "drama": "profiles/drama/pse-profile-drama.sty",
+    "edited-collection": "profiles/edited-collection/pse-profile-edited-collection.sty",
+    "literary-fiction": "profiles/literary-fiction/pse-profile-literary-fiction.sty",
+    "poetry": "profiles/poetry/pse-profile-poetry.sty",
+    "scholarly-edition": "profiles/scholarly-edition/pse-profile-scholarly-edition.sty"
+  },
+  "modules": {
+    "apparatus": "modules/apparatus/pse-module-apparatus.sty",
+    "bibliography": "modules/bibliography/pse-module-bibliography.sty",
+    "canonical-locators": "modules/canonical-locators/pse-module-canonical-locators.sty",
+    "contributor-metadata": "modules/contributor-metadata/pse-module-contributor-metadata.sty",
+    "drama-structure": "modules/drama-structure/pse-module-drama-structure.sty",
+    "dramatic-locators": "modules/dramatic-locators/pse-module-dramatic-locators.sty",
+    "index": "modules/index/pse-module-index.sty",
+    "margin-objects": "modules/margin-objects/pse-module-margin-objects.sty",
+    "multilingual": "modules/multilingual/pse-module-multilingual.sty",
+    "parallel-text": "modules/parallel-text/pse-module-parallel-text.sty",
+    "publication-unit-metadata": "modules/publication-unit-metadata/pse-module-publication-unit-metadata.sty",
+    "scholarly-matter": "modules/scholarly-matter/pse-module-scholarly-matter.sty",
+    "structural-hierarchy": "modules/structural-hierarchy/pse-module-structural-hierarchy.sty",
+    "verse-structure": "modules/verse-structure/pse-module-verse-structure.sty"
+  }
+}

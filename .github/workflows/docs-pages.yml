@@ -1,0 +1,82 @@
+name: documentation-pages
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "wiki/**"
+      - "mkdocs.yml"
+      - "requirements/docs.txt"
+      - "scripts/docs/**"
+      - ".github/workflows/docs-pages.yml"
+  pull_request:
+    paths:
+      - "wiki/**"
+      - "mkdocs.yml"
+      - "requirements/docs.txt"
+      - "scripts/docs/**"
+      - ".github/workflows/docs-pages.yml"
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: python -m pip install -r requirements/docs.txt
+      - name: Validate documentation source
+        run: |
+          python scripts/docs/validate_docs.py
+          python scripts/docs/validate_stable_urls.py
+      - uses: actions/configure-pages@v5
+        id: pages
+        if: github.event_name != 'pull_request'
+      - name: Prepare deployment configuration
+        if: github.event_name != 'pull_request'
+        run: python scripts/docs/prepare_mkdocs_config.py --site-url "${{ steps.pages.outputs.base_url }}"
+      - name: Build pull-request documentation
+        if: github.event_name == 'pull_request'
+        run: mkdocs build --strict
+      - name: Build deployment documentation
+        if: github.event_name != 'pull_request'
+        run: mkdocs build --strict -f build/mkdocs.deployment.yml
+      - name: Validate generated documentation
+        if: github.event_name != 'pull_request'
+        run: python scripts/docs/validate_generated_site.py --site-dir site --site-url "${{ steps.pages.outputs.base_url }}"
+      - name: Create documentation release evidence
+        if: github.event_name != 'pull_request'
+        run: python scripts/docs/documentation_release_evidence.py --site-dir site --site-url "${{ steps.pages.outputs.base_url }}" --version "1.47.0-alpha" --source-revision "${{ github.sha }}"
+      - name: Upload documentation release evidence
+        if: github.event_name != 'pull_request'
+        uses: actions/upload-artifact@v4
+        with:
+          name: documentation-release-evidence
+          path: build/documentation-release-evidence.json
+      - name: Upload Pages artifact
+        if: github.event_name != 'pull_request'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+  deploy:
+    if: github.event_name != 'pull_request'
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

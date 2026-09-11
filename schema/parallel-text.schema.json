@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://publication-systems-engineering.invalid/schema/parallel-text.schema.json",
+  "title": "PSE parallel-text project configuration",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "source_language",
+    "target_language",
+    "require_all_paired",
+    "alignment_policy"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "source_language": {
+      "type": "string",
+      "minLength": 2
+    },
+    "target_language": {
+      "type": "string",
+      "minLength": 2
+    },
+    "require_all_paired": {
+      "type": "boolean"
+    },
+    "alignment_policy": {
+      "enum": [
+        "one-to-one",
+        "one-to-many",
+        "many-to-one",
+        "many-to-many"
+      ]
+    }
+  }
+}

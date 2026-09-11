@@ -1,0 +1,13 @@
+{
+  "schema_version": "1.0",
+  "profile": "scholarly-edition",
+  "preset": "scholarly-edition",
+  "hierarchy": "compact",
+  "publication_unit_metadata": "available",
+  "grid": "asymmetric-scholarly",
+  "side_material": "outer-margin",
+  "apparatus": "multi-stream",
+  "locator": "primary-visible",
+  "parallel_text": "none",
+  "description": "Integrated scholarly-edition presentation combining compact hierarchy, asymmetric grid, side material, visible canonical locators, and multi-stream apparatus."
+}

@@ -1,0 +1,101 @@
+site_name: Publication Systems Engineering
+site_description: Documentation for Publication Systems Engineering, a reproducible framework for structured book production.
+docs_dir: wiki
+site_dir: site
+use_directory_urls: true
+strict: true
+theme:
+  name: material
+  language: en
+  features:
+  - navigation.instant
+  - navigation.sections
+  - navigation.top
+  - search.suggest
+  - search.highlight
+  - content.code.copy
+  palette:
+  - media: '(prefers-color-scheme: light)'
+    scheme: default
+    toggle:
+      icon: material/weather-night
+      name: Switch to dark mode
+  - media: '(prefers-color-scheme: dark)'
+    scheme: slate
+    toggle:
+      icon: material/weather-sunny
+      name: Switch to light mode
+plugins:
+- search
+extra_css:
+- assets/stylesheets/pse.css
+markdown_extensions:
+- admonition
+- attr_list
+- def_list
+- footnotes
+- tables
+- toc:
+    permalink: true
+nav:
+- Home: index.md
+- Getting Started:
+  - Beginner Handbook: getting-started/index.md
+  - What is PSE?: getting-started/what-is-pse.md
+  - Install and Check PSE: getting-started/install.md
+  - Choose a Book Profile: getting-started/choose-a-profile.md
+  - Create Your First Project: getting-started/create-a-project.md
+  - Understand the Project Folder: getting-started/project-folder.md
+  - Replace the Starter Content: getting-started/edit-your-book.md
+  - Build and Check Your PDF: getting-started/build-and-check.md
+  - First Troubleshooting: getting-started/troubleshooting.md
+  - Where to Go Next: getting-started/next-steps.md
+- How PSE Works:
+  - Architecture Overview: how-pse-works/architecture-overview.md
+  - Presentation System: how-pse-works/presentation-system.md
+- Book Profiles:
+  - Overview: profiles/index.md
+  - Academic Monograph: profiles/academic-monograph.md
+  - Basic Book: profiles/basic-book.md
+  - Bilingual Edition: profiles/bilingual-edition.md
+  - Critical Edition: profiles/critical-edition.md
+  - Drama: profiles/drama.md
+  - Edited Collection: profiles/edited-collection.md
+  - Literary Fiction: profiles/literary-fiction.md
+  - Poetry: profiles/poetry.md
+  - Scholarly Edition: profiles/scholarly-edition.md
+- Book Features:
+  - Overview: book-features/index.md
+  - Structural Hierarchy: book-features/structural-hierarchy.md
+  - Publication Metadata: book-features/publication-metadata.md
+  - Typography and Page Grid: book-features/typography-and-page-grid.md
+  - Margins and Side Material: book-features/margins-and-side-material.md
+  - Parallel Text: book-features/parallel-text.md
+  - Critical Apparatus: book-features/apparatus.md
+  - Locators and Stable Addresses: book-features/locators.md
+  - Verse and Drama Semantics: book-features/verse-and-drama.md
+  - Bibliography, Index, and Scholarly Matter: book-features/bibliography-index-scholarly-matter.md
+  - Multilingual Text: book-features/multilingual-text.md
+- Workflows:
+  - Overview: workflows/index.md
+  - Everyday Edit–Build–Check Cycle: workflows/edit-build-check.md
+  - Clean Build and Reproducibility: workflows/clean-build.md
+  - Human Review: workflows/human-review.md
+  - Recipient Proofs: workflows/recipient-proofs.md
+  - Prepare a Publication Release: workflows/publication-release.md
+  - After Release: workflows/after-release.md
+- Quality and Release:
+  - Overview: quality-release/index.md
+  - Quality Model: quality-release/quality-model.md
+  - Working PDF, Proof, and Release: quality-release/artifact-boundaries.md
+  - Output Inspection: quality-release/output-inspection.md
+  - Release Verification: quality-release/release-verification.md
+  - Audit Evidence: quality-release/audit-evidence.md
+  - Historical Releases: quality-release/historical-releases.md
+  - Release Checklist: quality-release/release-checklist.md
+- Customization:
+  - Typography: customization/typography.md
+  - Page Layout: customization/page-layout.md
+- Reference:
+  - Overview: reference/index.md
+  - Documentation Release Evidence: reference/documentation-release.md

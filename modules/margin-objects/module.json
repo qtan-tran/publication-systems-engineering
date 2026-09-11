@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.1",
+  "api_version": "1",
+  "id": "margin-objects",
+  "namespace": "margin",
+  "version": "1.0.0-alpha",
+  "extends": "pse-core",
+  "capabilities": [
+    "margin-objects",
+    "stable-margin-object-ids",
+    "marginal-notes",
+    "side-captions",
+    "apparatus-anchors",
+    "locator-markers",
+    "running-side-objects",
+    "deterministic-margin-fallback"
+  ],
+  "requires_capabilities": [],
+  "build_tools": [],
+  "required_fonts": [],
+  "depends_on": [],
+  "conflicts_with": [],
+  "compatible_profiles": ["*"],
+  "qa_hooks": [],
+  "description": "Reusable semantic margin-object registry with stable IDs and profile-owned margin or fallback presentation."
+}

@@ -1,0 +1,24 @@
+{
+  "schema_version": "0.2",
+  "artifact_type": "publication_release",
+  "release_id": "PSE-FIXTURE-CURRENT-002",
+  "pse_version": "1.27.0-alpha",
+  "output_inspection": {
+    "file": "output-inspection.json",
+    "schema_version": "0.2",
+    "sha256": "23cae4fe13ff9946ee2d07d40691f4701df11da91b8c98d4896b7a969b084c48",
+    "bound_pdf_sha256": "d28f78867c75d461d80294084d88f1802be68f3684f0c7432015cb7583a44a55",
+    "policy": {
+      "metadata_and_language": "blocking",
+      "text_extractability": "human-review-on-nonpass",
+      "tagging_reading_order_alt_text_conformance": "evidence-only-not-certified"
+    }
+  },
+  "pdf": {
+    "file": "current-release.pdf",
+    "sha256": "d28f78867c75d461d80294084d88f1802be68f3684f0c7432015cb7583a44a55",
+    "pages": 1,
+    "width_mm": 148.0,
+    "height_mm": 210.0
+  }
+}

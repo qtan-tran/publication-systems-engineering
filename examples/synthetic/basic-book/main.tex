@@ -1,0 +1,19 @@
+\documentclass[10pt,twoside,openany]{book}
+\usepackage{pse-core}
+\usepackage{pse-profile-basic-book}
+\InputIfFileExists{config/pse-local.tex}{}{}
+
+\begin{document}
+\PSEBeginFrontMatter
+\PSETitlePage
+\PSEPublicationPage
+\tableofcontents
+\clearpage
+\PSEBeginBody
+\input{content/chapter-01.tex}
+\input{content/chapter-02.tex}
+\PSEBeginBackMatter
+\chapter*{Production Note}
+\addcontentsline{toc}{chapter}{Production Note}
+This synthetic fixture contains no copyrighted production text. Its purpose is to exercise the generic core, metadata injection, page geometry, navigation, and clean-build lifecycle.
+\end{document}

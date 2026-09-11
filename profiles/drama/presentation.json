@@ -1,0 +1,13 @@
+{
+  "schema_version": "1.0",
+  "profile": "drama",
+  "preset": "dramatic-reading",
+  "hierarchy": "dramatic",
+  "publication_unit_metadata": "deferred",
+  "grid": "asymmetric-scholarly",
+  "side_material": "outer-margin",
+  "apparatus": "available",
+  "locator": "primary-visible",
+  "parallel_text": "none",
+  "description": "Performance-aware dramatic presentation centered on speakers, stage directions, structural anchors, and visible dramatic locators."
+}

@@ -1,0 +1,25 @@
+{
+  "schema_version": "1.1",
+  "api_version": "1",
+  "id": "contributor-metadata",
+  "namespace": "contributors",
+  "version": "1.1.0-alpha",
+  "extends": "pse-core",
+  "capabilities": [
+    "contribution-relations",
+    "contributor-query",
+    "contributors",
+    "silent-contribution-registration",
+    "stable-contributor-ids"
+  ],
+  "requires_capabilities": [],
+  "build_tools": [],
+  "required_fonts": [],
+  "depends_on": [],
+  "conflicts_with": [],
+  "compatible_profiles": [
+    "*"
+  ],
+  "qa_hooks": [],
+  "description": "Generic contributor identity and dynamic contribution-role semantics, with query access for publication-unit metadata while preserving presentation ownership in profiles."
+}

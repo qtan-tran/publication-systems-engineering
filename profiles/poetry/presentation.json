@@ -1,0 +1,13 @@
+{
+  "schema_version": "1.0",
+  "profile": "poetry",
+  "preset": "verse-reading",
+  "hierarchy": "verse",
+  "publication_unit_metadata": "deferred",
+  "grid": "book",
+  "side_material": "fallback",
+  "apparatus": "available",
+  "locator": "source-defined",
+  "parallel_text": "none",
+  "description": "Verse-centered presentation that preserves stable semantic line identity while visible labels remain source-defined."
+}

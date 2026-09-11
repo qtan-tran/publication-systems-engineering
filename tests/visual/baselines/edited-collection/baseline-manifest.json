@@ -1,0 +1,12 @@
+{
+  "schema_version": "1.0",
+  "profile": "edited-collection",
+  "fixture": "tests/fixtures/profile-books/edited-collection",
+  "render_dpi": 144,
+  "pages": [
+    {"name": "title-page", "page": 1, "file": "title-page.png"},
+    {"name": "single-author-chapter", "page": 5, "file": "single-author-chapter.png"},
+    {"name": "coauthored-chapter", "page": 6, "file": "coauthored-chapter.png"},
+    {"name": "role-variation-chapter", "page": 7, "file": "role-variation-chapter.png"}
+  ]
+}

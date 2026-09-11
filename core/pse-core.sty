@@ -1,0 +1,291 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{pse-core}[2026/09/08 v1.0.0-alpha Publication Systems Engineering core]
+
+\RequirePackage{iftex}
+\ifLuaTeX\else
+  \PackageError{pse-core}{PSE requires LuaLaTeX}{Use LuaLaTeX as the production engine.}
+\fi
+\RequirePackage{fontspec}
+\RequirePackage{geometry}
+\RequirePackage{microtype}
+\RequirePackage{hyperref}
+\RequirePackage{xcolor}
+\RequirePackage{etoolbox}
+\RequirePackage{eso-pic}
+\RequirePackage{graphicx}
+
+% ---- internal state --------------------------------------------------------
+\newcommand\pse@title{}
+\newcommand\pse@author{}
+\newcommand\pse@language{}
+\newcommand\pse@year{}
+\newcommand\pse@subtitle{}
+\newcommand\pse@series{}
+\newcommand\pse@pagewidth{126mm}
+\newcommand\pse@pageheight{198mm}
+
+% ---- public metadata API ---------------------------------------------------
+\newcommand{\PSESetTitle}[1]{\renewcommand\pse@title{#1}}
+\newcommand{\PSESetAuthor}[1]{\renewcommand\pse@author{#1}}
+\newcommand{\PSESetLanguage}[1]{\renewcommand\pse@language{#1}}
+\newcommand{\PSESetPublicationYear}[1]{\renewcommand\pse@year{#1}}
+\newcommand{\PSESetSubtitle}[1]{\renewcommand\pse@subtitle{#1}}
+\newcommand{\PSESetSeries}[1]{\renewcommand\pse@series{#1}}
+\newcommand{\PSESetPageWidth}[1]{\renewcommand\pse@pagewidth{#1}}
+\newcommand{\PSESetPageHeight}[1]{\renewcommand\pse@pageheight{#1}}
+
+\newcommand{\PSETitle}{\pse@title}
+\newcommand{\PSEAuthor}{\pse@author}
+\newcommand{\PSELanguage}{\pse@language}
+\newcommand{\PSEPublicationYear}{\pse@year}
+\newcommand{\PSESubtitle}{\pse@subtitle}
+\newcommand{\PSESeries}{\pse@series}
+
+% ---- metadata injection ---------------------------------------------------
+\InputIfFileExists{build/pse-metadata.tex}{}{%
+  \PackageError{pse-core}{Generated metadata not found}{Run `pse build` rather than invoking LuaLaTeX directly.}%
+}
+
+
+% ---- proof mode (generated; not a DRM mechanism) --------------------------
+\newif\ifpse@proof
+\pse@prooffalse
+\newcommand\pse@proofrecipient{}
+\newcommand\pse@proofid{}
+\newcommand\pse@prooflabel{CONFIDENTIAL PROOF}
+\newcommand{\PSEEnableProofMode}{\pse@prooftrue}
+\newcommand{\PSESetProofRecipient}[1]{\renewcommand\pse@proofrecipient{#1}}
+\newcommand{\PSESetProofID}[1]{\renewcommand\pse@proofid{#1}}
+\newcommand{\PSESetProofLabel}[1]{\renewcommand\pse@prooflabel{#1}}
+\InputIfFileExists{build/pse-proof.tex}{}{}
+
+\newcommand{\pse@proofwatermark}{%
+  \AtPageCenter{%
+    \makebox(0,0){%
+      \rotatebox{35}{%
+        \parbox{0.78\paperwidth}{\centering
+          \color{black!9}\fontsize{26}{31}\selectfont\bfseries
+          \pse@prooflabel\\[0.5em]
+          \fontsize{12}{15}\selectfont\normalfont
+          \pse@proofrecipient\quad\textbullet\quad\pse@proofid
+        }%
+      }%
+    }%
+  }%
+  \AtPageLowerLeft{%
+    \raisebox{7mm}[0pt][0pt]{\makebox[\paperwidth][c]{%
+      \color{black!45}\sffamily\fontsize{6.8}{8}\selectfont
+      \pse@prooflabel\enspace|\enspace \pse@proofrecipient\enspace|\enspace \pse@proofid
+    }}%
+  }%
+}
+
+% ---- page-grid contract ----------------------------------------------------
+% The grid is a presentation contract. It fixes the physical page regions
+% before composition begins; semantic modules may consume the resulting space
+% but must not resize the grid dynamically after typesetting has started.
+\newcommand{\PSEPageGridContractVersion}{1}
+\newcommand\pse@gridinner{17mm}
+\newcommand\pse@gridouter{21mm}
+\newcommand\pse@gridtop{18mm}
+\newcommand\pse@gridbottom{22mm}
+\newcommand\pse@gridheadheight{11pt}
+\newcommand\pse@gridheadsep{6mm}
+\newcommand\pse@gridfootskip{10mm}
+\newcommand\pse@gridapparatus{0mm}
+\newcommand{\PSEConfigurePageGrid}[8]{%
+  \renewcommand\pse@gridinner{#1}%
+  \renewcommand\pse@gridouter{#2}%
+  \renewcommand\pse@gridtop{#3}%
+  \renewcommand\pse@gridbottom{#4}%
+  \renewcommand\pse@gridheadheight{#5}%
+  \renewcommand\pse@gridheadsep{#6}%
+  \renewcommand\pse@gridfootskip{#7}%
+  \renewcommand\pse@gridapparatus{#8}%
+}
+\newcommand{\PSEApplyPageGrid}{%
+  \geometry{paperwidth=\pse@pagewidth,paperheight=\pse@pageheight,
+    inner=\pse@gridinner,outer=\pse@gridouter,top=\pse@gridtop,
+    bottom=\pse@gridbottom,headheight=\pse@gridheadheight,
+    headsep=\pse@gridheadsep,footskip=\pse@gridfootskip}%
+}
+\newcommand{\PSEGridInnerGutter}{\pse@gridinner}
+\newcommand{\PSEGridOuterMarginZone}{\pse@gridouter}
+\newcommand{\PSEGridTopZone}{\pse@gridtop}
+\newcommand{\PSEGridBottomZone}{\pse@gridbottom}
+\newcommand{\PSEGridHeaderHeight}{\pse@gridheadheight}
+\newcommand{\PSEGridHeaderSeparation}{\pse@gridheadsep}
+\newcommand{\PSEGridFooterSeparation}{\pse@gridfootskip}
+\newcommand{\PSEGridApparatusZone}{\pse@gridapparatus}
+\newcommand{\PSEGridPrimaryTextMeasure}{\the\textwidth}
+\PSEApplyPageGrid
+
+% ---- integrated presentation-system contract ------------------------------
+% Profiles compose established presentation contracts through a descriptor-
+% matched runtime state. This layer owns no manuscript semantics.
+\newcommand{\PSEIntegratedPresentationContractVersion}{1}
+\newcommand\pse@presentationpreset{book-reading}
+\newcommand\pse@presentationhierarchy{structured}
+\newcommand\pse@presentationunitmetadata{available}
+\newcommand\pse@presentationgrid{book}
+\newcommand\pse@presentationside{fallback}
+\newcommand\pse@presentationapparatus{deferred}
+\newcommand\pse@presentationlocator{none}
+\newcommand\pse@presentationparallel{none}
+\newcommand{\PSEConfigureIntegratedPresentation}[8]{%
+  \renewcommand\pse@presentationpreset{#1}%
+  \renewcommand\pse@presentationhierarchy{#2}%
+  \renewcommand\pse@presentationunitmetadata{#3}%
+  \renewcommand\pse@presentationgrid{#4}%
+  \renewcommand\pse@presentationside{#5}%
+  \renewcommand\pse@presentationapparatus{#6}%
+  \renewcommand\pse@presentationlocator{#7}%
+  \renewcommand\pse@presentationparallel{#8}%
+}
+\newcommand{\PSEPresentationPreset}{\pse@presentationpreset}
+\newcommand{\PSEPresentationHierarchyMode}{\pse@presentationhierarchy}
+\newcommand{\PSEPresentationPublicationUnitMode}{\pse@presentationunitmetadata}
+\newcommand{\PSEPresentationGridMode}{\pse@presentationgrid}
+\newcommand{\PSEPresentationSideMaterialMode}{\pse@presentationside}
+\newcommand{\PSEPresentationApparatusMode}{\pse@presentationapparatus}
+\newcommand{\PSEPresentationLocatorMode}{\pse@presentationlocator}
+\newcommand{\PSEPresentationParallelTextMode}{\pse@presentationparallel}
+
+\newcommand{\PSEPresentationMetadataSeparator}{\relax}
+\newcommand{\PSEPresentationChapterAccent}{\relax}
+
+% ---- locator orchestration contract --------------------------------------
+% Locator semantics remain owned by their existing modules. This core contract
+% only declares which locator namespace a title/profile treats as primary or
+% secondary and how visible numbering/stable identity are expected to behave.
+% It does not register locators and therefore is not another locator engine.
+\newcommand{\PSELocatorOrchestrationContractVersion}{1}
+\newcommand\pse@locatorprimary{none}
+\newcommand\pse@locatorsecondary{}
+\newcommand\pse@locatorvisibility{profile-default}
+\newcommand\pse@locatorstableids{required}
+\newcommand{\PSEConfigureLocatorOrchestration}[4]{%
+  \renewcommand\pse@locatorprimary{#1}%
+  \renewcommand\pse@locatorsecondary{#2}%
+  \renewcommand\pse@locatorvisibility{#3}%
+  \renewcommand\pse@locatorstableids{#4}%
+}
+\newcommand{\PSEPrimaryLocatorNamespace}{\pse@locatorprimary}
+\newcommand{\PSESecondaryLocatorNamespaces}{\pse@locatorsecondary}
+\newcommand{\PSELocatorVisibilityPolicy}{\pse@locatorvisibility}
+\newcommand{\PSELocatorStableIDPolicy}{\pse@locatorstableids}
+\InputIfFileExists{build/pse-locator-orchestration.tex}{}{}
+
+% ---- margin-object presentation contract ----------------------------------
+% Semantic margin objects are module-owned. Core/profile presentation decides
+% whether they occupy the outer margin or use an explicit fallback. No object
+% may disappear merely because a layout lacks a usable margin zone.
+\newcommand{\PSEMarginObjectPresentationContractVersion}{1}
+\newcommand{\PSEMarginObjectMode}{fallback}
+\newcommand{\PSESetMarginObjectMode}[1]{\renewcommand\PSEMarginObjectMode{#1}}
+\newcommand{\PSEMarginObjectFallbackPresentation}[3]{%
+  \par\smallskip\noindent{\PSETypographyCaptionRole #3}\par\smallskip}
+\newcommand{\PSEMarginObjectPresentation}[3]{\PSEMarginObjectFallbackPresentation{#1}{#2}{#3}}
+\newcommand{\PSEUseOuterMarginObjects}[2]{%
+  \setlength{\marginparwidth}{#1}%
+  \setlength{\marginparsep}{#2}%
+  \renewcommand{\PSEMarginObjectMode}{outer-margin}%
+  \renewcommand{\PSEMarginObjectPresentation}[3]{%
+    \marginpar{\raggedright\PSETypographyCaptionRole ##3}}%
+}
+
+% ---- typography API -------------------------------------------------------
+% Latin Modern is distributed with standard TeX systems and is freely licensed.
+\setmainfont{Latin Modern Roman}
+\setsansfont{Latin Modern Sans}
+\setmonofont{Latin Modern Mono}
+\defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\microtypesetup{protrusion=true,expansion=true}
+
+% ---- typography role contract --------------------------------------------
+% These are presentation roles, not semantic manuscript commands. Profiles may
+% override them; semantic modules may consume them but must not own/redefine them.
+% Title-local exceptions may override roles in config/pse-local.tex.
+\newcommand{\PSETypographyRoleContractVersion}{1}
+\newcommand{\PSETypographyBodyRole}{\rmfamily\normalsize\mdseries\upshape}
+\newcommand{\PSETypographyDisplayRole}{\sffamily\mdseries\upshape}
+\newcommand{\PSETypographyChapterTitleRole}{\rmfamily\Large\bfseries\upshape}
+\newcommand{\PSETypographySectionHeadingRole}{\rmfamily\large\bfseries\upshape}
+\newcommand{\PSETypographySubsectionHeadingRole}{\rmfamily\normalsize\bfseries\upshape}
+\newcommand{\PSETypographyMetadataLabelRole}{\sffamily\small\bfseries\upshape}
+\newcommand{\PSETypographyMetadataValueRole}{\rmfamily\small\mdseries\upshape}
+\newcommand{\PSETypographyRunningHeadRole}{\sffamily\scriptsize\mdseries\upshape}
+\newcommand{\PSETypographyCaptionRole}{\rmfamily\small\mdseries\upshape}
+\newcommand{\PSETypographyApparatusRole}{\rmfamily\small\mdseries\upshape}
+
+\setlength{\parindent}{1.25em}
+\setlength{\parskip}{0pt}
+\pagestyle{plain}
+
+\definecolor{PSEText}{HTML}{242424}
+\definecolor{PSEMuted}{HTML}{666666}
+\color{PSEText}
+
+% ---- output metadata ------------------------------------------------------
+\AtBeginDocument{%
+  \pdfextension catalog{/Lang (\pse@language)}%
+  \hypersetup{
+    unicode=true,
+    pdftitle={\pse@title},
+    pdfauthor={\pse@author},
+    pdfsubject={\ifpse@proof Proof \pse@proofid\else Production PDF\fi},
+    pdfkeywords={\ifpse@proof PSE proof, \pse@proofid\else PSE production\fi},
+    hidelinks
+  }%
+  \ifpse@proof
+    \AddToShipoutPictureFG{\pse@proofwatermark}%
+  \fi
+}
+
+% ---- publication attribution ----------------------------------------------
+% PSE publication releases require the canonical attribution banner on either
+% the publication/copyright page or a colophon. The release pipeline verifies
+% that this macro actually rendered during the final build.
+\newcommand{\PSEAttributionBanner}{%
+  \par\vspace{1.35em}%
+  \begin{center}%
+    \includegraphics[width=0.94\linewidth]{pse-attribution-banner.png}%
+  \end{center}%
+  \typeout{PSE-ATTRIBUTION-BANNER: rendered}%
+}
+
+% ---- generic document primitives ----------------------------------------
+\newcommand{\PSETitlePage}{%
+  \thispagestyle{empty}%
+  \vspace*{0.16\textheight}%
+  \begin{center}
+    {\Large \pse@author\par}
+    \vspace{2.2em}
+    {\fontsize{24}{27}\selectfont\bfseries \pse@title\par}
+    \ifdefempty{\pse@subtitle}{}{\vspace{0.9em}{\large\itshape \pse@subtitle\par}}
+    \vfill
+    \ifdefempty{\pse@series}{}{{\small \pse@series\par}\vspace{0.5em}}
+    {\small \pse@year\par}
+  \end{center}
+  \clearpage
+}
+
+\newcommand{\PSEPublicationPage}{%
+  \thispagestyle{empty}%
+  \vspace*{0.58\textheight}%
+  {\small
+  \noindent \pse@title\par
+  \noindent \pse@author\par
+  \noindent Publication year: \pse@year\par
+  \noindent Language: \pse@language\par
+  \vspace{0.8em}
+  \PSEAttributionBanner
+  }
+  \clearpage
+}
+
+\newcommand{\PSEBeginBody}{\mainmatter}
+\newcommand{\PSEBeginFrontMatter}{\frontmatter}
+\newcommand{\PSEBeginBackMatter}{\backmatter}
+
+\endinput

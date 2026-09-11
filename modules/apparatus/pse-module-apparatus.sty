@@ -1,0 +1,58 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{pse-module-apparatus}[2026/09/11 v1.3.0-alpha PSE multi-stream apparatus]
+\RequirePackage{xparse}
+\RequirePackage{expl3}
+
+\newenvironment{PSEApparatus}{\begingroup\PSETypographyApparatusRole\setlength{\parindent}{0pt}\setlength{\parskip}{5pt}}{\par\endgroup}
+
+% Legacy generic apparatus API. Kept visually and semantically backward compatible.
+\NewDocumentCommand{\PSEApparatusEntry}{m m m}{%
+  \par\noindent\textbf{\PSELocatorRef{#1}\quad #2.} \ignorespaces #3\par
+}
+\NewDocumentCommand{\PSEExplanatoryNote}{m m m}{\PSEApparatusEntry{#1}{#2}{#3}}
+\NewDocumentCommand{\PSEApparatusRangeEntry}{m m m m}{%
+  \par\noindent\textbf{\PSELocatorRangeRef{#1}{#2}\quad #3.} \ignorespaces #4\par
+}
+
+\ExplSyntaxOn
+\clist_const:Nn \c_pse_apparatus_streams_clist
+  { textual, editorial, translation, commentary, source }
+\prop_new:N \g_pse_apparatus_stream_labels_prop
+\prop_gput:Nnn \g_pse_apparatus_stream_labels_prop { textual } { T }
+\prop_gput:Nnn \g_pse_apparatus_stream_labels_prop { editorial } { E }
+\prop_gput:Nnn \g_pse_apparatus_stream_labels_prop { translation } { Tr }
+\prop_gput:Nnn \g_pse_apparatus_stream_labels_prop { commentary } { C }
+\prop_gput:Nnn \g_pse_apparatus_stream_labels_prop { source } { S }
+
+\cs_new_protected:Npn \pse_apparatus_assert_stream:n #1
+  {
+    \clist_if_in:NnF \c_pse_apparatus_streams_clist {#1}
+      {
+        \PackageError{pse-module-apparatus}
+          {Unknown~apparatus~stream~'#1'}
+          {Use~one~of:~textual,~editorial,~translation,~commentary,~source.}
+      }
+  }
+\cs_new:Npn \pse_apparatus_stream_label:n #1
+  { \prop_item:Nn \g_pse_apparatus_stream_labels_prop {#1} }
+\cs_new_protected:Npn \pse_apparatus_stream_prefix:n #1
+  {
+    \pse_apparatus_assert_stream:n {#1}
+    \pse_apparatus_stream_label:n {#1}\quad
+  }
+
+% Multi-stream semantic API. Stream names are semantic; labels are presentation.
+\NewDocumentCommand{\PSEApparatusStreamPresentationLabel}{m}
+  { \pse_apparatus_assert_stream:n{#1}\pse_apparatus_stream_label:n{#1} }
+\NewDocumentCommand{\PSESetApparatusStreamPresentationLabel}{m m}
+  { \pse_apparatus_assert_stream:n{#1}\prop_gput:Nnn \g_pse_apparatus_stream_labels_prop {#1} {#2} }
+\NewDocumentCommand{\PSEApparatusStreamEntry}{m m m m}{%
+  \par\noindent\textbf{\pse_apparatus_stream_prefix:n{#1}\PSELocatorRef{#2}\quad #3.}\space%
+  \ignorespaces #4\par
+}
+\NewDocumentCommand{\PSEApparatusStreamRangeEntry}{m m m m m}{%
+  \par\noindent\textbf{\pse_apparatus_stream_prefix:n{#1}\PSELocatorRangeRef{#2}{#3}\quad #4.}\space%
+  \ignorespaces #5\par
+}
+\ExplSyntaxOff
+\endinput

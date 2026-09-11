@@ -1,0 +1,7 @@
+{
+  "schema_version": "1.0",
+  "primary_namespace": "canonical",
+  "secondary_namespaces": [],
+  "visible_numbering": "show",
+  "stable_id_policy": "required"
+}

@@ -1,0 +1,7 @@
+{
+  "schema_version": "0.1",
+  "profile": "basic-book",
+  "pages": 8,
+  "page_geometry_mm": {"width": 126.0, "height": 198.0},
+  "policy": "Page-count drift is review-only during alpha; page geometry mismatch remains an error."
+}

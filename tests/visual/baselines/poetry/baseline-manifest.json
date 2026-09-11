@@ -1,0 +1,10 @@
+{
+  "schema_version": "1.0",
+  "profile": "poetry",
+  "fixture": "tests/fixtures/profile-books/poetry",
+  "render_dpi": 144,
+  "pages": [
+    {"name": "title-page", "page": 1, "file": "title-page.png"},
+    {"name": "poem-page", "page": 5, "file": "poem-page.png"}
+  ]
+}

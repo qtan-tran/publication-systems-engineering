@@ -1,0 +1,14 @@
+\documentclass[10pt,twoside,openany]{book}
+\usepackage{pse-core}
+\usepackage{pse-profile-basic-book}
+\InputIfFileExists{build/pse-modules.tex}{}{}
+\InputIfFileExists{config/pse-local.tex}{}{}
+\PSEAddBibliographyResource{references.bib}
+\begin{document}
+\PSEBeginFrontMatter\PSETitlePage\PSEPublicationPage\clearpage
+\PSEBeginBody
+\input{content/play.tex}
+\PSEBeginBackMatter
+\PSEPrintBibliography
+\PSEPrintIndex
+\end{document}

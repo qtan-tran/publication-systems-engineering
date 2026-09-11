@@ -1,0 +1,20 @@
+# Generated build, proof, and publication-release artifacts
+/build/
+/release/
+
+# Local editor/OS files
+.DS_Store
+Thumbs.db
+*.swp
+*.tmp
+
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Secrets and local environment files
+.env
+.env.*
+!.env.example
+*.key
+*.pem

@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "publication-systems-engineering"
+version = "1.47.0a0"
+description = "A source-available framework for reliable, extensible, sustainable book-production systems."
+requires-python = ">=3.11"
+dependencies = [
+  "PyYAML>=6.0",
+  "pypdf>=5.0",
+  "Pillow>=10.0",
+]
+authors = [{ name = "Quoc-Tan Tran" }]
+readme = "README.md"
+
+[project.scripts]
+pse = "pse_cli.cli:main"
+
+[tool.setuptools]
+package-dir = {"" = "tools"}
+packages = ["pse_cli"]
+

@@ -1,0 +1,13 @@
+{
+  "schema_version": "1.0",
+  "profile": "basic-book",
+  "preset": "book-reading",
+  "hierarchy": "structured",
+  "publication_unit_metadata": "available",
+  "grid": "book",
+  "side_material": "fallback",
+  "apparatus": "deferred",
+  "locator": "none",
+  "parallel_text": "none",
+  "description": "General-purpose book presentation with conventional hierarchy and conservative fallbacks."
+}

@@ -1,0 +1,24 @@
+{
+  "schema_version": "1.1",
+  "id": "index",
+  "version": "1.3.0-alpha",
+  "extends": "pse-core",
+  "capabilities": [
+    "explicit-sort-display",
+    "index"
+  ],
+  "build_tools": [
+    "makeindex"
+  ],
+  "required_fonts": [],
+  "description": "General scholarly index layer using imakeidx and makeindex.",
+  "depends_on": [],
+  "api_version": "1",
+  "namespace": "index",
+  "requires_capabilities": [],
+  "conflicts_with": [],
+  "compatible_profiles": [
+    "*"
+  ],
+  "qa_hooks": []
+}

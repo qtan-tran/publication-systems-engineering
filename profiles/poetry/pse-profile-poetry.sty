@@ -1,0 +1,70 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{pse-profile-poetry}[2026/09/10 v1.0.0-alpha PSE poetry baseline]
+\RequirePackage{titlesec}
+\RequirePackage{fancyhdr}
+
+% ---- integrated presentation declaration ---------------------------------
+\PSEConfigureIntegratedPresentation{verse-reading}{verse}{deferred}{book}{fallback}{available}{source-defined}{none}
+
+% ---- typography role overrides -------------------------------------------
+\renewcommand{\PSETypographyBodyRole}{\rmfamily\normalsize\mdseries\upshape}
+\renewcommand{\PSETypographyDisplayRole}{\sffamily\mdseries\upshape}
+\renewcommand{\PSETypographyChapterTitleRole}{\rmfamily\Large\bfseries\upshape}
+\renewcommand{\PSETypographySectionHeadingRole}{\rmfamily\normalsize\bfseries\upshape}
+\renewcommand{\PSETypographySubsectionHeadingRole}{\rmfamily\normalsize\bfseries\upshape}
+\renewcommand{\PSETypographyMetadataLabelRole}{\PSETypographyDisplayRole\small\bfseries\upshape}
+\renewcommand{\PSETypographyMetadataValueRole}{\rmfamily\small\mdseries\upshape}
+\renewcommand{\PSETypographyRunningHeadRole}{\PSETypographyDisplayRole\scriptsize\mdseries\upshape}
+\renewcommand{\PSETypographyCaptionRole}{\rmfamily\small\mdseries\upshape}
+\renewcommand{\PSETypographyApparatusRole}{\rmfamily\small\mdseries\upshape}
+
+% Poetry presentation only. Stable stanza/line identity belongs to the
+% verse-structure semantic module and survives reflow or design changes.
+
+% ---- page-grid configuration ---------------------------------------------
+\PSEConfigurePageGrid{20mm}{22mm}{19mm}{25mm}{11pt}{5mm}{10mm}{0mm}
+\PSEApplyPageGrid
+\AtBeginDocument{\PSETypographyBodyRole\linespread{1.045}\selectfont\setlength{\parindent}{0pt}\setlength{\parskip}{0pt}}
+\raggedbottom
+\widowpenalty=10000
+\clubpenalty=10000
+\setlength{\emergencystretch}{1.2em}
+
+\titleformat{\chapter}[display]{\normalfont\color{PSEText}}{}{0pt}{\PSETypographyChapterTitleRole\raggedright}
+\titlespacing*{\chapter}{0pt}{24pt}{22pt}
+\titleformat{name=\chapter,numberless}[display]{\normalfont\color{PSEText}}{}{0pt}{\PSETypographyChapterTitleRole\raggedright}
+\titlespacing*{name=\chapter,numberless}{0pt}{24pt}{22pt}
+\titleformat{\section}{\PSETypographySubsectionHeadingRole\raggedright}{}{0pt}{}
+\titlespacing*{\section}{0pt}{16pt}{9pt}
+
+\pagestyle{fancy}\fancyhf{}\renewcommand{\headrulewidth}{0pt}
+\fancyhead[LE]{\scriptsize\thepage\hspace{1.25em}\sffamily\MakeUppercase{\PSEAuthor}}
+\fancyhead[RO]{\scriptsize\sffamily\MakeUppercase{\PSETitle}\hspace{1.25em}\thepage}
+\fancypagestyle{plain}{\fancyhf{}\fancyfoot[C]{\scriptsize\thepage}\renewcommand{\headrulewidth}{0pt}}
+
+% Define presentation hooks defensively because profile packages are loaded before
+% generated semantic-module packages in standard PSE projects.
+\providecommand{\PSEVerseStanzaStartPresentation}[1]{\par\medskip}
+\providecommand{\PSEVerseStanzaEndPresentation}{\par\medskip}
+\providecommand{\PSEVerseLinePresentation}[3]{\noindent #3\par}
+
+% Verse hooks: optional second argument of \PSEVerseLine is the display label.
+% Hanging indentation makes wrapped long lines visibly subordinate without
+% changing the semantic line identifier.
+\renewcommand{\PSEVerseStanzaStartPresentation}[1]{\par\vspace{0.78\baselineskip}\begingroup}
+\renewcommand{\PSEVerseStanzaEndPresentation}{\par\endgroup\vspace{0.28\baselineskip}}
+\renewcommand{\PSEVerseLinePresentation}[3]{%
+  \par\noindent\hangindent=1.5em\hangafter=1%
+  \makebox[2.2em][r]{\scriptsize #2\hspace{0.6em}}%
+  \begin{minipage}[t]{\dimexpr\linewidth-2.2em\relax}\raggedright #3\end{minipage}\par}
+
+\renewcommand{\PSETitlePage}{%
+  \thispagestyle{empty}\vspace*{0.16\textheight}\begin{center}
+  {\small\MakeUppercase{\PSEAuthor}\par}\vspace{2.2em}
+  {\Large\bfseries \PSETitle\par}
+  \ifdefempty{\pse@subtitle}{}{\vspace{0.75em}{\normalsize\itshape \PSESubtitle\par}}
+  \vfill{\small \PSEPublicationYear\par}\end{center}\clearpage}
+
+% ---- integrated presentation descriptor binding ----
+\PSEConfigureIntegratedPresentation{verse-reading}{verse}{deferred}{book}{fallback}{available}{source-defined}{none}
+\endinput

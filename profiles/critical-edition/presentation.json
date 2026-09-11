@@ -1,0 +1,13 @@
+{
+  "schema_version": "1.0",
+  "profile": "critical-edition",
+  "preset": "source-critical",
+  "hierarchy": "compact",
+  "publication_unit_metadata": "available",
+  "grid": "asymmetric-scholarly",
+  "side_material": "outer-margin",
+  "apparatus": "multi-stream",
+  "locator": "primary-visible",
+  "parallel_text": "none",
+  "description": "Source-oriented critical presentation with compact hierarchy, visible canonical locators, multi-stream apparatus, and outer-margin material."
+}

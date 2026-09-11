@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+message: "If you use Publication Systems Engineering, you must comply with the citation and attribution requirements of the applicable license."
+title: "Publication Systems Engineering"
+type: software
+authors:
+  - family-names: "Tran"
+    given-names: "Quoc-Tan"
+license: "LicenseRef-PSE-Community-Draft"
+version: "1.47.0-alpha"
+date-released: "2026-09-08"
+preferred-citation:
+  type: software
+  authors:
+    - family-names: "Tran"
+      given-names: "Quoc-Tan"
+  title: "Publication Systems Engineering"
+  version: "1.47.0-alpha"
+  year: 2026

@@ -1,0 +1,16 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{pse-module-structural-hierarchy}[2026/09/11 v1.0.0-alpha PSE structural hierarchy contract]
+
+% Publication divisions (Part) and publication units (Chapter) are outside the
+% section-depth count. Inside a chapter the supported section depth is:
+% 1 section, 2 subsection, 3 subsubsection, 4 paragraph (run-in by profile).
+\newcommand{\PSESectionDepthLimit}{4}
+
+% Defense in depth. The CLI/source validator should catch this before TeX runs,
+% but direct TeX invocation must not silently introduce a fifth section level.
+\renewcommand{\subparagraph}[1]{%
+  \PackageError{pse-module-structural-hierarchy}
+    {Section depth exceeds PSE limit of 4}
+    {Use section, subsection, subsubsection, or paragraph. Convert deeper structure explicitly; PSE does not flatten manuscript structure automatically.}%
+}
+\endinput

@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://publication-systems-engineering.invalid/schema/output-inspection-0.2.schema.json",
+  "title": "PSE output inspection report 0.2",
+  "type": "object",
+  "required": ["schema_version", "kind", "pdf", "pdf_sha256", "status", "summary", "checks", "certification", "scope_note"],
+  "properties": {
+    "schema_version": {"const": "0.2"},
+    "kind": {"const": "pse-output-inspection"},
+    "pdf": {"type": "string", "minLength": 1},
+    "pdf_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "status": {"enum": ["error", "warning", "review", "pass"]},
+    "summary": {"type": "object"},
+    "checks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "status", "detail", "machine_verifiable"],
+        "properties": {
+          "name": {"type": "string", "minLength": 1},
+          "status": {"enum": ["error", "warning", "review", "pass", "info"]},
+          "detail": {},
+          "machine_verifiable": {"type": "boolean"}
+        },
+        "additionalProperties": false
+      }
+    },
+    "certification": {"const": "none"},
+    "scope_note": {"type": "string", "minLength": 1}
+  },
+  "additionalProperties": false
+}

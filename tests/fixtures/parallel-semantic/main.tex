@@ -1,0 +1,11 @@
+\documentclass[10pt,twoside,openany]{book}
+\usepackage{pse-core}
+\usepackage{pse-profile-basic-book}
+\InputIfFileExists{build/pse-modules.tex}{}{}
+\InputIfFileExists{config/pse-local.tex}{}{}
+\begin{document}
+\PSEBeginFrontMatter\PSETitlePage\PSEPublicationPage\tableofcontents\clearpage
+\PSEBeginBody\chapter{Synthetic parallel text}\input{content/parallel.tex}
+\PSEBeginBackMatter\chapter*{Alignment note}\addcontentsline{toc}{chapter}{Alignment note}
+This fixture tests semantics only; no parallel visual profile is implied.\PSEPrintIndex
+\end{document}

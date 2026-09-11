@@ -1,0 +1,8 @@
+\documentclass[10pt]{book}
+\usepackage{pse-core}
+\begin{document}
+\PSETitlePage
+\immediate\write18{touch PSE_SECURITY_SENTINEL}
+\chapter{Safe build fixture}
+If shell escape is disabled, the sentinel command above must not execute.
+\end{document}

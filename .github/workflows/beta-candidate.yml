@@ -1,0 +1,84 @@
+name: beta-candidate
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - "README.md"
+      - "README.vi.md"
+      - "pyproject.toml"
+      - "runtime/**"
+      - "core/**"
+      - "profiles/**"
+      - "modules/**"
+      - "schema/**"
+      - "tools/pse_cli/**"
+      - "tests/**"
+      - "docs/beta/**"
+      - ".github/workflows/beta-candidate.yml"
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+env:
+  PYTHONUTF8: "1"
+
+jobs:
+  installed-surface:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+        python-version: ["3.11"]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - run: python -m pip install .
+      - name: Remove local packaging build artifacts
+        run: python -c "import shutil,glob; [shutil.rmtree(p, ignore_errors=True) for p in ['build'] + glob.glob('*.egg-info') + glob.glob('tools/*.egg-info')]"
+      - run: pse --version
+      - run: pse profiles --json
+      - run: pse modules --json
+      - name: pse doctor (advisory; full TeX toolchain not installed here)
+        run: pse doctor --json
+        continue-on-error: true
+      - run: python scripts/release/sync_registry.py --check
+      - run: python tests/regression/registry_contracts.py
+      - run: python tests/regression/parser_hardening.py
+      - run: python tests/regression/output_inspection.py
+      - run: python tests/regression/release_manifest_contracts.py
+      - run: python tests/regression/installed_contract_surface.py
+      - run: python tests/regression/public_tree_integrity.py
+
+  linux-release-gates:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install TeX and visual dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            texlive-luatex texlive-latex-extra texlive-fonts-recommended \
+            texlive-bibtex-extra biber fonts-sil-gentiumplus poppler-utils
+          python -m pip install -e .
+      - name: Remove local packaging build artifacts
+        run: python -c "import shutil,glob; [shutil.rmtree(p, ignore_errors=True) for p in ['build'] + glob.glob('*.egg-info') + glob.glob('tools/*.egg-info')]"
+      - run: pse doctor --deep
+      - run: python tests/security/security_regression.py
+      - run: python tests/regression/release_engineering.py
+      - run: python tests/regression/candidate_evidence.py
+      - run: python tests/regression/beta_candidate.py
+      - run: python tests/regression/rc_readiness.py
+      - name: Upload beta-candidate reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pse-beta-candidate-reports
+          path: tests/_output/regression-output/

@@ -1,0 +1,11 @@
+{
+  "schema_version": "1.0",
+  "activate": [
+    "drama-structure",
+    "dramatic-locators",
+    "multilingual",
+    "index",
+    "bibliography"
+  ],
+  "config": {}
+}

@@ -1,0 +1,74 @@
+name: regression-output
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - "tools/**"
+      - "core/**"
+      - "profiles/**"
+      - "modules/**"
+      - "schema/**"
+      - "runtime/**"
+      - "pyproject.toml"
+      - ".github/workflows/launch-candidate.yml"
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+env:
+  PYTHONUTF8: "1"
+
+jobs:
+  installed-surface:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install --upgrade pip
+      - run: python -m pip install .
+      - run: pse profiles --json
+      - run: pse modules --json
+      - run: pse --version
+      - name: Runtime registry import check
+        shell: python
+        run: |
+          from pse_cli.cli import _find_runtime
+          from pathlib import Path
+          import os, tempfile
+          os.environ.pop("PSE_ROOT", None)
+          cwd = os.getcwd()
+          with tempfile.TemporaryDirectory() as td:
+              os.chdir(td)
+              try:
+                  rt = _find_runtime(Path(td))
+                  assert rt.source == "installed-share", rt
+                  print(rt)
+              finally:
+                  os.chdir(cwd)
+      - run: pse --version
+
+  linux-hard-gates:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install TeX/runtime dependencies
+        run: sudo apt-get update && sudo apt-get install -y texlive-luatex texlive-latex-extra texlive-fonts-recommended biber fonts-sil-gentiumplus
+      - run: python -m pip install .
+      - name: Remove local packaging build artifacts
+        run: python -c "import shutil,glob; [shutil.rmtree(p, ignore_errors=True) for p in ['build'] + glob.glob('*.egg-info') + glob.glob('tools/*.egg-info')]"
+      - run: python tests/regression/parser_hardening.py
+      - run: python tests/regression/public_tree_integrity.py
+      - run: python tests/security/security_regression.py
+      - run: python tests/regression/release_engineering.py
