@@ -41,6 +41,11 @@ jobs:
         run: python tests/regression/output_inspection.py
       - run: python tests/regression/release_manifest_contracts.py
       - run: python tests/regression/installed_contract_surface.py
+      - name: Remove bytecode caches left by prior steps
+        run: |
+          python -c "import pathlib, shutil
+          for p in pathlib.Path('.').rglob('__pycache__'):
+              shutil.rmtree(p, ignore_errors=True)"
       - name: Exact-commit candidate evidence
         run: python scripts/release/candidate_evidence.py
       - uses: actions/upload-artifact@v4
