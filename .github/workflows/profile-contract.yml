@@ -47,6 +47,7 @@ jobs:
           python-version: "3.11"
       - run: |
           sudo apt-get update
-          sudo apt-get install -y --no-install-recommends texlive-luatex texlive-latex-extra texlive-fonts-recommended poppler-utils
+          sudo apt-get install -y --no-install-recommends texlive-luatex texlive-latex-extra texlive-fonts-recommended fonts-sil-gentium poppler-utils
+          fc-cache -f
           python -m pip install -e .
       - run: python tests/regression/profile_contracts.py
