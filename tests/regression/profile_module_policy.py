@@ -1,5 +1,5 @@
 from __future__ import annotations
-import json, os, subprocess, sys, tempfile
+import json, os, shutil, subprocess, sys, tempfile
 from pathlib import Path
 
 ROOT=Path(__file__).resolve().parents[2]
@@ -53,12 +53,24 @@ def main():
         cfg=json.loads((project/'config/semantic-modules.json').read_text())
         checks.append(('semantic_config_1_1',cfg.get('schema_version')=='1.1' and cfg.get('deactivate')==[],str(cfg)))
         cfg['deactivate']=['index']
-        (project/'config/semantic-modules.json').write_text(json.dumps(cfg,indent=2)+'\n')
-        # Build is expected to fail because source still calls index commands; this proves deactivation is real.
+        (project/'config/semantic-modules.json').write_text(json.dumps(cfg,indent=2)+'
+')
+        # Deactivation must remove the module from the generated semantic module set
+        # (pse build writes build/pse-modules.tex before it needs LuaLaTeX, so this
+        # proof also works in TeX-less source-contract environments).
         p=subprocess.run(CLI+['build',str(project)],cwd=ROOT,env=ENV,text=True,capture_output=True,timeout=180)
-        checks.append(('recommended_index_can_deactivate',p.returncode!=0 and ('PSEPrintIndex' in p.stdout+p.stderr or 'Undefined control sequence' in p.stdout+p.stderr),'index really removed from active modules'))
+        generated=project/'build'/'pse-modules.tex'
+        resolved=generated.read_text(encoding='utf-8') if generated.is_file() else ''
+        resolver_ok='pse-module-index}' not in resolved and 'pse-module-contributor-metadata}' in resolved
+        if shutil.which('lualatex'):
+            # With TeX available the broken source must additionally fail the compile,
+            # proving the deactivation at the LaTeX level.
+            checks.append(('recommended_index_can_deactivate',resolver_ok and p.returncode!=0 and ('PSEPrintIndex' in p.stdout+p.stderr or 'Undefined control sequence' in p.stdout+p.stderr),'index removed from generated modules (TeX proof)'))
+        else:
+            checks.append(('recommended_index_can_deactivate',resolver_ok,'index removed from generated modules (resolver proof)'))
         cfg['deactivate']=['contributor-metadata']
-        (project/'config/semantic-modules.json').write_text(json.dumps(cfg,indent=2)+'\n')
+        (project/'config/semantic-modules.json').write_text(json.dumps(cfg,indent=2)+'
+')
         p=subprocess.run(CLI+['build',str(project)],cwd=ROOT,env=ENV,text=True,capture_output=True,timeout=60)
         checks.append(('required_module_cannot_deactivate',p.returncode!=0 and 'Required profile module' in (p.stdout+p.stderr),'required semantic ownership protected'))
     failed=[x for x in checks if not x[1]]
