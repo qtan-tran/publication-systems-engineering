@@ -1,7 +1,5 @@
-# Retired profile: `scholarly-edition`
+# `scholarly-edition`
 
-This profile is not available in PSE 1.48.0-alpha.
+`scholarly-edition` is not a supported presentation profile. Annotated scholarly editions use `critical-edition`, with only the necessary edition semantics and apparatus settings enabled.
 
-Annotated scholarly editions now use `critical-edition`, with only the necessary edition semantics and apparatus settings enabled.
-
-See [critical-edition](critical-edition.md) and [Profile migration](../getting-started/profile-migration.md).
+See [critical-edition](critical-edition.md).

@@ -25,5 +25,5 @@ None of these layers, alone or together, is a claim that a book is error-free, l
 - [Output inspection](output-inspection.md) — the finished-PDF baseline and its limits.
 - [Release verification](release-verification.md) — verify the manifest, PDF binding, geometry, inspection evidence, and checksums.
 - [Audit evidence](audit-evidence.md) — detached release audit records, indexes, verification, and deterministic evidence export.
-- [Historical releases](historical-releases.md) — preserve legacy evidence rather than rewriting history.
+- [Historical releases](historical-releases.md) — preserve original evidence rather than rewriting history.
 - [Release checklist](release-checklist.md) — a compact human sign-off sequence.

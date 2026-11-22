@@ -21,7 +21,7 @@ Mục tiêu production hiện tại được giữ có chủ đích ở phạm v
 | `edited-collection` | Tập sách có nhiều tác giả | [PDF](examples/profiles/edited-collection/output/edited-collection-demo.pdf) |
 | `literary-fiction` | Tiểu thuyết và văn xuôi tự sự | [PDF](examples/profiles/literary-fiction/output/literary-fiction-demo.pdf) |
 
-Ba presentation profiles `basic-book`, `poetry` và `scholarly-edition` đã ngừng hỗ trợ. Các năng lực ngữ nghĩa, trong đó có `verse-structure`, vẫn thuộc module dùng chung. Xem [hướng dẫn chuyển đổi từ 1.47](wiki/getting-started/profile-migration.md); đừng coi `critical-edition` là một tuyên bố rằng mọi sách đều có phê bình văn bản.
+Ba presentation profiles `basic-book`, `poetry` và `scholarly-edition` không được hỗ trợ. Các năng lực ngữ nghĩa, trong đó có `verse-structure`, vẫn thuộc module dùng chung. Đừng coi `critical-edition` là một tuyên bố rằng mọi sách đều có phê bình văn bản.
 
 ## PSE giải quyết vấn đề gì?
 

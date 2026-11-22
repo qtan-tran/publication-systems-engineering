@@ -21,7 +21,7 @@ The current production target is deliberately narrow: **print-ready PDF with Lua
 | `edited-collection` | Multi-contributor volumes | [Demo](examples/profiles/edited-collection/output/edited-collection-demo.pdf) |
 | `literary-fiction` | Reading-oriented narrative prose | [Demo](examples/profiles/literary-fiction/output/literary-fiction-demo.pdf) |
 
-The prior `basic-book`, `poetry` and `scholarly-edition` presentation profiles are retired. The reusable `verse-structure` module remains available. [Migration guide](wiki/getting-started/profile-migration.md).
+The `basic-book`, `poetry` and `scholarly-edition` presentation profiles are not supported. The reusable `verse-structure` module remains available for semantic markup.
 
 ## Why PSE exists
 

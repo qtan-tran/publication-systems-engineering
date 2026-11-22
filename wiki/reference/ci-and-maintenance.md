@@ -1,6 +1,6 @@
 # CI and maintainer workflow
 
-PSE 1.48 deliberately uses **four** GitHub Actions workflows instead of ten. The daily edit loop is not a release ceremony.
+PSE uses **four** GitHub Actions workflows. The daily edit loop is not a release ceremony.
 
 | Workflow | Trigger | Purpose |
 | --- | --- | --- |

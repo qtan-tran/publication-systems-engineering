@@ -1,6 +1,6 @@
 # Book profiles
 
-PSE 1.48 ships **six** supported presentation profiles. A profile controls publication presentation; semantic modules provide reusable content structures.
+PSE ships **six** supported presentation profiles. A profile controls publication presentation; semantic modules provide reusable content structures.
 
 | Profile | Primary purpose |
 | --- | --- |
@@ -13,4 +13,3 @@ PSE 1.48 ships **six** supported presentation profiles. A profile controls publi
 
 **Scholarly editions do not always constitute critical editions.** Here `critical-edition` is the unified *presentation profile*, not a claim about the scholarly method of every title produced with it. Poetry is a semantic capability (`verse-structure`), not a dedicated supported profile.
 
-Migrating from 1.47? See [Profile migration](../getting-started/profile-migration.md).

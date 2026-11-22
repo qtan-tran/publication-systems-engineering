@@ -8,7 +8,7 @@ This registry tracks documentation maturity. It is intentionally excluded from t
 | Documentation platform | reviewed; release-engineered baseline | 1.41 / release engineering 1.46 | 1.46 |
 | Beginner handbook / getting started | reviewed; handbook baseline | 1.33 / handbook 1.42 | 1.45 |
 | Architecture overview | draft | 1.33 | 1.33 |
-| Profile handbook | reviewed; nine-profile handbook baseline | 1.43 | 1.45 |
+| Profile handbook | reviewed; handbook baseline | 1.43 | 1.45 |
 | Feature handbook | reviewed; reusable-capability handbook baseline | 1.44 | 1.45 |
 | Workflow handbook | reviewed; production-lifecycle handbook baseline | 1.45 | 1.45 |
 | Quality / release handbook | reviewed; release-evidence handbook baseline | 1.45 | 1.45 |

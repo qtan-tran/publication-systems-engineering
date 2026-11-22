@@ -9,4 +9,3 @@ pse profiles --generator-only
 pse new /path/to/projects --profile academic-monograph
 ```
 
-See [migration guidance](profile-migration.md) if you previously used `basic-book`, `poetry` or `scholarly-edition`.

@@ -34,7 +34,7 @@ Critical Edition and Scholarly Edition require and enable apparatus support. Bil
 
 An apparatus is only as reliable as the address to which it points. Prefer semantic locators over PDF page numbers so the note remains attached when pagination changes.
 
-The legacy generic apparatus commands remain supported, so an older PSE project does not have to classify every existing note into a stream before it can build.
+Generic apparatus commands remain supported, so a project does not have to classify every existing note into a stream before it can build.
 
 ## Boundary
 

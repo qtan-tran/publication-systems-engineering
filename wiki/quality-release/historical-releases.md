@@ -1,11 +1,11 @@
 ---
 title: Historical Releases
-description: Verify and assess legacy release evidence without inventing modern evidence or upgrading artifacts in place.
+description: Verify and assess historical release evidence without inventing modern evidence or upgrading artifacts in place.
 ---
 
 # Historical releases
 
-Current PSE releases use release-manifest schema `0.2`. PSE retains verification-only compatibility for structurally valid legacy schema `0.1` releases.
+Current PSE releases use release-manifest schema `0.2`. PSE retains verification-only compatibility for structurally valid schema `0.1` releases.
 
 The key rule is: **do not rewrite historical evidence to make it look current.** An old release cannot legitimately acquire an output-inspection report that did not exist at its original release time.
 
@@ -15,7 +15,7 @@ The key rule is: **do not rewrite historical evidence to make it look current.**
 pse verify-release /path/to/historical-release
 ```
 
-A valid `0.1` release may verify with a legacy-schema warning. Unknown schema versions are rejected.
+A valid `0.1` release may verify with a schema compatibility warning. Unknown schema versions are rejected.
 
 ## Assess migration without mutation
 

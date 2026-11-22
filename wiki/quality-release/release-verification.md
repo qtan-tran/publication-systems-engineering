@@ -30,4 +30,4 @@ This resolves the active runtime rather than assuming a source checkout.
 
 Do not make the manifest “match” by manually refreshing hashes or editing evidence files. Investigate whether the release is incomplete, corrupted, altered, or unsupported. If a publication must be corrected, return to canonical source and create a new release through the normal release pipeline.
 
-For verification-only support of legacy schema `0.1`, see [Historical releases](historical-releases.md).
+For verification-only support of schema `0.1`, see [Historical releases](historical-releases.md).

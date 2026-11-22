@@ -22,8 +22,8 @@ for pid in profiles:
         expected=f"| `{mid}` | {rule['status']} | {'on' if rule['default_enabled'] else 'off'} |"
         ck(f'{pid}_{mid}_policy',expected in text)
 for retired in ('basic-book','poetry','scholarly-edition'):
-    ck(f'{retired}_migration_page',(W/f'{retired}.md').is_file() and retired not in profiles)
-ck('migration_guide',(ROOT/'wiki/getting-started/profile-migration.md').is_file())
+    ck(f'{retired}_page',(W/f'{retired}.md').is_file() and retired not in profiles)
+ck('no_legacy_migration_guide',not (ROOT/'wiki/getting-started/profile-migration.md').is_file())
 for name,ok in checks:print(('PASS' if ok else 'FAIL'),name)
 print(f'summary: {sum(ok for _,ok in checks)}/{len(checks)} pass')
 raise SystemExit(0 if all(ok for _,ok in checks) else 1)

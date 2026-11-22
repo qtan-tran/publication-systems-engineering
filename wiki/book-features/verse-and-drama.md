@@ -20,7 +20,7 @@ Verse and drama often need semantic structures that are more specific than chapt
 | [Edited Collection](../profiles/edited-collection.md) | not declared | — |
 | [Literary Fiction](../profiles/literary-fiction.md) | not declared | — |
 
-The dedicated poetry presentation profile was retired in 1.48. The `verse-structure` semantic module remains available, but a title using it needs an explicitly reviewed presentation.
+There is no dedicated poetry presentation profile. The `verse-structure` semantic module remains available, but a title using it needs an explicitly reviewed presentation.
 
 ## Drama structure
 
