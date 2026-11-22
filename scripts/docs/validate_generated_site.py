@@ -18,7 +18,12 @@ def main():
   text=f.read_text(encoding='utf-8',errors='replace')
   rel=f.relative_to(root).as_posix()
   t=TITLE.search(text); checks.append((f'title:{rel}',bool(t and t.group(1).strip())))
-  c=CANON.search(text); checks.append((f'canonical:{rel}',bool(c and c.group(1).startswith(base))))
+  c=CANON.search(text); cok=bool(c and c.group(1).startswith(base))
+  # mkdocs serves 404.html from the theme template as the HTTP 404 page;
+  # Material omits the canonical URL there (page.canonical_url is unset),
+  # so a missing canonical is expected for that one error document.
+  if rel=='404.html' and c is None: cok=True
+  checks.append((f'canonical:{rel}',cok))
  sitemap=root/'sitemap.xml'; checks.append(('sitemap_exists',sitemap.is_file()))
  if sitemap.is_file():
   s=sitemap.read_text(encoding='utf-8',errors='replace'); checks.append(('sitemap_uses_site_url',base in s))
