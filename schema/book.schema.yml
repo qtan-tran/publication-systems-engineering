@@ -1,0 +1,39 @@
+$schema: "https://json-schema.org/draft/2020-12/schema"
+title: PSE Book Metadata
+# Documentation schema. Runtime validation is intentionally minimal
+# and implemented in the CLI prototype; full JSON Schema execution is deferred.
+type: object
+required:
+  - title
+  - author
+  - language
+  - publication_year
+properties:
+  title:
+    type: string
+    minLength: 1
+  subtitle:
+    type: string
+  author:
+    type: string
+    minLength: 1
+  language:
+    type: string
+    minLength: 2
+  publication_year:
+    type: integer
+    minimum: 1000
+    maximum: 9999
+  series:
+    type: string
+  page:
+    type: object
+    properties:
+      width_mm:
+        type: number
+        minimum: 50
+      height_mm:
+        type: number
+        minimum: 50
+    additionalProperties: false
+additionalProperties: true

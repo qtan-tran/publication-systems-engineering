@@ -1,0 +1,42 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{pse-module-contributor-metadata}[2026/09/11 v1.1.0-alpha PSE contributor semantics]
+\RequirePackage{xparse}
+
+% Presentation is profile-owned. This module owns stable contributor identity
+% and contributor/publication-unit/role relations. Existing \PSEContribution
+% remains backward compatible; \PSERegisterContribution registers without
+% invoking the legacy immediate presentation hook.
+\providecommand{\PSEContributorCreditPresentation}[6]{#3}
+
+\makeatletter
+\NewDocumentCommand{\PSEDeclareContributor}{m m O{} O{}}{%
+  \ifcsname pse@contributor@name@#1\endcsname
+    \PackageError{pse-module-contributor-metadata}{Duplicate contributor id `#1'}{Contributor ids must be unique.}%
+  \else
+    \expandafter\gdef\csname pse@contributor@name@#1\endcsname{#2}%
+    \expandafter\gdef\csname pse@contributor@affiliation@#1\endcsname{#3}%
+    \expandafter\gdef\csname pse@contributor@orcid@#1\endcsname{#4}%
+  \fi
+}
+\NewDocumentCommand{\PSEContributorName}{m}{\csname pse@contributor@name@#1\endcsname}
+\NewDocumentCommand{\PSEContributorAffiliation}{m}{\csname pse@contributor@affiliation@#1\endcsname}
+\NewDocumentCommand{\PSEContributorORCID}{m}{\csname pse@contributor@orcid@#1\endcsname}
+\NewDocumentCommand{\PSERegisterContribution}{m m m}{%
+  \ifcsname pse@contributor@name@#1\endcsname
+    \ifcsname pse@contribution@#1@#2@#3\endcsname
+      \PackageError{pse-module-contributor-metadata}{Duplicate contribution relation}{Each contributor/unit/role relation must be unique.}%
+    \else
+      \expandafter\gdef\csname pse@contribution@#1@#2@#3\endcsname{1}%
+    \fi
+  \else
+    \PackageError{pse-module-contributor-metadata}{Unknown contributor id `#1'}{Declare the contributor before recording a contribution.}%
+  \fi
+}
+\NewDocumentCommand{\PSEContribution}{m m m}{%
+  \PSERegisterContribution{#1}{#2}{#3}%
+  \ifcsname pse@contributor@name@#1\endcsname
+    \PSEContributorCreditPresentation{#1}{#2}{\csname pse@contributor@name@#1\endcsname}{\csname pse@contributor@affiliation@#1\endcsname}{\csname pse@contributor@orcid@#1\endcsname}{#3}%
+  \fi
+}
+\makeatother
+\endinput

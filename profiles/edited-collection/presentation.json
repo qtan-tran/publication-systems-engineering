@@ -1,0 +1,13 @@
+{
+  "schema_version": "1.0",
+  "profile": "edited-collection",
+  "preset": "scholarly-collection",
+  "hierarchy": "structured",
+  "publication_unit_metadata": "chapter-opener",
+  "grid": "book",
+  "side_material": "fallback",
+  "apparatus": "available",
+  "locator": "none",
+  "parallel_text": "none",
+  "description": "Edited-volume presentation with metadata-rich publication-unit openers and structured chapter hierarchy."
+}

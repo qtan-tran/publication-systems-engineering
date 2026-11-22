@@ -1,0 +1,13 @@
+{
+  "schema_version": "1.0",
+  "profile": "literary-fiction",
+  "preset": "fiction-reading",
+  "hierarchy": "narrative",
+  "publication_unit_metadata": "deferred",
+  "grid": "book",
+  "side_material": "fallback",
+  "apparatus": "deferred",
+  "locator": "none",
+  "parallel_text": "none",
+  "description": "Reading-oriented literary presentation that keeps narrative flow primary and specialist scholarly furniture deferred."
+}

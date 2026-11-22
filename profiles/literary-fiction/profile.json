@@ -1,0 +1,50 @@
+{
+  "id": "literary-fiction",
+  "version": "1.0.0-alpha",
+  "extends": "pse-core",
+  "generator_supported": true,
+  "capabilities": [
+    "prose",
+    "chapters",
+    "sections",
+    "running-heads",
+    "footnotes",
+    "margin-objects"
+  ],
+  "required_metadata": [
+    "title",
+    "author",
+    "language",
+    "publication_year"
+  ],
+  "open_font_policy": true,
+  "schema_version": "1.1",
+  "description": "Reading-oriented prose baseline with restrained chapter openings.",
+  "required_fonts": [],
+  "module_policy": {
+    "index": {
+      "status": "discouraged",
+      "default_enabled": false
+    },
+    "structural-hierarchy": {
+      "status": "discouraged",
+      "default_enabled": false
+    },
+    "publication-unit-metadata": {
+      "status": "discouraged",
+      "default_enabled": false
+    },
+    "contributor-metadata": {
+      "status": "optional",
+      "default_enabled": false
+    },
+    "margin-objects": {
+      "status": "optional",
+      "default_enabled": false
+    },
+    "apparatus": {
+      "status": "discouraged",
+      "default_enabled": false
+    }
+  }
+}

@@ -1,0 +1,41 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{pse-module-drama-structure}[2026/09/08 v1.4.0-alpha PSE drama semantics]
+\RequirePackage{expl3}\RequirePackage{xparse}
+\providecommand{\PSEDramaActPresentation}[1]{\par\bigskip\noindent\textbf{#1}\par\medskip}
+\providecommand{\PSEDramaScenePresentation}[1]{\par\medskip\noindent\textit{#1}\par\smallskip}
+\providecommand{\PSEDramaSpeechStartPresentation}[1]{\par\smallskip\noindent\textbf{#1}\quad\ignorespaces}
+\providecommand{\PSEDramaSpeechEndPresentation}{\par\smallskip}
+\providecommand{\PSEDramaStageDirectionPresentation}[1]{\par\smallskip\noindent\emph{[#1]}\par\smallskip}
+\providecommand{\PSEDramaCastHeadingPresentation}{\par\bigskip\noindent\textbf{Characters}\par\medskip}
+\providecommand{\PSEDramaCastEntryPresentation}[1]{\noindent #1\par}
+\ExplSyntaxOn
+\prop_new:N \g_pse_drama_speakers_prop
+\prop_new:N \g_pse_drama_acts_prop
+\prop_new:N \g_pse_drama_scenes_prop
+\cs_new_protected:Npn \pse_drama_declare_speaker:nn #1#2 {
+  \prop_if_in:NnTF \g_pse_drama_speakers_prop {#1}
+    {\PackageError{pse-module-drama-structure}{Duplicate speaker id `#1'}{Speaker ids must be unique.}}
+    {\prop_gput:Nnn \g_pse_drama_speakers_prop {#1}{#2}}
+}
+\cs_new:Npn \pse_drama_speaker_name:n #1 {
+  \prop_if_in:NnTF \g_pse_drama_speakers_prop {#1}
+    {\prop_item:Nn \g_pse_drama_speakers_prop {#1}}
+    {\PackageError{pse-module-drama-structure}{Undefined speaker id `#1'}{Declare the speaker before using a speech.}}
+}
+\cs_new_protected:Npn \pse_drama_register_act:nn #1#2 {
+ \prop_if_in:NnTF \g_pse_drama_acts_prop {#1}{\PackageError{pse-module-drama-structure}{Duplicate act id `#1'}{Act ids must be unique.}}{\prop_gput:Nnn \g_pse_drama_acts_prop {#1}{#2}}}
+\cs_new_protected:Npn \pse_drama_register_scene:nn #1#2 {
+ \prop_if_in:NnTF \g_pse_drama_scenes_prop {#1}{\PackageError{pse-module-drama-structure}{Duplicate scene id `#1'}{Scene ids must be unique.}}{\prop_gput:Nnn \g_pse_drama_scenes_prop {#1}{#2}}}
+\cs_new_protected:Npn \pse_drama_print_cast: {
+  \PSEDramaCastHeadingPresentation
+  \prop_map_inline:Nn \g_pse_drama_speakers_prop {\PSEDramaCastEntryPresentation{##2}}
+}
+\NewDocumentCommand{\PSEDeclareSpeaker}{m m}{\pse_drama_declare_speaker:nn{#1}{#2}}
+\NewDocumentCommand{\PSESpeakerName}{m}{\pse_drama_speaker_name:n{#1}}
+\NewDocumentCommand{\PSEPrintCastList}{}{\pse_drama_print_cast:}
+\NewDocumentCommand{\PSEAct}{m m}{\pse_drama_register_act:nn{#1}{#2}\PSEDramaActPresentation{#2}}
+\NewDocumentCommand{\PSEScene}{m m}{\pse_drama_register_scene:nn{#1}{#2}\PSEDramaScenePresentation{#2}}
+\NewDocumentEnvironment{PSESpeech}{m}{\PSEDramaSpeechStartPresentation{\pse_drama_speaker_name:n{#1}}}{\PSEDramaSpeechEndPresentation}
+\NewDocumentCommand{\PSEStageDirection}{m}{\PSEDramaStageDirectionPresentation{#1}}
+\ExplSyntaxOff
+\endinput

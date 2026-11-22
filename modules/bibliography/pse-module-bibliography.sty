@@ -1,0 +1,6 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{pse-module-bibliography}[2026/09/08 v1.0.0-alpha PSE bibliography]
+\RequirePackage[backend=biber,style=authoryear,sorting=nyt]{biblatex}
+\newcommand{\PSEAddBibliographyResource}[1]{\addbibresource{#1}}
+\newcommand{\PSEPrintBibliography}{\printbibliography[heading=bibintoc,title={Bibliography}]}
+\endinput

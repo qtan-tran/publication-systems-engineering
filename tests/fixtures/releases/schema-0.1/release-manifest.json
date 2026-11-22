@@ -1,0 +1,13 @@
+{
+  "schema_version": "0.1",
+  "artifact_type": "publication_release",
+  "release_id": "PSE-FIXTURE-LEGACY-001",
+  "pse_version": "1.24.0-alpha",
+  "pdf": {
+    "file": "legacy-release.pdf",
+    "sha256": "5d4de0562ef89fd60b1b59e1d8f646a2d6e56573e07a8532ef8675d2263eee93",
+    "pages": 1,
+    "width_mm": 148.0,
+    "height_mm": 210.0
+  }
+}

@@ -1,0 +1,60 @@
+# TeX generated files
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.fdb_latexmk
+*.fls
+*.idx
+*.ilg
+*.ind
+*.lof
+*.log
+*.lot
+*.out
+*.run.xml
+*.synctex.gz
+*.toc
+*.xdv
+
+# Build and release output
+build/
+dist/
+/release/
+
+# OS/editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# PSE generated build directories
+**/build/
+*.egg-info/
+__pycache__/
+.pytest_cache/
+
+# Security-sensitive local files
+.env
+.env.*
+*.pem
+*.key
+*.p12
+*.pfx
+secrets/
+private/
+**/proofs/
+**/proof-manifests/
+
+# Python packaging artefacts
+/dist/
+*.egg-info/
+
+# Framework regression output
+/tests/_output/
+
+# Local Claude Code tool configuration (developer-machine specific)
+/.claude/
+
+# Generated documentation site
+/site/

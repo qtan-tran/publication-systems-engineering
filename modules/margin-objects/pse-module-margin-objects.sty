@@ -1,0 +1,45 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{pse-module-margin-objects}[2026/09/11 v1.0.0-alpha PSE margin-object semantics]
+\RequirePackage{expl3}\RequirePackage{xparse}
+
+% Presentation belongs to the active profile/core. The semantic module records
+% object identity/type/content and delegates placement. The conservative core
+% fallback keeps content in the primary reading stream rather than dropping it.
+\providecommand{\PSEMarginObjectPresentation}[3]{%
+  \par\smallskip\noindent{\PSETypographyCaptionRole #3}\par\smallskip}
+\providecommand{\PSEMarginObjectFallbackPresentation}[3]{%
+  \par\smallskip\noindent{\PSETypographyCaptionRole #3}\par\smallskip}
+
+\ExplSyntaxOn
+\prop_new:N \g_pse_margin_type_prop
+\prop_new:N \g_pse_margin_content_prop
+\clist_const:Nn \c_pse_margin_types_clist
+  {marginal-note,side-caption,apparatus-anchor,locator-marker,running-side}
+
+\cs_new_protected:Npn \pse_margin_declare:nnn #1#2#3 {
+  \clist_if_in:NnTF \c_pse_margin_types_clist {#1} { }
+    {\PackageError{pse-module-margin-objects}{Unknown margin object type `#1'}
+      {Use marginal-note, side-caption, apparatus-anchor, locator-marker, or running-side.}}
+  \prop_if_in:NnTF \g_pse_margin_type_prop {#2}
+    {\PackageError{pse-module-margin-objects}{Duplicate margin object id `#2'}
+      {Margin object ids must be stable and unique.}}
+    {\prop_gput:Nnn \g_pse_margin_type_prop {#2}{#1}
+     \prop_gput:Nnn \g_pse_margin_content_prop {#2}{#3}}
+}
+\cs_new_protected:Npn \pse_margin_render:n #1 {
+  \prop_get:NnNTF \g_pse_margin_type_prop {#1} \l_tmpa_tl
+    {\prop_get:NnN \g_pse_margin_content_prop {#1} \l_tmpb_tl
+     \PSEMarginObjectPresentation{\tl_use:N\l_tmpa_tl}{#1}{\tl_use:N\l_tmpb_tl}}
+    {\PackageError{pse-module-margin-objects}{Unknown margin object id `#1'}
+      {Declare the object before rendering it.}}
+}
+\NewDocumentCommand{\PSEDeclareMarginObject}{m m +m}{\pse_margin_declare:nnn{#1}{#2}{#3}}
+\NewDocumentCommand{\PSEPrintMarginObject}{m}{\pse_margin_render:n{#1}}
+\NewDocumentCommand{\PSEMarginObject}{m m +m}{\pse_margin_declare:nnn{#1}{#2}{#3}\pse_margin_render:n{#2}}
+\NewDocumentCommand{\PSEMarginalNote}{m +m}{\PSEMarginObject{marginal-note}{#1}{#2}}
+\NewDocumentCommand{\PSESideCaption}{m +m}{\PSEMarginObject{side-caption}{#1}{#2}}
+\NewDocumentCommand{\PSEApparatusAnchor}{m +m}{\PSEMarginObject{apparatus-anchor}{#1}{#2}}
+\NewDocumentCommand{\PSELocatorMarker}{m +m}{\PSEMarginObject{locator-marker}{#1}{#2}}
+\NewDocumentCommand{\PSERunningSideObject}{m +m}{\PSEMarginObject{running-side}{#1}{#2}}
+\ExplSyntaxOff
+\endinput

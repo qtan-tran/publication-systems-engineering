@@ -1,0 +1,61 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{pse-profile-edited-collection}[2026/09/10 v1.0.0-alpha PSE edited-collection baseline]
+\RequirePackage{titlesec}
+\RequirePackage{fancyhdr}
+\RequirePackage{needspace}
+
+% ---- integrated presentation declaration ---------------------------------
+\PSEConfigureIntegratedPresentation{scholarly-collection}{structured}{chapter-opener}{book}{fallback}{available}{none}{none}
+
+% ---- typography role overrides -------------------------------------------
+\renewcommand{\PSETypographyBodyRole}{\rmfamily\normalsize\mdseries\upshape}
+\renewcommand{\PSETypographyDisplayRole}{\sffamily\mdseries\upshape}
+\renewcommand{\PSETypographyChapterTitleRole}{\rmfamily\Large\bfseries\upshape}
+\renewcommand{\PSETypographySectionHeadingRole}{\rmfamily\large\bfseries\upshape}
+\renewcommand{\PSETypographySubsectionHeadingRole}{\rmfamily\normalsize\bfseries\upshape}
+\renewcommand{\PSETypographyMetadataLabelRole}{\PSETypographyDisplayRole\small\bfseries\upshape}
+\renewcommand{\PSETypographyMetadataValueRole}{\rmfamily\small\mdseries\upshape}
+\renewcommand{\PSETypographyRunningHeadRole}{\PSETypographyDisplayRole\scriptsize\mdseries\upshape}
+\renewcommand{\PSETypographyCaptionRole}{\rmfamily\small\mdseries\upshape}
+\renewcommand{\PSETypographyApparatusRole}{\rmfamily\small\mdseries\upshape}
+
+% ---- page-grid configuration ---------------------------------------------
+\PSEConfigurePageGrid{19mm}{21mm}{18.5mm}{23mm}{11pt}{5mm}{10mm}{0mm}
+\PSEApplyPageGrid
+\AtBeginDocument{\PSETypographyBodyRole\linespread{1.04}\selectfont\setlength{\parindent}{1.15em}\setlength{\parskip}{0pt}}
+\setlength{\emergencystretch}{1em}\widowpenalty=8000 \clubpenalty=8000 \raggedbottom
+\titleformat{\chapter}[display]{\normalfont\color{PSEText}}{\PSETypographyDisplayRole\small\MakeUppercase{\chaptername}\enspace\thechapter}{7pt}{\PSETypographyChapterTitleRole\raggedright}
+\titlespacing*{\chapter}{0pt}{22pt}{12pt}
+\titleformat{\section}{\PSETypographySectionHeadingRole\raggedright}{\thesection}{0.65em}{}
+\titlespacing*{\section}{0pt}{17pt plus 2pt minus 1pt}{6pt}
+\pretocmd{\section}{\Needspace{4\baselineskip}}{}{}
+\pagestyle{fancy}\fancyhf{}\renewcommand{\headrulewidth}{0pt}
+\fancyhead[LE]{\scriptsize\thepage\hspace{1.25em}\sffamily\MakeUppercase{\PSETitle}}
+\fancyhead[RO]{\scriptsize\nouppercase{\leftmark}\hspace{1.25em}\thepage}
+\fancypagestyle{plain}{\fancyhf{}\fancyfoot[C]{\scriptsize\thepage}\renewcommand{\headrulewidth}{0pt}}
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\providecommand{\PSEContributorCreditPresentation}[6]{#3}
+\renewcommand{\PSEContributorCreditPresentation}[6]{%
+  \par\vspace{-0.15em}\noindent{\normalsize\itshape #3}\par%
+  \if\relax\detokenize{#4}\relax\else{\small #4\par}\fi%
+  \vspace{1.15\baselineskip}}
+\providecommand{\PSEPublicationUnitContributorPresentation}[4]{#1}
+\renewcommand{\PSEPublicationUnitContributorPresentation}[4]{%
+  \noindent{\normalsize\itshape #1}%
+  \if\relax\detokenize{#2}\relax\else\\{\small #2}\fi%
+  \if\relax\detokenize{#3}\relax\else\\{\scriptsize ORCID: #3}\fi%
+  \par\smallskip}
+\providecommand{\PSEPublicationUnitPresentation}[6]{\chapter{#2}}
+\renewcommand{\PSEPublicationUnitPresentation}[6]{%
+  \chapter{#2}%
+  \if\relax\detokenize{#3}\relax\else{\large\itshape #3\par\medskip}\fi%
+  \PSEPublicationUnitContributors{#1}{author}%
+  \PSEPresentationMetadataSeparator%
+  \if\relax\detokenize{#4}\relax\else\medskip\noindent{\PSETypographyMetadataLabelRole Abstract}\par\smallskip{\small #4\par}\fi%
+  \if\relax\detokenize{#5}\relax\else\smallskip\noindent{\PSETypographyMetadataLabelRole Keywords: }{\small #5\par}\fi%
+  \if\relax\detokenize{#6}\relax\else\smallskip\noindent{\PSETypographyDisplayRole\scriptsize DOI: #6\par}\fi%
+  \vspace{1.1\baselineskip}}
+
+% ---- integrated presentation descriptor binding ----
+\PSEConfigureIntegratedPresentation{scholarly-collection}{structured}{chapter-opener}{book}{fallback}{available}{none}{none}
+\endinput

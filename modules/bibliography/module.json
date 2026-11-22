@@ -1,0 +1,24 @@
+{
+  "schema_version": "1.1",
+  "id": "bibliography",
+  "version": "1.2.0-alpha",
+  "extends": "pse-core",
+  "capabilities": [
+    "bibliography",
+    "citations"
+  ],
+  "build_tools": [
+    "biber"
+  ],
+  "required_fonts": [],
+  "description": "Bibliography and citation layer using biblatex with biber.",
+  "depends_on": [],
+  "api_version": "1",
+  "namespace": "bibliography",
+  "requires_capabilities": [],
+  "conflicts_with": [],
+  "compatible_profiles": [
+    "*"
+  ],
+  "qa_hooks": []
+}

@@ -1,0 +1,13 @@
+{
+  "schema_version": "1.0",
+  "profile": "academic-monograph",
+  "preset": "scholarly-monograph",
+  "hierarchy": "structured",
+  "publication_unit_metadata": "available",
+  "grid": "asymmetric-scholarly",
+  "side_material": "outer-margin",
+  "apparatus": "available",
+  "locator": "none",
+  "parallel_text": "none",
+  "description": "Structured scholarly monograph presentation with restrained hierarchy, an asymmetric page grid, and optional scholarly side material."
+}

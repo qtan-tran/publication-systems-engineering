@@ -1,0 +1,12 @@
+{
+  "schema_version": "1.0",
+  "profile": "critical-edition",
+  "fixture": "tests/fixtures/profile-books/critical-edition",
+  "render_dpi": 144,
+  "pages": [
+    {"name": "title-page", "page": 1, "file": "title-page.png"},
+    {"name": "critical-text", "page": 5, "file": "critical-text.png"},
+    {"name": "apparatus", "page": 6, "file": "apparatus.png"},
+    {"name": "scholarly-back-matter", "page": 7, "file": "scholarly-back-matter.png"}
+  ]
+}

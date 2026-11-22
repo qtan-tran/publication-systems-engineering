@@ -1,0 +1,7 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{pse-module-multilingual}[2026/09/08 v1.0.0-alpha PSE multilingual text]
+\RequirePackage{fontspec}
+\IfFontExistsTF{Gentium Plus}{\newfontfamily\PSEGreekFont{Gentium Plus}[Script=Greek]}{\PackageError{pse-module-multilingual}{Required open font `Gentium Plus' not found}{Install Gentium Plus before building this profile.}}
+\newcommand{\PSEGreek}[1]{{\PSEGreekFont #1}}
+\newcommand{\PSETransliteration}[1]{\textit{#1}}
+\endinput

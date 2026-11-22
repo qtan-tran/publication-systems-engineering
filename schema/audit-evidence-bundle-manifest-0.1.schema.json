@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://publication-systems-engineering.invalid/schema/audit-evidence-bundle-manifest-0.1.schema.json",
+  "title": "PSE Audit Evidence Bundle Manifest 0.1",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "kind",
+    "entry_count",
+    "entries",
+    "bundle_fingerprint",
+    "contains_publication_release_artifacts",
+    "scope_note"
+  ],
+  "properties": {
+    "schema_version": {"const": "0.1"},
+    "kind": {"const": "pse-audit-evidence-bundle-manifest"},
+    "entry_count": {"type": "integer", "minimum": 1},
+    "entries": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["file", "kind", "schema_version", "sha256"],
+        "properties": {
+          "file": {"type": "string", "pattern": "^[A-Za-z0-9._-]+$"},
+          "kind": {"enum": ["pse-release-audit-record", "pse-release-audit-index"]},
+          "schema_version": {"type": "string", "minLength": 1},
+          "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+        },
+        "additionalProperties": false
+      }
+    },
+    "bundle_fingerprint": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "contains_publication_release_artifacts": {"const": false},
+    "scope_note": {"type": "string", "minLength": 1}
+  },
+  "additionalProperties": false
+}

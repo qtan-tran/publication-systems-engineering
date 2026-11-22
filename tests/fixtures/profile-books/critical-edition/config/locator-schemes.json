@@ -1,0 +1,17 @@
+{
+  "schema_version": "1.0",
+  "schemes": {
+    "canonical": {
+      "schema_version": "1.0",
+      "id": "synthetic-critical-sequence",
+      "order": [
+        "1.1",
+        "1.2",
+        "1.3",
+        "2.1"
+      ],
+      "require_complete": true,
+      "strict_order": true
+    }
+  }
+}

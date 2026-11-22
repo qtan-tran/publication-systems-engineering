@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://publication-systems-engineering.invalid/schema/bilingual-layout.schema.json",
+  "title": "PSE bilingual visual layout configuration",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "mode",
+    "synchronization_policy",
+    "long_segment_policy",
+    "show_language_labels"
+  ],
+  "properties": {
+    "schema_version": {
+      "enum": [
+        "1.0",
+        "1.1"
+      ]
+    },
+    "mode": {
+      "enum": [
+        "parallel-columns",
+        "facing-pages",
+        "sequential-blocks",
+        "source-dominant",
+        "target-dominant"
+      ]
+    },
+    "synchronization_policy": {
+      "const": "alignment-block"
+    },
+    "long_segment_policy": {
+      "enum": [
+        "flow",
+        "review"
+      ]
+    },
+    "show_language_labels": {
+      "type": "boolean"
+    }
+  }
+}

@@ -1,0 +1,8 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{pse-module-dramatic-locators}[2026/09/08 v1.3.0-alpha PSE dramatic locator helpers]
+\RequirePackage{pse-module-canonical-locators}
+\RequirePackage{xparse}
+\NewDocumentCommand{\PSEDramaLine}{m}{\PSELocatorNS{dramatic-line}{#1}}
+\NewDocumentCommand{\PSEDramaLineRef}{m}{\PSELocatorRefNS{dramatic-line}{#1}}
+\NewDocumentCommand{\PSEDramaLineRangeRef}{m m}{\PSELocatorRangeRefNS{dramatic-line}{#1}{#2}}
+\endinput

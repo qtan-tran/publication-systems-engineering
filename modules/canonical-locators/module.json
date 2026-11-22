@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.1",
+  "id": "canonical-locators",
+  "version": "1.2.0-alpha",
+  "extends": "pse-core",
+  "capabilities": [
+    "canonical-locators",
+    "cross-references",
+    "locator-ranges",
+    "locator-scheme-qa"
+  ],
+  "build_tools": [],
+  "required_fonts": [],
+  "description": "Generic canonical locator registration, display, and duplicate detection.",
+  "depends_on": [],
+  "api_version": "1",
+  "namespace": "locator",
+  "requires_capabilities": [],
+  "conflicts_with": [],
+  "compatible_profiles": [
+    "*"
+  ],
+  "qa_hooks": [
+    "locator-contract"
+  ]
+}

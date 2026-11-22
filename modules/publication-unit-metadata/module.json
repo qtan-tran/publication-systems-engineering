@@ -1,0 +1,29 @@
+{
+  "schema_version": "1.1",
+  "api_version": "1",
+  "id": "publication-unit-metadata",
+  "namespace": "publication-unit",
+  "version": "1.0.0-alpha",
+  "extends": "pse-core",
+  "capabilities": [
+    "publication-unit-metadata",
+    "unit-abstracts",
+    "unit-keywords",
+    "unit-doi",
+    "unit-contributor-rendering"
+  ],
+  "requires_capabilities": [
+    "contributors"
+  ],
+  "build_tools": [],
+  "required_fonts": [],
+  "depends_on": [
+    "contributor-metadata"
+  ],
+  "conflicts_with": [],
+  "compatible_profiles": [
+    "*"
+  ],
+  "qa_hooks": [],
+  "description": "Publication-unit metadata semantics for titles, subtitles, abstracts, keywords, DOI values, and contributor relations; contributor identity, affiliation, and ORCID remain owned by contributor-metadata."
+}

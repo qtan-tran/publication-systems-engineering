@@ -1,0 +1,25 @@
+{
+  "schema_version": "1.1",
+  "id": "multilingual",
+  "version": "1.2.0-alpha",
+  "extends": "pse-core",
+  "capabilities": [
+    "multilingual-text",
+    "polytonic-greek",
+    "transliteration"
+  ],
+  "build_tools": [],
+  "required_fonts": [
+    "Gentium Plus"
+  ],
+  "description": "Open-font multilingual primitives with explicit support for polytonic Greek.",
+  "depends_on": [],
+  "api_version": "1",
+  "namespace": "language",
+  "requires_capabilities": [],
+  "conflicts_with": [],
+  "compatible_profiles": [
+    "*"
+  ],
+  "qa_hooks": []
+}

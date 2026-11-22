@@ -1,0 +1,81 @@
+{
+  "schema_version": "0.2",
+  "kind": "pse-output-inspection",
+  "pdf": "current-release.pdf",
+  "pdf_sha256": "d28f78867c75d461d80294084d88f1802be68f3684f0c7432015cb7583a44a55",
+  "status": "review",
+  "summary": {
+    "error": 0,
+    "warning": 0,
+    "review": 3,
+    "pass": 6,
+    "info": 1
+  },
+  "checks": [
+    {
+      "name": "pdf_readable",
+      "status": "pass",
+      "detail": "1 page",
+      "machine_verifiable": true
+    },
+    {
+      "name": "title_metadata",
+      "status": "pass",
+      "detail": "PSE Current Release Fixture",
+      "machine_verifiable": true
+    },
+    {
+      "name": "author_metadata",
+      "status": "pass",
+      "detail": "PSE Synthetic Fixture",
+      "machine_verifiable": true
+    },
+    {
+      "name": "document_language",
+      "status": "pass",
+      "detail": "en",
+      "machine_verifiable": true
+    },
+    {
+      "name": "bookmarks_navigation",
+      "status": "review",
+      "detail": "single-page fixture; no bookmark required",
+      "machine_verifiable": true
+    },
+    {
+      "name": "text_extractability",
+      "status": "pass",
+      "detail": {
+        "pages_with_extractable_text": 1,
+        "total_pages": 1
+      },
+      "machine_verifiable": true
+    },
+    {
+      "name": "tagged_pdf",
+      "status": "review",
+      "detail": "not certified",
+      "machine_verifiable": true
+    },
+    {
+      "name": "reading_order",
+      "status": "review",
+      "detail": "human review",
+      "machine_verifiable": false
+    },
+    {
+      "name": "image_alt_text",
+      "status": "pass",
+      "detail": "no meaningful images in fixture",
+      "machine_verifiable": false
+    },
+    {
+      "name": "formal_accessibility_conformance",
+      "status": "info",
+      "detail": "not assessed",
+      "machine_verifiable": false
+    }
+  ],
+  "certification": "none",
+  "scope_note": "Synthetic compatibility fixture; no accessibility certification."
+}

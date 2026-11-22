@@ -1,0 +1,63 @@
+{
+  "schema_version": "1.1",
+  "id": "drama",
+  "version": "1.4.0-alpha",
+  "extends": "pse-core",
+  "generator_supported": true,
+  "capabilities": [
+    "prose",
+    "drama-presentation",
+    "speaker-label-presentation",
+    "stage-direction-presentation",
+    "act-scene-presentation",
+    "running-heads",
+    "footnotes",
+    "dramatic-locators",
+    "index",
+    "margin-objects",
+    "apparatus"
+  ],
+  "required_metadata": [
+    "title",
+    "author",
+    "language",
+    "publication_year"
+  ],
+  "required_fonts": [],
+  "open_font_policy": true,
+  "description": "Neutral drama presentation profile for plays using the generic drama semantic family.",
+  "module_policy": {
+    "drama-structure": {
+      "status": "required",
+      "default_enabled": true
+    },
+    "dramatic-locators": {
+      "status": "required",
+      "default_enabled": true
+    },
+    "index": {
+      "status": "recommended",
+      "default_enabled": true
+    },
+    "structural-hierarchy": {
+      "status": "discouraged",
+      "default_enabled": false
+    },
+    "publication-unit-metadata": {
+      "status": "discouraged",
+      "default_enabled": false
+    },
+    "contributor-metadata": {
+      "status": "recommended",
+      "default_enabled": false
+    },
+    "margin-objects": {
+      "status": "recommended",
+      "default_enabled": false
+    },
+    "apparatus": {
+      "status": "recommended",
+      "default_enabled": false
+    }
+  }
+}

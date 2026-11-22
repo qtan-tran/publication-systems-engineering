@@ -1,0 +1,94 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://publication-systems-engineering.invalid/schema/release-audit-record-0.1.schema.json",
+  "title": "PSE Release Audit Record 0.1",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "kind",
+    "generated_utc",
+    "pse_version",
+    "source_release_dir",
+    "source_release_id",
+    "source_manifest_schema_version",
+    "source_manifest_sha256",
+    "source_pdf_file",
+    "source_pdf_sha256",
+    "compatibility",
+    "verification",
+    "audit_status",
+    "historical_artifact_mutated",
+    "audit_record_is_release_artifact",
+    "scope_note"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "0.1"
+    },
+    "kind": {
+      "const": "pse-release-audit-record"
+    },
+    "generated_utc": {
+      "type": "string",
+      "minLength": 1
+    },
+    "pse_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source_release_dir": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source_release_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source_manifest_schema_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source_manifest_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "source_pdf_file": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source_pdf_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "source_checksum_file_sha256": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "compatibility": {
+      "type": "object"
+    },
+    "verification": {
+      "type": "object"
+    },
+    "audit_status": {
+      "enum": [
+        "pass",
+        "fail"
+      ]
+    },
+    "historical_artifact_mutated": {
+      "const": false
+    },
+    "audit_record_is_release_artifact": {
+      "const": false
+    },
+    "scope_note": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "additionalProperties": true
+}

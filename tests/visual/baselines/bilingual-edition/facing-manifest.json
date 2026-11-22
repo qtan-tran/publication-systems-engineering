@@ -1,0 +1,11 @@
+{
+  "schema_version": "1.0",
+  "profile": "bilingual-edition",
+  "mode": "facing-pages",
+  "fixture": "tests/fixtures/profile-books/bilingual-edition",
+  "render_dpi": 144,
+  "pages": [
+    {"name": "facing-source", "page": 6, "file": "facing-source.png"},
+    {"name": "facing-target", "page": 7, "file": "facing-target.png"}
+  ]
+}

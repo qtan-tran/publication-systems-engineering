@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://publication-systems-engineering.invalid/schema/locator-orchestration-1.0.schema.json",
+  "title": "PSE Locator Orchestration 1.0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "primary_namespace",
+    "secondary_namespaces",
+    "visible_numbering",
+    "stable_id_policy"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "primary_namespace": {
+      "enum": [
+        "canonical",
+        "dramatic-line",
+        "verse-line",
+        "parallel-alignment"
+      ]
+    },
+    "secondary_namespaces": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "enum": [
+          "canonical",
+          "dramatic-line",
+          "verse-line",
+          "parallel-alignment"
+        ]
+      }
+    },
+    "visible_numbering": {
+      "enum": [
+        "show",
+        "hide",
+        "source-defined",
+        "profile-default"
+      ]
+    },
+    "stable_id_policy": {
+      "const": "required"
+    }
+  }
+}
