@@ -53,8 +53,7 @@ def main():
         cfg=json.loads((project/'config/semantic-modules.json').read_text())
         checks.append(('semantic_config_1_1',cfg.get('schema_version')=='1.1' and cfg.get('deactivate')==[],str(cfg)))
         cfg['deactivate']=['index']
-        (project/'config/semantic-modules.json').write_text(json.dumps(cfg,indent=2)+'
-')
+        (project/'config/semantic-modules.json').write_text(json.dumps(cfg,indent=2)+'\n')
         # Deactivation must remove the module from the generated semantic module set
         # (pse build writes build/pse-modules.tex before it needs LuaLaTeX, so this
         # proof also works in TeX-less source-contract environments).
@@ -69,8 +68,7 @@ def main():
         else:
             checks.append(('recommended_index_can_deactivate',resolver_ok,'index removed from generated modules (resolver proof)'))
         cfg['deactivate']=['contributor-metadata']
-        (project/'config/semantic-modules.json').write_text(json.dumps(cfg,indent=2)+'
-')
+        (project/'config/semantic-modules.json').write_text(json.dumps(cfg,indent=2)+'\n')
         p=subprocess.run(CLI+['build',str(project)],cwd=ROOT,env=ENV,text=True,capture_output=True,timeout=60)
         checks.append(('required_module_cannot_deactivate',p.returncode!=0 and 'Required profile module' in (p.stdout+p.stderr),'required semantic ownership protected'))
     failed=[x for x in checks if not x[1]]
