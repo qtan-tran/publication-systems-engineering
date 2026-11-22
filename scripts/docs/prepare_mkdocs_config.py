@@ -19,6 +19,11 @@ def main() -> int:
         url += '/'
     cfg = yaml.safe_load((ROOT/'mkdocs.yml').read_text(encoding='utf-8'))
     cfg['site_url'] = url
+    # Paths inside a config file are resolved relative to that file's
+    # location, and this deployment config is written to build/, so
+    # re-anchor the documentation and site directories to the root.
+    for key, default in (('docs_dir', 'docs'), ('site_dir', 'site')):
+        cfg[key] = str((ROOT/cfg.get(key, default)).resolve())
     out = ROOT/args.output
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(yaml.safe_dump(cfg, sort_keys=False, allow_unicode=True), encoding='utf-8')
