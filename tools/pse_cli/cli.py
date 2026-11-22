@@ -1008,7 +1008,11 @@ def _write_generated_modules(project: Project, metadata: dict[str, Any]) -> Path
 def _run_lualatex(project: Project, passes: int = 2, *, output_dir: Path | None = None, jobname: str = "book", source_date_epoch: int | None = None) -> None:
     exe = shutil.which("lualatex")
     if not exe:
-        raise SystemExit("LuaLaTeX is not available on PATH.")
+        raise SystemExit(
+            "LuaLaTeX is not available on PATH. Install a TeX distribution that provides LuaLaTeX "
+            "(for example TeX Live or MiKTeX), then run `pse doctor` to confirm the environment. "
+            "See wiki/getting-started/install.md in the PSE repository."
+        )
     env = os.environ.copy()
     if source_date_epoch is not None:
         env["SOURCE_DATE_EPOCH"] = str(int(source_date_epoch))
@@ -1087,7 +1091,12 @@ def _slugify(value: str) -> str:
 
 def _prompt(label: str, default: str | None = None) -> str:
     suffix = f" [{default}]" if default else ""
-    answer = input(f"{label}{suffix}: ").strip()
+    try:
+        answer = input(f"{label}{suffix}: ").strip()
+    except EOFError:
+        raise SystemExit(
+            "No interactive input is available. Provide every required value as a command-line option and add --non-interactive."
+        ) from None
     return answer or (default or "")
 
 

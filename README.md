@@ -56,6 +56,8 @@ All public fixtures are synthetic. PSE does not include private downstream publi
 
 ## Quick start
 
+**Prerequisites:** Python 3.11 or newer, and a TeX distribution that provides LuaLaTeX (TeX Live or MiKTeX). See [Install and check PSE](wiki/getting-started/install.md) for a step-by-step setup with the exact packages to install.
+
 Install from a checked-out candidate:
 
 ```text
@@ -81,6 +83,8 @@ pse proof . --recipient "Recipient Name"
 pse release .
 pse verify-release release/<release-id>
 ```
+
+For a beginner-friendly, command-by-command tour of `pse new`, `pse build`, `pse check`, and `pse inspect-output` applied to a complete textbook project (an Ancient Greek course with five chapters and public-domain illustrations), see [A complete worked example](wiki/getting-started/worked-example.md). The finished demo project lives under `examples/tutorials/greek-textbook` in this repository.
 
 See [Onboarding](docs/workflows/ONBOARDING.md) for the complete workflow. For finished-PDF inspection, see [Output inspection and accessibility baseline](docs/getting-started/OUTPUT-INSPECTION-ACCESSIBILITY.md). Audit evidence can be checked with `pse verify-audit-record` / `pse verify-audit-index` and exported reproducibly with `pse export-audit-evidence`; see [Audit evidence verification and deterministic export](docs/release/AUDIT-EVIDENCE-VERIFICATION-AND-EXPORT.md).
 

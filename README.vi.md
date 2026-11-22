@@ -56,6 +56,8 @@ Mọi fixture công khai đều là nội dung synthetic. PSE không chứa ki�
 
 ## Bắt đầu nhanh
 
+**Yêu cầu trước:** Python 3.11 trở lên và một bản phân phối TeX có LuaLaTeX (TeX Live hoặc MiKTeX). Xem [Cài đặt và kiểm tra PSE](wiki/getting-started/install.md) để biết các gói cần cài chính xác, từng bước.
+
 Cài từ candidate checkout:
 
 ```text
@@ -81,6 +83,8 @@ pse proof . --recipient "Tên người nhận"
 pse release .
 pse verify-release release/<release-id>
 ```
+
+Để xem lộ trình từng lệnh một dành cho người mới (`pse new`, `pse build`, `pse check`, `pse inspect-output`) áp dụng lên một dự án hoàn chỉnh (giáo trình tiếng Hy Lạp cổ năm chương kèm hình minh họa public domain), xem trang wiki [A complete worked example](wiki/getting-started/worked-example.md). Dự án demo hoàn chỉnh nằm trong `examples/tutorials/greek-textbook` của repository này.
 
 Xem [Onboarding](docs/workflows/ONBOARDING.md) để đọc workflow đầy đủ. Với PDF hoàn chỉnh, xem [Output inspection and accessibility baseline](docs/getting-started/OUTPUT-INSPECTION-ACCESSIBILITY.md). Audit evidence có thể được kiểm bằng `pse verify-audit-record` / `pse verify-audit-index` và export reproducibly bằng `pse export-audit-evidence`; xem [Audit evidence verification and deterministic export](docs/release/AUDIT-EVIDENCE-VERIFICATION-AND-EXPORT.md).
 

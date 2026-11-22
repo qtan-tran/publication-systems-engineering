@@ -18,7 +18,8 @@ By the end, you will have created a private synthetic project, edited its metada
 5. [Replace the starter content](edit-your-book.md).
 6. [Build and check the PDF](build-and-check.md).
 7. If something fails, use [First troubleshooting](troubleshooting.md).
-8. When the working build is sound, read [Where to go next](next-steps.md).
+8. Follow the [complete worked example](worked-example.md): the whole path applied to a real Ancient Greek textbook.
+9. When the working build is sound, read [Where to go next](next-steps.md).
 
 !!! warning "Start with synthetic content"
     First prove that the toolchain works on a generated starter. Do not diagnose a new installation using an unpublished manuscript. Keep real manuscripts and assets in private storage under your control.

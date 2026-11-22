@@ -7,6 +7,24 @@ description: Install a checked-out PSE candidate and verify the local Python and
 
 PSE currently targets Windows, macOS, and Linux. You need **Python 3.11 or newer** and a TeX distribution that provides **LuaLaTeX**. PSE's installer does not install a TeX distribution for you.
 
+## Install a TeX distribution
+
+PSE typesets books with **LuaLaTeX**, which comes with every full TeX distribution. Pick one:
+
+- **Windows:** install [MiKTeX](https://miktex.org) or [TeX Live](https://tug.org/texlive/), then make sure the `lualatex` command is on PATH (the installers do this for you).
+- **macOS:** install [MacTeX](https://tug.org/mactex/), the macOS edition of TeX Live.
+- **Linux (Debian/Ubuntu):** install the packages with `sudo apt-get install`:
+
+```text
+sudo apt-get install --no-install-recommends \
+  texlive-luatex texlive-latex-extra texlive-fonts-recommended \
+  texlive-bibtex-extra biber
+```
+
+Books with Greek or other non-Latin scripts should also install a font with full polytonic support. PSE uses **Gentium Plus** by default; on Linux it is the package `fonts-sil-gentiumplus`, and TeX Live installs it on Windows and macOS.
+
+After installing, verify that `pse doctor` reports LuaLaTeX as available before you continue.
+
 ## Install from the checked-out repository
 
 Open a terminal in the PSE repository root and run:
