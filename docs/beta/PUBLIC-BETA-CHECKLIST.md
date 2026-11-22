@@ -1,4 +1,4 @@
-> Technical note: PSE 1.48 has six supported profiles (not the historical nine-profile set). Public licensing and live exact-commit CI remain external gates.
+> Technical note: PSE 1.48 has six supported profiles. Public licensing and live exact-commit CI remain external gates.
 
 # Public Beta Checklist
 
@@ -8,7 +8,7 @@ A candidate may be technically ready while still being legally blocked.
 
 - [ ] repository beta-candidate regression passes;
 - [ ] RC-readiness report passes its internally checkable gates and still reports external gates truthfully;
-- [ ] stabilization surface remains frozen at 9 profiles / 14 semantic modules unless a documented corrective migration is required;
+- [ ] stabilization surface remains frozen at the six supported profiles / 14 semantic modules unless a documented corrective migration is required;
 - [ ] exact candidate commit is recorded by `scripts/release/candidate_evidence.py` from a clean, non-shallow checkout;
 - [ ] full-history credential/key scan passes on that exact candidate commit;
 - [ ] `pse doctor --deep` passes in candidate environment;

@@ -1,12 +1,12 @@
-> Historical 1.47 readiness record. This is not a current 1.48 surface contract. See the runtime manifest and migration guide.
+> Historical pre-release record. This is not a current 1.48 surface contract. See the runtime manifest and published documentation.
 
 # Release-candidate readiness review
 
-This review follows completion of the 1.33–1.46 architecture and documentation roadmap. Its purpose is to distinguish **technical stabilization** from claims that require external evidence.
+This review distinguishes technical stabilization from claims that require external evidence. Its purpose is to distinguish **technical stabilization** from claims that require external evidence.
 
 ## Decision
 
-PSE should enter a **stabilization-only freeze** at the current surface of 9 profiles and 14 semantic modules. It should not add product features before the release gates are cleared unless a correctness or security defect requires a contract change.
+PSE should enter a **stabilization-only freeze** at the current surface of six profiles and 14 semantic modules. It should not add product features before the release gates are cleared unless a correctness or security defect requires a contract change.
 
 PSE is **not yet eligible to be advertised as a public release candidate or public licensed beta**. The remaining blockers are external or deployment-bound rather than reasons to expand the feature surface.
 
@@ -14,7 +14,7 @@ PSE is **not yet eligible to be advertised as a public release candidate or publ
 
 The repository contains the candidate, release-evidence, documentation-deployment, integrity, packaging, schema, output-inspection, release-verification, and audit-evidence machinery needed to evaluate a candidate. `scripts/release/rc_readiness.py` emits a machine-readable review without treating missing external evidence as if it had been supplied.
 
-The current compatibility baseline is profile manifest schema 1.1 with legacy 1.0 reading, semantic module manifest schema 1.1/API 1, semantic activation schema 1.1, parallel-text schema 1.0, bilingual layout schema 1.1 with legacy 1.0 reading, semantic IR 1.0, release manifest 0.2, and output-inspection report 0.2.
+The current compatibility baseline is profile manifest schema 1.1 with 1.0 read compatibility, semantic module manifest schema 1.1/API 1, semantic activation schema 1.1, parallel-text schema 1.0, bilingual layout schema 1.1 with 1.0 read compatibility, semantic IR 1.0, release manifest 0.2, and output-inspection report 0.2.
 
 ## External hard gates still open
 

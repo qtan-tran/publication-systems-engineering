@@ -38,7 +38,7 @@ Extraction order can reveal obvious problems but is not equivalent to tagged str
 
 ## Canonical demo corpus
 
-The nine PDFs under `examples/profiles/*/output/` are the public output-inspection corpus. They are synthetic and can be used to test metadata, navigation, and text extraction without exposing private manuscripts.
+The six PDFs under `examples/profiles/*/output/` are the public output-inspection corpus. They are synthetic and can be used to test metadata, navigation, and text extraction without exposing private manuscripts.
 
 ## Release evidence integration
 
@@ -52,4 +52,4 @@ Release policy is intentionally narrow:
 
 This distinction prevents a technically useful release gate from becoming a false accessibility claim.
 
-For the hash-binding and legacy-manifest policy used by publication releases, see [Publication release manifest contract](../release/RELEASE-MANIFEST-CONTRACT.md).
+For the hash-binding and 0.1-manifest policy used by publication releases, see [Publication release manifest contract](../release/RELEASE-MANIFEST-CONTRACT.md).

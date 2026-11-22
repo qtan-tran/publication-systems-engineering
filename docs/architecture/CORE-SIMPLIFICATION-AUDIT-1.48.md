@@ -1,12 +1,12 @@
 # PSE 1.48 — Core simplification audit
 
 **Date:** 2026-11-21  
-**Starting source:** `publication-systems-engineering-github-clean-1.47.0-alpha.zip`  
+**Basis:** the pre-publication working source tree.  
 **Status:** engineering candidate for a first exact-commit GitHub CI run; **not** a publicly authorised, licensed beta.
 
 ## Decision
 
-The supported product surface is reduced from **nine** to **six** book presentation profiles. All **14 semantic modules remain** because they represent composable content capabilities, not interchangeable templates. The shared `core/pse-core.sty`, every module `.sty`, and the surviving profile `.sty` implementations have not been changed by this simplification. The original PDFs of the six retained profile demos remain unchanged.
+The supported product surface is **six book presentation profiles**. All **14 semantic modules remain** because they represent composable content capabilities, not interchangeable templates. The shared `core/pse-core.sty`, every module `.sty`, and the surviving profile `.sty` implementations have not been changed by this simplification. The original PDFs of the six retained profile demos remain unchanged.
 
 | Retired presentation | Recommended path | Loss or limitation to review |
 | --- | --- | --- |
@@ -14,13 +14,13 @@ The supported product surface is reduced from **nine** to **six** book presentat
 | `scholarly-edition` | `critical-edition` | A scholarly annotated edition need not establish a critically reconstructed text. The profile is a presentation family, not an editorial-method claim; review required locators and apparatus. |
 | `poetry` | `literary-fiction` **only** for narrative-oriented content, or a title-specific presentation | The `verse-structure` module remains, but poetry-specific page/stanza composition has **not** been silently moved into `literary-fiction`. Verse-heavy titles require an explicit presentation test. |
 
-There are **no silent aliases** from retired profile IDs. Unsupported input fails closed, and migration is an explicit title-owner decision. Consult `wiki/getting-started/profile-migration.md`.
+There are **no silent aliases** from retired profile IDs. Unsupported input fails closed, and choosing a replacement is an explicit title-owner decision. Inspect the installed registry with `pse profiles`.
 
 ## Maintenance reduction
 
 The exact input archive contained **646 files / 3,286,942 uncompressed bytes**. After retiring the three profile directories and their dedicated demo projects, fixtures and visual baselines, and consolidating GitHub Actions, the working source is around **540–550 files / 2.5–2.6 MB** (the final ZIP integrity manifest gives the authoritative final inventory). The principal gain is fewer supported contracts, not disk-space optimisation.
 
-GitHub Actions workflows have been reduced from **ten to four**:
+GitHub Actions workflows have been consolidated into **four**:
 
 - `qa-regression.yml`: common source/security/contract checks, light cross-platform installed surface, and Linux TeX QA; PRs run a quicker hard gate, while pushes to `main` run full visual regression.
 - `docs-pages.yml`: docs changes, strict build and Pages evidence.
@@ -33,7 +33,7 @@ Full release machinery has **not** been removed; it is only decoupled from every
 
 1. Runtime registry is manifest-derived, not manually invented. It has exactly six profiles and fourteen semantic modules.
 2. Project generation defaults to `academic-monograph`, with retired IDs explicitly rejected. The CLI retains fail-closed module dependencies, security and release verification.
-3. Public wiki lists only current supported profiles, retains short migration notices at old profile URLs, and links to the full migration guide.
+3. Public wiki lists only current supported profiles, with clear retirement notices at the three unsupported profile URLs.
 4. Documentation’s profile-policy matrices follow current `profile.json` and `presentation.json`; historical review records are labelled historical.
 5. Public source integrity checks enforce local Markdown links, generated-artifact exclusion, complete SHA256 inventory and private-boundary hygiene.
 6. The source remains **source-available**, with root `LICENSE` absent pending independent legal review. This archive is not advertised as open-source licensed or a final public beta.

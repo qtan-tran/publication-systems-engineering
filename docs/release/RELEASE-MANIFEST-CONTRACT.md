@@ -25,7 +25,7 @@ A release manifest binds the final PDF to:
 
 Artifact filenames recorded in the manifest must be single safe filenames; path traversal is rejected by the contract validator.
 
-## Legacy schema 0.1
+## Schema 0.1 verification compatibility
 
 `pse verify-release` retains **verification-only compatibility** for publication release manifest schema `0.1`. This is intentionally asymmetric:
 
@@ -56,10 +56,10 @@ The command resolves the **active runtime**, not an assumed source checkout, and
 For the publication-release manifest, the installed surface explicitly distinguishes:
 
 - schema `0.2`: current creation + strict verification contract;
-- schema `0.1`: legacy verification-only compatibility;
+- schema `0.1`: verification-only compatibility;
 - unknown versions: rejected.
 
-## Legacy migration assessment
+## Historical release migration assessment
 
 A historical `0.1` artifact must not be rewritten merely to resemble a `0.2` artifact. In particular, PSE cannot legitimately manufacture historical output-inspection evidence or claim that an old PDF was inspected at its original release time.
 
@@ -76,6 +76,6 @@ pse release-migration /path/to/historical-release \
   --output /path/to/audit-records/release-migration-assessment.json
 ```
 
-The assessment records the source manifest/PDF hashes, the result of current verification, the current target schema, and whether the artifact is legacy/current/unsupported. It always records that in-place upgrade is unsupported and that no retroactive output inspection was inferred.
+The assessment records the source manifest/PDF hashes, the result of current verification, the current target schema, and the artifact's current compatibility status. It always records that in-place upgrade is unsupported and that no retroactive output inspection was inferred.
 
 For a valid `0.1` release, the correct route to full `0.2` evidence is to preserve the historical artifact and **re-release from the original source project** with a current PSE runtime. This creates a new release artifact; it does not replace history.

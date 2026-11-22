@@ -1,10 +1,10 @@
-> Historical 1.47 readiness record. This is not a current 1.48 surface contract. See the runtime manifest and migration guide.
+> Historical pre-release record. This is not a current 1.48 surface contract. See the runtime manifest and published documentation.
 
 # Release-candidate surface freeze
 
 Status: **stabilization freeze; not a public release candidate and not a public licensed beta**.
 
-After the documentation roadmap through 1.46, PSE freezes the current product surface at **9 presentation profiles and 14 semantic modules** while release-candidate readiness is evaluated. The freeze is intended to reduce change risk before the external release gates are cleared.
+PSE freezes the product surface at **six presentation profiles and 14 semantic modules** while release-candidate readiness is evaluated. The freeze is intended to reduce change risk before the external release gates are cleared.
 
 ## Frozen during stabilization
 

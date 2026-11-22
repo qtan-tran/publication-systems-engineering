@@ -49,7 +49,7 @@ The alpha backbone includes:
 - recipient-specific watermarked `pse proof` artifacts;
 - deterministic local `pse release` promotion with manifests and SHA-256 integrity checks;
 - `pse verify-release` tamper/integrity verification.
-- `pse contracts` for installed release-schema discovery, `pse release-migration` for non-mutating legacy-release assessment, and `pse audit-release` for separate hash-bound audit evidence.
+- `pse contracts` for installed release-schema discovery, `pse release-migration` for non-mutating historical-release assessment, and `pse audit-release` for separate hash-bound audit evidence.
 - `pse audit-index` creates an external portable batch audit index for a collection of releases.
 
 All public fixtures are synthetic. PSE does not include private downstream publishing architecture or unpublished manuscript material.

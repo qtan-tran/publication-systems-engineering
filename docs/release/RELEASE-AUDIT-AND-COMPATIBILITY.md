@@ -27,7 +27,7 @@ An audit record describes what the current runtime observed. It is **not** a mig
 
 ## Release schema compatibility
 
-Current PSE creates release-manifest schema `0.2`. Schema `0.1` remains verification-only legacy material. An audit of `0.1` preserves that distinction and does not infer output-inspection evidence retroactively.
+Current PSE creates release-manifest schema `0.2`. Schema `0.1` remains verification-only compatibility material. An audit of `0.1` preserves that distinction and does not infer output-inspection evidence retroactively.
 
 Use `pse release-migration` when the question is whether a historical release can be brought to the current evidence model. Use `pse audit-release` when the question is whether a release, as it exists now, verifies under the installed compatibility policy.
 
@@ -35,7 +35,7 @@ Use `pse release-migration` when the question is whether a historical release ca
 
 `tests/fixtures/releases/` contains two public synthetic fixtures:
 
-- `schema-0.1/` - a legacy release with manifest, PDF and checksum file, but no output-inspection evidence;
+- `schema-0.1/` - an earlier-schema verification-only release with manifest, PDF and checksum file, but no output-inspection evidence;
 - `schema-0.2/` - a current-contract release whose output-inspection record is bound to the PDF SHA-256.
 
 These fixtures are deliberately small and contain no private publication content. Regression tests use them as frozen historical-style inputs so compatibility behavior is tested against stable artifacts rather than only temporary in-memory cases.

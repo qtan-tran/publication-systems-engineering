@@ -39,6 +39,6 @@ The existing `\PSEApparatusEntry`, `\PSEExplanatoryNote`, and `\PSEApparatusRang
 
 ## Validation
 
-PSE source QA inventories stream-aware entries and rejects unknown stream identifiers. Locator validation remains owned by `canonical-locators`; stream-aware entries participate in the same locator-reference and locator-range checks as legacy apparatus entries.
+PSE source QA inventories stream-aware entries and rejects unknown stream identifiers. Locator validation remains owned by `canonical-locators`; stream-aware entries participate in the same locator-reference and locator-range checks as non-stream-aware apparatus entries.
 
 This phase does not introduce automatic witness collation, stemmatics, TEI critical apparatus import/export, or dynamic stream placement. Those remain outside this contract.

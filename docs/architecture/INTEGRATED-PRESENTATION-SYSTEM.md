@@ -1,6 +1,6 @@
 # Integrated Presentation System
 
-PSE 1.40 makes the presentation layer explicit as a composition contract across all nine publication profiles. Earlier releases established structural hierarchy, publication-unit metadata, typography roles, the page grid, margin objects, parallel text, multi-stream apparatus, and locator orchestration independently. The integrated presentation system records how a profile combines those capabilities without creating a new semantic engine.
+PSE makes the presentation layer explicit as a composition contract across the supported publication profiles. The framework establishes structural hierarchy, publication-unit metadata, typography roles, the page grid, margin objects, parallel text, multi-stream apparatus, and locator orchestration independently. The integrated presentation system records how a profile combines those capabilities without creating a new semantic engine.
 
 ## Two synchronized surfaces
 
