@@ -21,3 +21,4 @@ This registry tracks documentation maturity. It is intentionally excluded from t
 | Multi-stream apparatus | implemented; covered by Feature Handbook | 1.38 | 1.44 |
 | Locator orchestration | implemented; covered by Feature Handbook | 1.39 | 1.44 |
 | Integrated presentation system | implemented; Wiki stub | 1.40 | 1.40 |
+
