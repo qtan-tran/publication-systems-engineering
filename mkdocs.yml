@@ -51,6 +51,14 @@ nav:
   - First Troubleshooting: getting-started/troubleshooting.md
   - A Complete Worked Example: getting-started/worked-example.md
   - Where to Go Next: getting-started/next-steps.md
+- Bảng thuật ngữ (Glossary):
+  - Tổng quan và nguyên tắc: glossary/index.md
+  - Nguồn văn bản và kiểm định ngữ văn: glossary/textual-scholarship.md
+  - Cấu trúc logic của văn bản: glossary/semantic-structure.md
+  - Hệ thống định vị và tra cứu: glossary/locators-and-references.md
+  - Thiết kế chữ và chế bản: glossary/typography-and-layout.md
+  - Tạo lập ấn bản và phiên bản: glossary/build-and-versioning.md
+  - Kiểm soát chất lượng và phát hành: glossary/quality-assurance.md
 - How PSE Works:
   - Architecture Overview: how-pse-works/architecture-overview.md
   - Presentation System: how-pse-works/presentation-system.md

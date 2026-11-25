@@ -13,6 +13,7 @@ This documentation is written first for authors, editors, translators, and other
 
 - [What is PSE?](getting-started/what-is-pse.md)
 - [A complete worked example: an Ancient Greek textbook](getting-started/worked-example.md)
+- [PSE glossary in Vietnamese](glossary/index.md)
 - [How PSE works](how-pse-works/architecture-overview.md)
 - [Choose a profile](profiles/index.md)
 - [Book features](book-features/index.md)
