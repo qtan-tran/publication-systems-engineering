@@ -11,12 +11,6 @@ on:
       - "scripts/docs/**"
       - ".github/workflows/docs-pages.yml"
   pull_request:
-    paths:
-      - "wiki/**"
-      - "mkdocs.yml"
-      - "requirements/docs.txt"
-      - "scripts/docs/**"
-      - ".github/workflows/docs-pages.yml"
 
 permissions:
   contents: read
@@ -80,3 +74,12 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+  docs-pages:
+    name: docs-pages
+    needs: [build, deploy]
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Workflow result
+        run: exit ${{ (needs.build.result == 'success' && (needs.deploy.result == 'success' || needs.deploy.result == 'skipped')) && 0 || 1 }}

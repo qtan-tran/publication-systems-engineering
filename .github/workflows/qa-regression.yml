@@ -90,3 +90,12 @@ jobs:
         with:
           name: pse-qa-regression-report
           path: tests/_output/ci-regression-report.json
+
+  qa-regression:
+    name: qa-regression
+    needs: [source-contracts, installed-runtime, linux-typesetting]
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Workflow result
+        run: exit ${{ (needs.source-contracts.result == 'success' && needs.installed-runtime.result == 'success' && needs.linux-typesetting.result == 'success') && 0 || 1 }}
