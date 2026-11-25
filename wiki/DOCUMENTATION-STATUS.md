@@ -12,7 +12,7 @@ This registry tracks documentation maturity. It is intentionally excluded from t
 | Feature handbook | reviewed; reusable-capability handbook baseline | 1.44 | 1.45 |
 | Workflow handbook | reviewed; production-lifecycle handbook baseline | 1.45 | 1.45 |
 | Quality / release handbook | reviewed; release-evidence handbook baseline | 1.45 | 1.45 |
-| Vietnamese PSE glossary | draft; community concept proposal grounded in production casework | 1.48 | 1.48 |
+| Bilingual wiki (EN/VI) | reviewed; full translation with mkdocs-static-i18n suffix structure | 1.48 | 1.48 |
 | Structural hierarchy | implemented; covered by Feature Handbook | 1.32 | 1.44 |
 | Publication-unit metadata | implemented; covered by Feature Handbook | 1.33 | 1.44 |
 | Typography roles | implemented; covered by Feature Handbook | 1.34 | 1.44 |

@@ -1,116 +1,116 @@
 ---
-title: Kiểm soát chất lượng và phát hành
-description: Tóm lược quy trình Quality Assurance của PSE cùng các khái niệm về kiểm định, kiểm thử hồi quy, các lớp xác nhận chất lượng và quyết định phát hành.
+title: Quality Assurance and Release
+description: A summary of the PSE Quality Assurance process, with the concepts of validation, regression testing, quality sign-off layers, and the release decision.
 ---
 
-# Kiểm soát chất lượng và phát hành
+# Quality assurance and release
 
-Một hệ thống xuất bản không chỉ cần tạo được một cuốn sách tốt, mà còn phải giúp bảo đảm những sửa đổi tiếp theo không phá hỏng các thành phần vốn đang hoạt động đúng. Nhóm thuật ngữ này là nền tảng của Quality Assurance trong PSE.
+A publishing system must not only produce one good book; it must help guarantee that later edits do not break the parts that already work. This group of terms is the foundation of Quality Assurance in PSE.
 
-## Quy trình Quality Assurance của PSE (tóm lược)
+## The PSE Quality Assurance process (summary)
 
-Quy trình dưới đây tổng hợp các khái niệm trong trang này thành một luồng công việc; mô hình bốn lớp xác nhận cuối cùng là phần đề xuất rút ra từ kinh nghiệm sản xuất *Nữ Bái Thần*.
+The process below synthesizes the concepts on this page into one workflow; the four-layer sign-off model at the end is a proposal drawn from real production experience.
 
-1. **Chuẩn bị môi trường và khóa phạm vi.** Kiểm tra môi trường tạo lập bằng `pse doctor`; xác lập văn bản nền, [hệ định vị](locators-and-references.md) và phạm vi thay đổi قبل khi bắt đầu (khóa nguồn, khóa biên tập, khóa chế bản).
-2. **Kiểm tra trước sản xuất.** Xác nhận tệp nguồn, tài nguyên, phông chữ và cấu hình đầy đủ trước khi tạo sách.
-3. **Tạo lập ấn bản.** Chạy `pse build .`; quy trình biên dịch qua nhiều lượt để số trang, mục lục và tham chiếu ổn định; ưu tiên tạo lập sạch khi nghi ngờ tệp trung gian lỗi thời.
-4. **Kiểm định cấu trúc.** Chạy `pse check . --human`: đối chiếu tập định vị, điểm neo, mục lục, chỉ mục, siêu dữ liệu và liên kết kỹ thuật; đọc kết quả theo bốn mức `error`, `warning`, `review`, `info` và xử lý hết lỗi mức `error` trước khi tiếp tục.
-5. **Kiểm định hình ảnh và hình học.** Kết xuất trang thành hình ảnh, so sánh với mốc đối chiếu (so sánh hình ảnh trang), xem bảng ảnh thu nhỏ và kiểm tra vị trí dấu chỉ nằm đúng lề, đúng trang.
-6. **Kiểm định đầu ra.** Chạy `pse inspect-output .` để ghi nhận đường cơ sở về siêu dữ liệu, điều hướng và khả năng trích xuất văn bản của PDF hoàn chỉnh.
-7. **Kiểm định nội dung do con người.** Đọc soát toàn trang ở độ phân giải đầy đủ, đối soát ý nghĩa liên kết và sổ đối chiếu ngữ nghĩa; mọi phát hiện mức `review` cần phán đoán của người biên tập, không thể đóng bằng phép kiểm tra hình thức.
-8. **Tổng hợp theo bốn lớp xác nhận.** (1) nguồn và văn bản nền, (2) nội dung và ngữ văn, (3) cấu trúc và tra cứu, (4) chế bản và sản xuất (chi tiết ở cuối trang).
-9. **Quyết định phát hành.** Chốt các điều kiện hoàn tất, phân biệt vấn đề cản trở phát hành với vấn đề tồn đọng, rồi mới dùng `pse release .` và `pse verify-release` cho ranh giới phát hành.
-10. **Kiểm thử hồi quy sau mọi thay đổi.** Với mỗi sửa đổi, chạy lại các kiểm định trên phần có liên quan; khi sửa phần dùng chung, kiểm thử hồi quy liên đầu sách cho mọi ấn bản dùng chung phần đó.
+1. **Prepare the environment and freeze scope.** Check the build environment with `pse doctor`; fix the copy-text, the [locator scheme](locators-and-references.md), and the scope of change before starting (source freeze, editorial freeze, production freeze).
+2. **Preflight.** Confirm that source files, assets, fonts, and configuration are complete before building.
+3. **Build.** Run `pse build .`; the pipeline compiles over multiple passes until page numbers, contents, and references stabilize; prefer a clean build when stale auxiliary files are suspected.
+4. **Structural validation.** Run `pse check . --human`: collate locator sets, anchors, table of contents, index, metadata, and technical links; read the results by the four levels `error`, `warning`, `review`, `info`, and clear every `error` before continuing.
+5. **Visual and geometry validation.** Render pages to images, compare against the baseline (render-diff), review the contact sheet, and check that markers sit in the right margin on the right page.
+6. **Output inspection.** Run `pse inspect-output .` to record the baseline of metadata, navigation, and text extraction of the finished PDF.
+7. **Human content validation.** Proofread full pages at full resolution, reconcile link meaning and the semantic alignment ledger; every `review` finding needs editorial judgment and cannot be closed by a formal check.
+8. **Aggregate into the four sign-off layers.** (1) source and copy-text, (2) content and philology, (3) structure and lookup, (4) typesetting and production (details at the end of this page).
+9. **The release decision.** Fix the definition of done, separate release blockers from known issues, and only then use `pse release .` and `pse verify-release` for the release boundary.
+10. **Regression-test after every change.** For each edit, rerun the relevant checks; when a shared component changes, run cross-title regression testing for every edition using that component.
 
-Các trang tiếng Anh trình bày sâu hơn từng khâu: [Quality Model](../quality-release/quality-model.md), [Build and check your PDF](../getting-started/build-and-check.md), và [Human Review](../workflows/human-review.md).
+Deeper pages for each stage: [Quality Model](../quality-release/quality-model.md), [Build and check your PDF](../getting-started/build-and-check.md), and [Human Review](../workflows/human-review.md).
 
-## Các nguyên tắc kiểm định
+## Validation principles
 
-| Thuật ngữ | Giải thích |
+| Term | Explanation |
 | --- | --- |
-| **Bảo đảm chất lượng** (quality assurance, QA) | Hệ thống nguyên tắc và quy trình được xây dựng để phòng ngừa, phát hiện và xử lý các vấn đề chất lượng trong toàn bộ quá trình sản xuất. |
-| **Kiểm soát chất lượng** (quality control, QC) | Hoạt động kiểm tra các sản phẩm cụ thể để xác định chúng có đáp ứng tiêu chuẩn đã đặt ra hay không. |
-| **Kiểm thử** (testing) | Thực hiện một phép kiểm tra có điều kiện và kết quả kỳ vọng xác định trước. |
-| **Bộ kiểm định** (validator) | Công cụ hoặc tập hợp quy tắc dùng để xác nhận một thành phần có tuân thủ các yêu cầu đã xác lập hay không. |
-| **Điều kiện đạt** (acceptance criteria) | Tiêu chí cụ thể để kết luận một sản phẩm hoặc công việc đáp ứng yêu cầu. |
-| **Chốt kiểm định** (quality gate) | Điểm kiểm tra mà tại đó một số điều kiện phải được đáp ứng trước khi dự án chuyển sang trạng thái tiếp theo. |
-| **Kiểm định độc lập** (independent validation) | Kiểm tra dựa trên nguồn, phương pháp hoặc người thẩm định đủ độc lập với công việc đã tạo ra sản phẩm cần kiểm định. |
-| **Bằng chứng kiểm định** (validation evidence) | Kết quả đo, hồ sơ đối chiếu, hình ảnh, nhật ký hoặc nhận xét có thể sử dụng để hỗ trợ kết luận chất lượng. |
-| **Phạm vi kiểm định** (validation coverage) | Phần nội dung, chức năng hoặc trường hợp thực tế đã được kiểm tra. |
-| **Kiểm tra chọn mẫu** (spot check) | Kiểm tra một số trường hợp được lựa chọn thay vì toàn bộ đối tượng. Kết quả chỉ có giá trị trong phạm vi tương ứng. |
+| **Quality assurance (QA)** | The system of principles and processes built to prevent, detect, and address quality problems across the whole production process. |
+| **Quality control (QC)** | The activity of testing specific products to determine whether they meet the stated standard. |
+| **Testing** | Performing a check with defined conditions and a predefined expected result. |
+| **Validator** | A tool or rule set used to confirm whether a component satisfies established requirements. |
+| **Acceptance criteria** | The concrete criteria for concluding that a product or piece of work meets the requirement. |
+| **Quality gate** | A checkpoint at which certain conditions must be met before the project moves to the next state. |
+| **Independent validation** | Checking based on sources, methods, or a reviewer sufficiently independent from the work that produced the product. |
+| **Validation evidence** | Measurements, collation records, images, logs, or reviews that can be used to support a quality conclusion. |
+| **Validation coverage** | The portion of content, functionality, or real cases that has actually been checked. |
+| **Spot check** | Checking a selected subset instead of the whole; the result is valid only within the corresponding scope. |
 
-## Kiểm thử hồi quy
+## Regression testing
 
-**Lỗi hồi quy** (regression) là lỗi phát sinh sau một thay đổi, làm cho một chức năng hoặc đặc tính từng hoạt động đúng trở nên sai hoặc không còn đáp ứng yêu cầu. **Kiểm thử hồi quy** (regression testing) là kiểm tra lại những chức năng đã được xác nhận trước đó sau khi thực hiện thay đổi, nhằm phát hiện các tác động ngoài dự kiến. Ví dụ, sửa lại cách trình bày chỉ mục có thể vô tình làm sai mục lục, thay đổi số trang hoặc ảnh hưởng đến cách trình bày của một cuốn sách khác sử dụng chung mẫu chế bản.
+A **regression** is a defect introduced by a change, making a function or property that previously worked fail or no longer meet requirements. **Regression testing** is rechecking previously confirmed functions after a change, in order to detect unintended impacts. For example, restyling an index can accidentally break the table of contents, shift page numbers, or affect the presentation of another book that shares the template.
 
-Kiểm thử hồi quy không yêu cầu mọi thứ phải giữ nguyên. Nó yêu cầu những thay đổi có chủ ý được thực hiện đúng và những thành phần không nằm trong phạm vi thay đổi vẫn hoạt động như mong đợi.
+Regression testing does not demand that nothing changes. It demands that intended changes are implemented correctly and that components outside the scope of change still behave as expected.
 
-| Thuật ngữ | Giải thích |
+| Term | Explanation |
 | --- | --- |
-| **Kiểm thử hồi quy liên đầu sách** (cross-title regression testing) | Kiểm tra nhiều đầu sách khác nhau sau khi sửa hệ thống lõi dùng chung, nhằm phát hiện tác động ngoài phạm vi dự án đang thực hiện. |
-| **Mẫu kiểm thử** (test fixture) | Một tài liệu hoặc tập dữ liệu được chuẩn bị để kiểm tra một trường hợp xác định, chẳng hạn hai nhân vật cùng nói trong một câu thơ. |
-| **Cô lập phạm vi thay đổi** (change isolation) | Giới hạn sửa đổi vào phần thực sự cần xử lý, nhằm giảm nguy cơ tạo ra lỗi tại những thành phần khác. |
-| **Phạm vi ảnh hưởng** (blast radius) | Số lượng và mức độ các thành phần hoặc dự án có thể bị tác động bởi một thay đổi. |
+| **Cross-title regression testing** | Testing multiple different books after changing the shared core, to detect impacts outside the project being edited. |
+| **Test fixture** | A document or data set prepared to test one defined case, for example two speakers sharing one verse line. |
+| **Change isolation** | Limiting an edit to the part that actually needs fixing, reducing the risk of new defects elsewhere. |
+| **Blast radius** | The number and degree of components or projects that can be affected by one change. |
 
-Đối với PSE, việc sửa một quy tắc riêng của *Nữ Bái Thần* có phạm vi ảnh hưởng khác với việc sửa quy tắc chung của toàn bộ tủ sách; hai loại thay đổi cần những mức độ kiểm định khác nhau.
+For PSE, fixing a rule that is local to one title has a different blast radius from fixing a rule shared across the whole shelf; the two kinds of change need different levels of validation.
 
-## Kiểm định cấu trúc, vị trí và ý nghĩa
+## Structural, positional, and semantic validation
 
-| Thuật ngữ | Giải thích |
+| Term | Explanation |
 | --- | --- |
-| **Kiểm định cấu trúc** (structural QA) | Kiểm tra sự đầy đủ và tính hợp lệ của những thành phần như số trang, điểm neo, mục lục, chỉ mục, liên kết và siêu dữ liệu. |
-| **Kiểm định ngữ nghĩa** (semantic QA) | Kiểm tra xem các nội dung và mối quan hệ trong tài liệu có đúng về ý nghĩa hay không. |
-| **Kiểm định hình học** (geometry validation) | Kiểm tra vị trí, kích thước, khoảng cách và sự chồng lấn của các thành phần trên trang. |
-| **Kiểm thử hồi quy vị trí dấu chỉ** (marker geometry regression) | Kiểm tra lại vị trí của các dấu chỉ sau khi sửa đổi, nhằm bảo đảm chúng vẫn nằm đúng lề, đúng trang, tương ứng với điểm neo và không chồng lên nội dung. |
-| **Đối chiếu tập định vị** (locator-set validation) | So sánh tập định vị thực tế với tập định vị được kỳ vọng theo ấn bản nguồn để phát hiện thiếu, trùng hoặc sai thứ tự. |
-| **Đối soát khai báo và sản phẩm** (claim-to-output validation) | Kiểm tra xem những gì người biên tập tuyên bố trong sách có phù hợp với nội dung và hình thức thực tế hay không. |
+| **Structural QA** | Checking the completeness and validity of components such as page numbers, anchors, contents, index, links, and metadata. |
+| **Semantic QA** | Checking whether the content and the relations inside the document are right in meaning. |
+| **Geometry validation** | Checking the position, size, spacing, and overlap of components on the page. |
+| **Marker geometry regression** | Rechecking marker positions after edits, to make sure they remain in the right margin, on the right page, aligned with their anchors, and not overlapping content. |
+| **Locator-set validation** | Comparing the actual locator set with the set expected from the source edition to find missing, duplicated, or out-of-order locators. |
+| **Claim-to-output validation** | Checking whether what the book claims matches the actual content and form. |
 
-Vị trí chuẩn của dấu chỉ phụ thuộc vào quy tắc chế bản, đường chân chữ, khổ sách và hồ sơ trình bày; không nên dùng một khoảng cách cố định cho mọi loại ấn bản, và mọi dung sai phải được nêu rõ thay vì ngầm định.
+The canonical position of a marker depends on the typesetting rules, the baseline grid, the trim size, and the presentation profile; no fixed offset fits every publication type, and every tolerance must be stated rather than assumed.
 
-## Kiểm tra hình ảnh và đọc soát trang
+## Image checks and page proofing
 
-| Thuật ngữ | Giải thích |
+| Term | Explanation |
 | --- | --- |
-| **Kết xuất hình ảnh trang** (rendering) | Chuyển một trang tài liệu thành hình ảnh có thể quan sát hoặc phân tích trực tiếp. |
-| **So sánh hình ảnh trang** (render-diff) | Kết xuất cùng một trang hoặc nội dung từ hai phiên bản rồi so sánh để phát hiện những thay đổi thị giác. |
-| **So sánh điểm ảnh** (pixel comparison) | Một phương pháp so sánh hình ảnh dựa trên sự khác biệt giữa từng điểm ảnh trong cùng điều kiện kết xuất. |
-| **Trang giống hệt về điểm ảnh** (pixel-identical page) | Trang có hình ảnh kết xuất giống hệt trang tham chiếu trong điều kiện so sánh xác định. Không nhất thiết có nghĩa mọi dữ liệu bên trong PDF đều giống nhau. |
-| **Bảng ảnh thu nhỏ** (contact sheet) | Tập hợp nhiều trang dưới dạng ảnh thu nhỏ để quan sát tổng thể nhịp điệu, bố cục và tính nhất quán của sách. |
-| **Đọc soát toàn trang** (page-by-page proofing) | Kiểm tra lần lượt các trang của ấn bản nhằm phát hiện vấn đề nội dung, bố cục và trải nghiệm đọc. |
-| **Danh sách đọc soát ở độ phân giải đầy đủ** (full-resolution proof queue) | Danh sách những trang cần được kiểm tra chi tiết ở kích thước và chất lượng đủ để đọc rõ chữ, dấu và các thành phần nhỏ. |
-| **Sai khác ngoài dự kiến** (unexpected diff) | Thay đổi giữa hai phiên bản không nằm trong phạm vi sửa đổi được chủ định hoặc chưa có lý do giải thích. |
+| **Rendering** | Converting a document page into an image that can be inspected or analyzed directly. |
+| **Render-diff** | Rendering the same page or content from two versions and comparing them to detect visual changes. |
+| **Pixel comparison** | An image-comparison method based on per-pixel differences under identical rendering conditions. |
+| **Pixel-identical page** | A page whose rendered image is identical to the reference under the defined comparison conditions. It does not necessarily mean all data inside the PDFs is identical. |
+| **Contact sheet** | Many pages shown as thumbnails for an overview of the book's rhythm, layout, and consistency. |
+| **Page-by-page proofing** | Checking the pages of an edition one by one for content, layout, and reading-experience problems. |
+| **Full-resolution proof queue** | The list of pages that need detailed inspection at a size and quality sufficient to read text, marks, and small components. |
+| **Unexpected diff** | A change between two versions outside the intended change scope, or not yet explained. |
 
-### Phân biệt so sánh hình ảnh và so sánh nội dung
+### Distinguishing image comparison from content comparison
 
-So sánh hình ảnh giúp xác định **nơi** có thay đổi; người kiểm định vẫn cần đọc và đánh giá xem thay đổi đó là sửa chữa đúng, lỗi mới hay một khác biệt không đáng kể.
+Image comparison identifies **where** something changed; the reviewer must still read and judge whether that change is a correct fix, a new defect, or an insignificant difference.
 
-Trong bản đọc soát biên tập cuối của *Nữ Bái Thần*, báo cáo ghi nhận 80 trong tổng số 94 trang giống hệt về điểm ảnh so với bản thử chế bản ở độ phân giải 72 dpi, còn 14 trang có thay đổi. Kết quả so sánh ở 72 dpi không thay thế việc đọc soát toàn bộ sách ở độ phân giải đầy đủ. Điều quan trọng không phải là đạt tỷ lệ trang giống hệt cao nhất, mà là có thể **giải thích được** những thay đổi đã xảy ra và kiểm định được tác động của chúng.
+In the final editorial proof of a real production project, the record counted 80 of 94 pages pixel-identical to the production proof at 72 dpi, with 14 pages changed. A 72 dpi comparison does not replace proofing the whole book at full resolution. What matters is not the highest possible identical-page ratio, but the ability to **explain** the changes that occurred and to verify their impact.
 
-## Xác nhận chất lượng và phát hành
+## Quality sign-off and release
 
-| Thuật ngữ | Giải thích |
+| Term | Explanation |
 | --- | --- |
-| **Bản thảo biên tập** (editorial draft) | Phiên bản đang được hoàn thiện về nội dung, cấu trúc, chú thích và các quyết định biên tập. |
-| **Bản thử chế bản** (production proof) | Phiên bản đã được tạo lập thành hình thức sách để kiểm tra bố cục, chữ, phân trang và các đặc tính kỹ thuật. |
-| **Bản đọc soát biên tập cuối** (final editorial proof) | Phiên bản được chuẩn bị cho việc đọc soát và thẩm định biên tập cuối cùng. Tên gọi này không mặc nhiên có nghĩa mọi kiểm định đã hoàn tất. |
-| **Khóa biên tập** (editorial freeze) | Xác lập trạng thái ổn định của nội dung và các quyết định biên tập để tiến hành những bước kiểm tra tiếp theo. |
-| **Khóa chế bản** (production freeze) | Xác lập trạng thái ổn định của bố cục và quy trình sản xuất, hạn chế những thay đổi ngoài phạm vi đã xác định. |
-| **Xác nhận hoàn tất** (sign-off) | Quyết định có căn cứ rằng một phạm vi công việc đã đáp ứng các điều kiện đặt ra và có thể được coi là hoàn thành. |
-| **Điều kiện hoàn tất** (definition of done) | Tập hợp yêu cầu xác định trước mà một công việc, giai đoạn hoặc ấn bản cần đáp ứng để được coi là hoàn thành. |
-| **Vấn đề cản trở phát hành** (release blocker) | Vấn đề đủ nghiêm trọng để một ấn bản chưa thể được phát hành, chẳng hạn nội dung bị bỏ sót, tệp sách hư hỏng hoặc quyền sử dụng nguồn chưa được xác nhận. |
-| **Vấn đề tồn đọng** (known issue) | Vấn đề đã được nhận diện và ghi nhận nhưng chưa được xử lý hoàn toàn. Tùy mức độ, nó có thể cản trở hoặc không cản trở phát hành. |
-| **Bản phát hành chính thức** (release) | Phiên bản được xác nhận đáp ứng các điều kiện xuất bản và được đưa đến độc giả theo phạm vi đã xác định. |
-| **Báo cáo tổng kết kỹ thuật** (technical postmortem) | Tài liệu phân tích những vấn đề đã xảy ra trong quá trình sản xuất, nguyên nhân, cách xử lý, giới hạn kiểm chứng và bài học có thể áp dụng cho các dự án tiếp theo. |
+| **Editorial draft** | The version being refined in content, structure, notes, and editorial decisions. |
+| **Production proof** | The version built in book form to check layout, type, pagination, and technical properties. |
+| **Final editorial proof** | The version prepared for the final editorial review. The name does not automatically mean all validation is complete. |
+| **Editorial freeze** | Establishing a stable state of content and editorial decisions so that further checks can proceed. |
+| **Production freeze** | Establishing a stable state of layout and production, limiting changes outside the defined scope. |
+| **Sign-off** | The grounded decision that a scope of work has met its conditions and can be considered complete. |
+| **Definition of done** | The predefined set of requirements that a piece of work, a phase, or an edition must meet to count as complete. |
+| **Release blocker** | A problem serious enough that an edition cannot yet be released: omitted content, a broken book file, unconfirmed source licensing. |
+| **Known issue** | A problem identified and recorded but not yet fully resolved. Depending on severity it may or may not block release. |
+| **Release** | The version confirmed to meet the publication conditions and delivered to readers within the defined scope. |
+| **Technical postmortem** | The document analyzing the problems that occurred during production, their causes, how they were handled, the limits of verification, and the lessons for future projects. |
 
-### Bốn lớp xác nhận chất lượng của một ấn bản
+### The four sign-off layers of an edition
 
-Từ kinh nghiệm *Nữ Bái Thần*, mô hình đề xuất cho PSE là phân biệt **bốn lớp xác nhận** thay vì dùng một kết luận chung rằng cuốn sách đã hoàn thành:
+From real production experience, the model proposed for PSE distinguishes **four sign-off layers** instead of one blanket conclusion that the book is finished:
 
-1. **Xác nhận nguồn và văn bản nền.** Đúng nguồn, đúng ấn bản, đúng quy ước định vị; quyền sử dụng và lai lịch nguồn được làm rõ.
-2. **Xác nhận nội dung và ngữ văn.** Bản dịch, phân vai, diễn giải và các quyết định biên tập có căn cứ thích hợp.
-3. **Xác nhận cấu trúc và tra cứu.** Các phần nội dung, chú thích, chỉ mục và liên kết tương ứng đúng với nhau.
-4. **Xác nhận chế bản và sản xuất.** Bố cục, tệp sách, phông chữ, quy trình tạo lập và gói lưu trữ đáp ứng yêu cầu.
+1. **Source and copy-text sign-off.** The right source, the right edition, the right locator conventions; licensing and provenance are clear.
+2. **Content and philology sign-off.** The translation, speaker assignment, interpretation, and editorial decisions have appropriate grounding.
+3. **Structure and lookup sign-off.** The parts, the notes, the index, and the links correspond to each other correctly.
+4. **Typesetting and production sign-off.** The layout, the book files, the fonts, the build process, and the archival bundle meet requirements.
 
-Quyết định phát hành được đưa ra dựa trên bằng chứng của cả bốn lớp. Việc tách nguồn và ngữ văn thành hai lớp riêng đúng với nguyên tắc không dùng một loại bằng chứng để chứng minh một loại chất lượng khác: kiểm định cấu trúc kỹ thuật không thay thế được [xác nhận ngữ văn](textual-scholarship.md).
+The release decision draws on the evidence of all four layers. Splitting source and philology into two layers follows the principle of not using one kind of evidence to certify a different kind of quality: structural validation cannot replace [philological sign-off](textual-scholarship.md).
 
-Bảng thuật ngữ liên quan: [Tạo lập ấn bản và phiên bản](build-and-versioning.md), tổng quan ở [Bảng thuật ngữ PSE](index.md).
+Related pages: [Build and versioning](build-and-versioning.md), the overview in [The PSE Glossary](index.md).

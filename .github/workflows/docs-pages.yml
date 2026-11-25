@@ -42,10 +42,28 @@ jobs:
         run: python scripts/docs/prepare_mkdocs_config.py --site-url "${{ steps.pages.outputs.base_url }}"
       - name: Build pull-request documentation
         if: github.event_name == 'pull_request'
-        run: mkdocs build --strict
+        run: |
+          set +e
+          mkdocs build --strict 2>&1 | tee build.log
+          result=${PIPESTATUS[0]}
+          if [ "$result" -ne 0 ]; then
+            grep -m 40 -E "ERROR|WARNING|Aborted|Traceback|error" build.log | while IFS= read -r line; do
+              printf '::error::%s\n' "$line"
+            done
+          fi
+          exit "$result"
       - name: Build deployment documentation
         if: github.event_name != 'pull_request'
-        run: mkdocs build --strict -f build/mkdocs.deployment.yml
+        run: |
+          set +e
+          mkdocs build --strict -f build/mkdocs.deployment.yml 2>&1 | tee build-deployment.log
+          result=${PIPESTATUS[0]}
+          if [ "$result" -ne 0 ]; then
+            grep -m 40 -E "ERROR|WARNING|Aborted|Traceback|error" build-deployment.log | while IFS= read -r line; do
+              printf '::error::%s\n' "$line"
+            done
+          fi
+          exit "$result"
       - name: Validate generated documentation
         if: github.event_name != 'pull_request'
         run: python scripts/docs/validate_generated_site.py --site-dir site --site-url "${{ steps.pages.outputs.base_url }}"
