@@ -1,49 +1,49 @@
 ---
-title: Thiết kế chữ và chế bản
-description: Các khái niệm về typography, bố cục trang, hồ sơ trình bày và nguyên tắc thiết kế theo chức năng của PSE.
+title: Typography and Layout
+description: Concepts of typesetting, page layout, presentation profiles, and function-based design in PSE.
 ---
 
-# Thiết kế chữ và chế bản
+# Typography and layout
 
-Nhóm này tập trung vào cách nội dung được chuyển thành một hình thức có thể đọc được, đồng thời bảo đảm bản sắc thiết kế của từng ấn bản và toàn bộ tủ sách.
+This group focuses on how content becomes a readable visual form, while each edition, and the whole shelf of books, keeps its own design identity.
 
-| Thuật ngữ | Giải thích |
+| Term | Explanation |
 | --- | --- |
-| **Chế bản** (typesetting) | Quá trình chuyển nội dung đã được tổ chức thành những trang sách hoàn chỉnh theo các quy tắc về chữ, lề, khoảng cách, bố cục và phân trang. |
-| **Thiết kế chữ** (typography) | Nghệ thuật và hệ thống nguyên tắc sử dụng kiểu chữ, cỡ chữ, độ đậm, khoảng cách và cách sắp xếp chữ để hỗ trợ việc đọc. |
-| **Hệ phân cấp thị giác** (visual hierarchy) | Cách sử dụng kích thước, vị trí, độ đậm và khoảng trắng để giúp người đọc nhận ra vai trò và mức độ quan trọng của từng thành phần. |
-| **Thang cỡ chữ theo chức năng** (role-based type scale) | Hệ thống cỡ chữ được xác lập theo vai trò nội dung: chính văn, tiêu đề, chú thích, bảng thuật ngữ, niên biểu, thư mục và chỉ mục. |
-| **Khoảng cách dòng** (leading) | Khoảng cách theo chiều dọc giữa các dòng chữ, thường được đo giữa hai đường chân chữ liên tiếp. |
-| **Khổ sách** (trim size) | Kích thước vật lý cuối cùng của một trang sách sau khi cắt xén. |
-| **Khối chữ** (text block) | Vùng chính trên trang dành cho nội dung văn bản. |
-| **Lề trong** (inner margin) | Khoảng trắng ở phía gần gáy sách. |
-| **Lề ngoài** (outer margin) | Khoảng trắng ở phía đối diện gáy sách, có thể chứa dấu chỉ vị trí hoặc ghi chú bên lề. |
-| **Trang phải và trang trái** (recto/verso) | Hai loại trang trong sách mở đối diện. Chúng thường có bố cục lề đối xứng qua gáy. |
-| **Đầu trang** (header) | Vùng phía trên khối chữ, có thể chứa tên tác phẩm, tên chương hoặc thông tin định hướng. |
-| **Chân trang** (footer) | Vùng phía dưới khối chữ, thường dành cho số trang hoặc thông tin phụ. |
-| **Tiêu đề nhóm chỉ mục** (index heading) | Tiêu đề phân chia các nhóm mục từ, thường là các chữ cái A, B, C hoặc một nhóm chủ đề. |
-| **Kiểu trang** (page style) | Tập hợp quy tắc quy định cách trình bày đầu trang, chân trang, số trang và các yếu tố lặp lại. |
-| **Nhúng phông chữ** (font embedding) | Đưa dữ liệu phông chữ cần thiết vào tệp PDF để người đọc có thể xem tài liệu đúng hình thức mà không cần cài sẵn phông tương ứng. |
-| **Hình ảnh vectơ** (vector graphics) | Hình ảnh được mô tả bằng đường nét và hình học, có thể phóng lớn mà không bị vỡ hạt như ảnh điểm ảnh. |
-| **Trang thông tin chế bản** (colophon) | Phần ghi nhận thông tin về quá trình sản xuất sách, chẳng hạn công cụ chế bản, phông chữ, thiết kế, phiên bản và đơn vị thực hiện. |
+| **Typesetting** | The process of turning organized content into finished book pages under rules for type, margins, spacing, layout, and pagination. |
+| **Typography** | The art and system of principles for using typeface, size, weight, spacing, and arrangement of text to support reading. |
+| **Visual hierarchy** | Using size, position, weight, and white space to help the reader recognize the role and importance of each component. |
+| **Role-based type scale** | A type-size system established by content role: body text, headings, notes, glossary, chronology, bibliography, and index. |
+| **Leading** | The vertical space between lines of type, usually measured between consecutive baselines. |
+| **Trim size** | The final physical size of a book page after trimming. |
+| **Text block** | The main area of the page reserved for text content. |
+| **Inner margin** | The white space on the side nearest the spine. |
+| **Outer margin** | The white space on the side opposite the spine, which can hold margin markers or side notes. |
+| **Recto/verso** | The two page types of an open book. They usually have margin layouts mirrored across the spine. |
+| **Header** | The zone above the text block, which can hold the work title, chapter title, or navigational information. |
+| **Footer** | The zone below the text block, usually for page numbers or auxiliary information. |
+| **Index heading** | A heading dividing groups of index entries, usually letters A, B, C, or a thematic group. |
+| **Page style** | The set of rules governing headers, footers, page numbers, and other repeating elements. |
+| **Font embedding** | Including the needed font data inside the PDF so readers can view the document as intended without having the fonts installed. |
+| **Vector graphics** | Images described by lines and geometry, which can be enlarged without the pixelation of raster images. |
+| **Colophon** | The section recording production information, such as typesetting tools, fonts, design, version, and the parties involved. |
 
-## Thiết kế theo chức năng thay vì định dạng thủ công
+## Design by function, not by manual formatting
 
-Nếu mỗi tiêu đề được chỉnh riêng bằng định dạng trực tiếp, các thành phần cùng vai trò dễ phát sinh khác biệt ngoài chủ ý. Ngược lại, khi thiết kế theo chức năng, các thành phần cùng chức năng dùng chung một quy tắc: mọi tiêu đề chương, mọi chú thích, mọi bảng biểu đều nhận hình thức từ định nghĩa vai trò của chúng.
+If every heading is adjusted individually with direct formatting, components sharing a role easily drift apart in unintended ways. When design follows function instead, components with the same role share one rule: every chapter heading, every note, every table takes its form from the definition of its role.
 
-Thang cỡ chữ theo chức năng không có nghĩa mọi phần trong cuốn sách đều dùng một cỡ chữ, cũng không có nghĩa mọi cuốn trong tủ sách đều phải giống hệt nhau. Trong *Nữ Bái Thần*, chính văn, niên biểu và thư mục từng được điều chỉnh theo nhu cầu đọc và mật độ thông tin riêng. Đây là ví dụ cho thấy một hệ thống thiết kế cần vừa có quy tắc chung, vừa cho phép ngoại lệ có chủ ý và được ghi nhận.
+A role-based type scale does not mean every part of a book uses one size, nor that every book on the shelf must look identical. In a real production project, body text, a chronology, and a bibliography were each adjusted to their own reading needs and information density. This is an example of a design system that has shared rules while allowing intended, recorded exceptions.
 
-## Các khái niệm về kiến trúc thiết kế PSE
+## Concepts of PSE design architecture
 
-| Thuật ngữ | Giải thích |
+| Term | Explanation |
 | --- | --- |
-| **Mẫu chế bản** (template) | Một cấu hình hoặc bộ quy tắc có thể tái sử dụng để tạo ra sách với hình thức nhất quán. |
-| **Hồ sơ trình bày** (presentation profile) | Tập hợp quy tắc phù hợp với một loại hình ấn bản, chẳng hạn kịch, giáo trình hoặc sách chuyên khảo. |
-| **Mô-đun nội dung** (semantic module) | Thành phần chức năng có thể tái sử dụng, chẳng hạn bảng thuật ngữ, niên biểu, khảo chú hoặc chỉ mục. |
-| **Hệ thống lõi dùng chung** (shared core) | Phần quy tắc, công cụ và chức năng nền tảng được nhiều dự án sách sử dụng. |
-| **Điều chỉnh riêng đầu sách** (title-local override) | Một thay đổi chỉ áp dụng cho một đầu sách, nhằm đáp ứng đặc điểm riêng mà không làm thay đổi quy tắc chung của các sách khác. |
-| **Ngoại lệ thiết kế** (design exception) | Quyết định có chủ ý không tuân theo một quy tắc mặc định vì có căn cứ nội dung, thẩm mỹ hoặc chức năng cụ thể. |
+| **Template** | A reusable configuration or rule set for producing books with a consistent appearance. |
+| **Presentation profile** | A set of rules suited to one publication type, for example drama, textbooks, or scholarly monographs. |
+| **Semantic module** | A reusable functional component, such as a glossary, chronology, critical apparatus, or index. |
+| **Shared core** | The rules, tools, and foundational functionality used by many book projects. |
+| **Title-local override** | A change applied to only one title, meeting a particular need without altering the shared rules of the other books. |
+| **Design exception** | A deliberate decision not to follow a default rule, grounded in specific content, aesthetic, or functional reasons. |
 
-**Tính nhất quán không đồng nghĩa với tính đồng nhất.** Một hệ thống xuất bản có khả năng mở rộng phải cho phép những đầu sách khác nhau duy trì đặc điểm riêng trong một kiến trúc thiết kế chung.
+**Consistency does not mean uniformity.** An extensible publishing system must allow different titles to keep their own character within a shared design architecture.
 
-Bảng thuật ngữ liên quan: [Tạo lập ấn bản và phiên bản](build-and-versioning.md), tổng quan về hồ sơ trình bày ở phần [Book Profiles](../profiles/index.md).
+Related pages: [Build and versioning](build-and-versioning.md), the profile overview in [Book Profiles](../profiles/index.md).

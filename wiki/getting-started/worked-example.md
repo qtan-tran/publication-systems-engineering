@@ -53,8 +53,6 @@ subtitle: A Complete Textbook
 
 The generator creates starter chapters. A chapter is one plain-text file, `content/chapter-01.tex`, `content/chapter-02.tex`, and so on. Open each one and replace the starter text with your own, keeping the same simple shape:
 
-!! (REPLACE)
-
 - the file starts with the chapter heading, for example `\chapter{Why Learn Ancient Greek?}`;
 - paragraphs are lines of text separated by one blank line;
 - a section heading inside the chapter is `\section{...}` in the same style;
@@ -167,7 +165,6 @@ Open `build/book.pdf` and look at it. Machine checks cannot decide every typogra
 - Chapter 5 shows the sixth-century manuscript page;
 - Greek words such as ἄνθρωπος print with their breathing marks intact;
 - the index at the back collects the key terms marked with `\PSEIndex{...}` in the chapters.
-
 
 ## If something goes wrong
 

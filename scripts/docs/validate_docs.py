@@ -27,7 +27,12 @@ def main():
  for rel in nav: checks.append((f'nav:{rel}',(WIKI/rel).is_file()))
  md_files={p.relative_to(WIKI).as_posix() for p in WIKI.rglob('*.md')}
  exempt={'DOCUMENTATION-STATUS.md','404.md','profiles/basic-book.md','profiles/poetry.md','profiles/scholarly-edition.md'}
- for rel in sorted(md_files-nav-exempt): checks.append((f'orphan:{rel}',False))
+ def canonical(rel): return rel[:-6]+'.md' if rel.endswith('.vi.md') else rel
+ for rel in sorted(md_files):
+  if canonical(rel) in nav or canonical(rel) in exempt: continue
+  checks.append((f'orphan:{rel}',False))
+ for rel in sorted(r for r in md_files if r.endswith('.vi.md')):
+  checks.append((f'vi_canonical:{rel}',canonical(rel) in md_files))
  for p in WIKI.rglob('*.md'):
   text=p.read_text(errors='replace')
   for raw in LINK.findall(text)+IMG.findall(text):

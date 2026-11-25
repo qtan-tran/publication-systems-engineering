@@ -1,101 +1,101 @@
 ---
-title: Hệ thống định vị và tra cứu
-description: Định vị chuẩn, điểm neo, mục lục, chỉ mục và các mối quan hệ tham chiếu giúp người đọc tìm lại chính xác một nội dung.
+title: Locators and References
+description: Canonical locators, anchors, tables of contents, indexes, and the reference relations that let a reader find exactly one passage again.
 ---
 
-# Hệ thống định vị và tra cứu
+# Locators and references
 
-Một cuốn sách học thuật không chỉ là một chuỗi trang được đọc theo thứ tự. Nó còn là một mạng lưới những mối quan hệ cho phép người đọc chuyển từ một ý tưởng, khái niệm hoặc chú thích đến vị trí có liên quan. Một hệ thống định vị tốt phải cho phép người đọc tìm lại chính xác một nội dung, ngay cả khi hình thức cuốn sách thay đổi.
+A scholarly book is not only a sequence of pages read in order. It is also a network of relations that lets a reader move from an idea, a concept, or a note to the relevant location. A good locator system must let the reader find exactly one passage again, even when the visual form of the book changes.
 
-## Định danh, điểm neo và dấu chỉ
+## Identifiers, anchors, and markers
 
-| Thuật ngữ | Giải thích |
+| Term | Explanation |
 | --- | --- |
-| **Định vị văn bản** (locator) | Một thông tin dùng để xác định vị trí của nội dung, chẳng hạn số trang, số chương, số dòng thơ hoặc mã đoạn văn. |
-| **Định vị chuẩn** (canonical locator) | Định danh theo một quy ước tham chiếu được xác lập cho tác phẩm hoặc ấn bản nguồn. Nó không thay đổi chỉ vì sách được dàn lại hoặc in ở khổ khác. |
-| **Hệ định vị** (locator scheme) | Tập hợp các quy tắc xác định cách đánh số, tổ chức và tham chiếu các đơn vị của một văn bản. |
-| **Tập định vị** (locator set) | Tập hợp tất cả các định vị được kỳ vọng hoặc thực tế có trong một văn bản. Việc so sánh hai tập hợp giúp phát hiện những vị trí thiếu, thừa hoặc sai. |
-| **Điểm neo** (anchor) | Một địa chỉ được đặt tại một vị trí xác định bên trong tài liệu điện tử. Liên kết có thể sử dụng địa chỉ này để đưa người đọc đến đúng đoạn nội dung. Điểm neo thường không nhìn thấy được. |
-| **Dấu chỉ vị trí** (marker) | Ký hiệu hiển thị giúp người đọc nhận biết vị trí của mình trong văn bản, chẳng hạn các số dòng in ngoài lề của *Nữ Bái Thần*. |
-| **Đích tham chiếu** (destination) | Vị trí mà một liên kết hoặc thao tác tra cứu đưa người đọc đến. |
-| **Điểm neo trùng** (duplicate anchor) | Hai hoặc nhiều vị trí khác nhau sử dụng cùng một định danh điểm neo, khiến đích tham chiếu có thể trở nên không xác định hoặc sai lệch. |
-| **Điểm neo thiếu** (missing anchor) | Một địa chỉ đáng lẽ phải tồn tại nhưng không được tạo ra, khiến một phần nội dung không thể được truy cập đúng qua hệ thống tham chiếu. |
-| **Số trang hiển thị** (folio) | Số trang được in trên trang sách, thường xuất hiện ở đầu hoặc cuối trang. Số này không nhất thiết giống số thứ tự trang vật lý trong tệp PDF. |
+| **Locator** | A piece of information that identifies the position of content, such as a page number, chapter number, verse-line number, or paragraph ID. |
+| **Canonical locator** | An identifier under a reference convention established for the work or source edition. It does not change just because the book is reflowed or printed in another trim. |
+| **Locator scheme** | The set of rules that defines how the units of a text are numbered, organized, and referenced. |
+| **Locator set** | The set of all locators expected, or actually present, in a text. Comparing two sets reveals positions that are missing, extra, or wrong. |
+| **Anchor** | An address placed at a specific position inside an electronic document. Links can use this address to bring the reader to exactly the right passage. Anchors are usually invisible. |
+| **Marker** | A visible symbol that helps the reader know where they are in the text, for example verse-line numbers printed in the margin. |
+| **Destination** | The position that a link or lookup action brings the reader to. |
+| **Duplicate anchor** | Two or more different positions using the same anchor identifier, which can make the destination ambiguous or wrong. |
+| **Missing anchor** | An address that should exist but was not created, leaving part of the content unreachable through the reference system. |
+| **Folio** | The page number printed on the page, usually at the head or foot. It is not necessarily the same as the physical page index inside the PDF file. |
 
-### Phân biệt bốn khái niệm gần nhau
+### Distinguishing four nearby concepts
 
-Xét một câu thơ 815 của kịch Hy Lạp: **định vị chuẩn** là con số 815 theo quy ước của ấn bản nguồn; **địa chỉ kỹ thuật** của điểm neo, ví dụ `sourceverse.815`, là địa chỉ máy đọc được; **dấu chỉ được in** là con số 815 người đọc nhìn thấy ngoài lề; **số trang** 42 thuộc về ấn bản cụ thể. Khi dàn lại sách, câu thơ 815 có thể chuyển từ trang 42 sang trang 45: định vị chuẩn vẫn là 815, nhưng vị trí thực tế của điểm neo, dấu chỉ và số trang cần được cập nhật tương ứng. Bốn khái niệm này có quan hệ chặt chẽ nhưng không đồng nhất.
+Consider verse line 815 of a Greek drama: the **canonical locator** is the number 815 under the convention of the source edition; the **technical address** of the anchor, for example `sourceverse.815`, is the machine-readable address; the **printed marker** is the number 815 the reader sees in the margin; the **page number** 42 belongs to the specific edition. When the book is reflowed, verse 815 may move from page 42 to page 45: the canonical locator is still 815, but the physical position of the anchor, the marker, and the page number need to be updated accordingly. These four concepts are tightly related but not identical.
 
-## Các hệ định vị khác nhau
+## Different locator schemes
 
-| Loại ấn bản | Hệ định vị có thể sử dụng | Ví dụ |
+| Edition type | Locator scheme in use | Example |
 | --- | --- | --- |
-| Đối thoại Plato | Hệ Stephanus | 80d |
-| Tác phẩm Aristotle | Hệ Bekker | 1094a1 |
-| Kịch Hy Lạp | Số câu thơ theo ấn bản nguồn | 815 |
-| Kinh điển đánh số đoạn | Chương và đoạn | 3.12 |
-| Sách chuyên khảo | Chương, mục, tiểu mục | 2.3.1 |
-| Giáo trình | Bài học, bài tập | Bài 12, bài tập 4 |
+| Platonic dialogue | Stephanus numbers | 80d |
+| Aristotelian work | Bekker numbers | 1094a1 |
+| Greek drama | Verse numbers from the source edition | 815 |
+| Numbered scripture | Chapter and verse | 3.12 |
+| Scholarly monograph | Chapters, sections, subsections | 2.3.1 |
+| Textbook | Lessons, exercises | Lesson 12, exercise 4 |
 
-## Kiến trúc định vị dùng chung
+## Shared locator architecture
 
-**Mô hình định vị chuẩn dùng chung** (canonical locator abstraction) là một nguyên tắc kiến trúc cho phép PSE quản lý nhiều hệ định vị khác nhau bằng cùng một cơ chế tổng quát, nhưng không áp đặt cùng một quy tắc đánh số cho mọi tác phẩm. Chẳng hạn, PSE có thể hiểu rằng cả `80d` của Plato và `815` của Euripides đều là định vị nguồn, nhưng hệ thống phải hiểu rằng chúng thuộc hai quy ước khác nhau.
+**The canonical locator abstraction** is an architectural principle that lets PSE manage many locator schemes with one general mechanism, without imposing one numbering rule on every work. For example, PSE can understand that both Plato's `80d` and a Greek drama's `815` are source locators, while recognizing that they belong to two different conventions.
 
-**Bộ kiểm định theo hệ định vị** (locator-scheme validator) là cơ chế kiểm tra tính hợp lệ của định vị dựa trên quy tắc riêng của từng loại văn bản: bộ kiểm định cho Stephanus không giống bộ kiểm định cho số câu thơ, và cả hai không giống bộ kiểm định cho cấu trúc chương, mục, tiểu mục.
+**A locator-scheme validator** is the mechanism that checks the validity of locators under the rules of each text type: the validator for Stephanus numbers is not the validator for verse numbers, and neither is the validator for a chapter/section/subsection structure.
 
-Đây là ví dụ về tiêu chuẩn hóa đúng nghĩa: **dùng chung nguyên tắc kiến trúc, nhưng bảo toàn đặc thù của từng văn bản**.
+This is standardization done right: **share the architectural principle, preserve the distinct conventions of each text**.
 
-### Sổ đối chiếu nội dung
+### The semantic alignment ledger
 
-**Sổ đối chiếu ngữ nghĩa** (semantic alignment ledger) là một hồ sơ có cấu trúc ghi nhận quan hệ giữa từng đơn vị văn bản nguồn, bản dịch, người nói, điểm neo, vị trí trong ấn bản và kết quả kiểm chứng. Ví dụ giản lược:
+A **semantic alignment ledger** is a structured record of the relations between each source unit, the translation, the speaker, the anchor, the position in the edition, and the verification result. A simplified example:
 
-| Định vị nguồn | Người nói | Đối ứng bản dịch | Trang | Kiểm định nội dung |
+| Source locator | Speaker | Translation unit | Page | Content check |
 | --- | --- | --- | --- | --- |
-| 810 | Nhân vật A | Đã xác định | 42 | Đã đối chiếu |
-| 811 | Nhân vật B | Đã xác định | 42 | Cần kiểm tra |
-| 812 | Nhân vật A | Đã xác định | 42 | Đã đối chiếu |
-| 813 | Nhân vật A | Chưa xác nhận | 43 | Còn mở |
+| 810 | Speaker A | Identified | 42 | Verified |
+| 811 | Speaker B | Identified | 42 | Needs check |
+| 812 | Speaker A | Identified | 42 | Verified |
+| 813 | Speaker A | Unconfirmed | 43 | Open |
 
-Bảng minh họa cho thấy một đơn vị có thể đã được định vị đầy đủ về mặt kỹ thuật nhưng chưa được xác nhận về mặt nội dung. Sổ đối chiếu không phải một bản dịch thứ hai; nó là hồ sơ chứng cứ giúp người biên tập biết từng phần của văn bản đã được xử lý đến đâu.
+The table shows that a unit can be fully located technically while still unverified in content. The ledger is not a second translation; it is a body of evidence that tells the editor how far each part of the text has been processed.
 
-Trong báo cáo kỹ thuật của *Nữ Bái Thần*, mô hình định vị dùng chung, sổ đối chiếu và bộ kiểm định riêng cho từng hệ định vị được đề xuất như những cải tiến có thể tái sử dụng trong PSE, chưa phải những tính năng đã được xác nhận triển khai đầy đủ vào hệ thống lõi.
+In the technical postmortems of real production projects, the shared locator model, the alignment ledger, and per-scheme validators were proposed as reusable improvements for PSE; they are not yet confirmed as fully implemented core features.
 
-## Các thành phần của hệ thống tra cứu
+## Components of the lookup system
 
-| Thuật ngữ | Giải thích |
+| Term | Explanation |
 | --- | --- |
-| **Mục lục** (table of contents) | Danh sách các phần của sách, thể hiện cấu trúc phân cấp và vị trí bắt đầu của chúng. |
-| **Cây điều hướng** (outline) | Cấu trúc phân cấp các phần có thể được mở trong trình đọc PDF để chuyển nhanh giữa các chương và mục. |
-| **Dấu trang điện tử** (bookmark) | Một mục có thể chọn trong hệ thống điều hướng của tài liệu điện tử. Trong ngữ cảnh chế bản PDF, các dấu trang thường tạo thành cây điều hướng. |
-| **Liên kết** (link) | Cơ chế đưa người đọc từ một vị trí đến vị trí khác, trong cùng cuốn sách hoặc đến tài liệu bên ngoài. |
-| **Tham chiếu chéo** (cross-reference) | Một chỉ dẫn từ nội dung hiện tại đến một nội dung khác có liên quan, chẳng hạn "xem chương 3" hoặc "xem chú thích câu 815". Có thể tồn tại cả trong sách in lẫn sách điện tử. |
-| **Liên kết ngược** (reverse link) | Liên kết cho phép quay về vị trí xuất phát, chẳng hạn từ chú thích trở lại đoạn chính văn đang đọc. |
-| **Khóa chú thích** (note key) | Định danh nội bộ của một chú thích, giúp hệ thống nhận diện chú thích đó ngay cả khi số thứ tự hiển thị thay đổi. |
-| **Khóa chỉ mục** (index key) | Định danh dùng để tập hợp và sắp xếp các lần xuất hiện của một mục từ trong chỉ mục. |
-| **Mục từ chỉ mục** (index entry) | Tên người, địa danh, sự kiện hoặc khái niệm được trình bày trong chỉ mục, kèm các vị trí liên quan. |
-| **Mục từ phụ** (subentry) | Thành phần nằm dưới một mục từ chính, giúp phân biệt các phương diện khác nhau của cùng một chủ đề. |
-| **Mục từ hiển thị** (display term) | Cách một thuật ngữ thực tế xuất hiện trước người đọc. Có thể khác với khóa nội bộ dùng để quản lý và sắp xếp. |
-| **Nhãn trang điện tử** (PDF PageLabels) | Thông tin giúp trình đọc PDF hiển thị tên hoặc số trang theo quy ước của sách, chẳng hạn "Bìa", "iv" hoặc "1", thay vì chỉ đếm từ trang đầu tiên của tệp. |
+| **Table of contents** | The list of the parts of the book, showing the hierarchical structure and starting positions. |
+| **Outline** | A navigable hierarchy of parts that a PDF reader can open to move quickly between chapters and sections. |
+| **Bookmark** | A selectable entry in the navigation system of an electronic document. In PDF production, bookmarks usually form the outline tree. |
+| **Link** | A mechanism that moves the reader from one position to another, within the same book or to an external document. |
+| **Cross-reference** | A pointer from the current content to other related content, for example "see chapter 3" or "see the note on line 815". It can exist in both print and electronic books. |
+| **Reverse link** | A link that allows returning to the starting position, for example from a note back to the passage being read. |
+| **Note key** | The internal identifier of a note, letting the system recognize it even when the displayed numbering changes. |
+| **Index key** | The identifier used to collect and sort the occurrences of a term in the index. |
+| **Index entry** | A person, place, event, or concept presented in the index, together with the relevant locations. |
+| **Subentry** | A component under a main entry, distinguishing different aspects of the same subject. |
+| **Display term** | The form in which a term actually appears to the reader. It can differ from the internal key used for management and sorting. |
+| **PDF PageLabels** | The information that lets a PDF reader display page names or numbers by the book's convention, for example "Cover", "iv", or "1", instead of counting from the first page of the file. |
 
-## Các mối quan hệ ngữ nghĩa
+## Semantic relations
 
-**Quan hệ tham chiếu** (semantic edge) là một mối quan hệ có ý nghĩa giữa hai thành phần nội dung. Ví dụ, một chú thích về ngọn núi Cithaeron được liên kết với đoạn chính văn nói đến địa danh này. Điều cần bảo đảm không chỉ là liên kết hoạt động, mà là nó dẫn đến đúng nội dung cần giải thích.
+A **semantic edge** is a meaningful relation between two content components. For example, a note about a place name is linked to the passage in the main text that mentions that place. What must be guaranteed is not only that the link works, but that it leads to exactly the content it should explain.
 
-| Thuật ngữ | Giải thích |
+| Term | Explanation |
 | --- | --- |
-| **Kiểm tra liên kết kỹ thuật** | Xác minh liên kết tồn tại, hoạt động và có đích hợp lệ. |
-| **Đối soát ý nghĩa liên kết** (link semantic reconciliation) | Kiểm tra xem liên kết có đưa người đọc đến đúng đối tượng cần tham chiếu về mặt nội dung hay không. |
-| **So sánh quan hệ tham chiếu** (diff semantic edges) | Đối chiếu mạng lưới quan hệ giữa hai phiên bản sách để xác định liên kết nào được thêm, bỏ, thay đổi hoặc chuyển sai đích. |
-| **Tính nhất quán số trang** (folio consistency) | Sự tương ứng giữa số trang được in, mục lục, chỉ mục, nhãn trang điện tử và đích của các liên kết. |
-| **Đối soát mục lục và số trang** (TOC/folio consistency) | Kiểm tra xem mỗi mục trong mục lục có ghi đúng số trang và dẫn đến đúng vị trí bắt đầu của phần tương ứng hay không. |
-| **Chuẩn hóa bảng thuật ngữ và chỉ mục** (glossary/index normalization) | Thống nhất cách viết, chuyển tự, sắp xếp, quản lý tên gọi thay thế và phân cấp mục từ, tránh tạo ra các mục trùng lặp hoặc không nhất quán. |
+| **Technical link check** | Verifying that a link exists, works, and has a valid destination. |
+| **Link semantic reconciliation** | Checking whether a link brings the reader to the object that is intended, in content terms. |
+| **Diff semantic edges** | Comparing the relation network between two versions to find links that were added, removed, changed, or retargeted. |
+| **Folio consistency** | The correspondence between the printed page numbers, the table of contents, the index, PDF page labels, and link destinations. |
+| **TOC/folio consistency** | Checking that each contents entry lists the right page number and points to the right start position of the corresponding part. |
+| **Glossary/index normalization** | Unifying spelling, transliteration, sorting, the management of alternative names, and entry hierarchy, avoiding duplicate or inconsistent entries. |
 
-### Tại sao cần kiểm tra cả ý nghĩa lẫn kỹ thuật?
+### Why both meaning and technique must be checked
 
-Giả sử một chú thích có liên kết đến trang 42. Khi nhấp vào, trình đọc thực sự mở trang 42: về mặt kỹ thuật, liên kết hoạt động. Tuy nhiên, sau khi hiệu đính bản dịch, nội dung cần chú giải đã chuyển sang trang 43; liên kết lúc này không còn đúng về mặt ý nghĩa.
+Suppose a note links to page 42. Clicking it really opens page 42: technically, the link works. However, after a translation revision, the passage that needs the note has moved to page 43; the link is no longer meaningful.
 
-Điều tương tự xảy ra với số lượng liên kết: việc một phiên bản mới có ít hơn năm liên kết không chứng minh rằng năm liên kết bị hỏng; có thể những liên kết trùng đã được loại bỏ hoặc cách xuống dòng đã thay đổi.
+The same applies to link counts: a new version having five fewer links does not prove five links broke; duplicate links may have been removed, or line wrapping may have changed.
 
-**Đối tượng cần kiểm định là quan hệ giữa các nội dung, chứ không chỉ là số lượng liên kết.**
+**What needs checking is the relation between pieces of content, not just the number of links.**
 
-Bảng thuật ngữ liên quan: [Cấu trúc logic của văn bản](semantic-structure.md), [Kiểm soát chất lượng và phát hành](quality-assurance.md).
+Related pages: [Semantic structure](semantic-structure.md), [Quality assurance and release](quality-assurance.md).

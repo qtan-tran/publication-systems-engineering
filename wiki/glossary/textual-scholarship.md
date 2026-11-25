@@ -1,37 +1,37 @@
 ---
-title: Nguồn văn bản và kiểm định ngữ văn
-description: Các khái niệm về văn bản nền, lai lịch nguồn, dị bản và các loại sai sót trong đối chiếu văn bản của PSE.
+title: Textual Scholarship
+description: Concepts of copy-text, provenance, variants, and the classes of error in text collation within PSE.
 ---
 
-# Nguồn văn bản và kiểm định ngữ văn
+# Textual scholarship
 
-Nhóm thuật ngữ này trả lời câu hỏi: chúng ta đang chuyển tải văn bản nào đến người đọc, và dựa vào đâu để xác nhận rằng mình đã chuyển tải đúng văn bản ấy?
+This group of terms answers the question: which text are we conveying to the reader, and on what basis do we confirm that we are conveying the right text?
 
-| Thuật ngữ | Giải thích |
+| Term | Explanation |
 | --- | --- |
-| **Văn bản nền** (copy-text) | Văn bản hoặc ấn bản được lựa chọn làm căn cứ chính cho việc dịch thuật và biên tập. Ví dụ, ấn bản Hy Lạp do Gilbert Murray biên tập năm 1913 được chọn làm văn bản nền tham chiếu cho *Nữ Bái Thần*. |
-| **Lai lịch nguồn** (provenance) | Hồ sơ cho biết văn bản đến từ đâu, do ai biên tập, được xuất bản khi nào, được thu nhận từ nguồn nào và đã trải qua những thay đổi gì. |
-| **Khóa nguồn** (source freeze) | Xác lập văn bản nền và hệ thống tham chiếu trước khi tiến hành các công việc phụ thuộc vào chúng. Việc thay đổi nguồn sau thời điểm này cần được giải thích và kiểm tra lại. |
-| **Dị bản** (variant) | Một cách đọc hoặc dạng văn bản khác được ghi nhận trong thủ bản hay ấn bản khác. Dị bản không mặc nhiên là lỗi; nó có thể phản ánh lịch sử truyền lại của tác phẩm. |
-| **Khoảng khuyết văn bản** (lacuna; số nhiều: lacunae) | Vị trí mà một phần văn bản gốc đã bị thất lạc hoặc không được truyền lại đầy đủ. Người biên tập phải phân biệt khoảng khuyết với phần văn bản được phục dựng theo giả thuyết. |
-| **Phân dòng thơ** (colometry) | Cách phân chia thơ, đặc biệt là thơ trữ tình và hợp xướng cổ đại, thành các đơn vị tiết nhịp. Khái niệm này không đơn thuần chỉ việc xuống dòng trên trang giấy. |
-| **Xác minh cách phân dòng thơ** (exact colometry) | Kiểm tra cách chia các đơn vị thơ dựa trên ấn bản nguồn, cấu trúc tiết luật và những căn cứ văn bản học thích hợp. |
-| **Xác nhận ngữ văn** (philological sign-off) | Kết luận có căn cứ rằng văn bản, bản dịch, cách phân vai, các chỗ khuyết và quyết định biên tập đã được đối chiếu theo tiêu chuẩn xác định. Có thể yêu cầu một người thẩm định độc lập thực hiện. |
-| **Hồ sơ vấn đề còn mở** (issue register) | Danh sách những vấn đề chưa được giải quyết, kèm vị trí, bằng chứng hiện có, mức độ nghiêm trọng và điều kiện để xác nhận đã xử lý xong. |
+| **Copy-text** | The text or edition chosen as the primary basis for translation and editing. For example, a well-regarded scholarly edition may be chosen as the reference copy-text for a translation. |
+| **Provenance** | The record of where a text came from, who edited it, when it was published, from which sources it was acquired, and what changes it has undergone. |
+| **Source freeze** | Fixing the copy-text and its reference system before starting the work that depends on them. Changing the source after this point must be explained and re-checked. |
+| **Variant** | An alternative reading or text form recorded in another manuscript or edition. A variant is not automatically an error; it may reflect the transmission history of the work. |
+| **Lacuna** (plural: *lacunae*) | A place where part of the original text has been lost or not fully transmitted. The editor must distinguish a lacuna from passages reconstructed by hypothesis. |
+| **Colometry** | The division of verse, especially ancient lyric and choral verse, into metrical units. The concept is not just about line breaks on the page. |
+| **Exact colometry** | Checking the division of verse units against the source edition, metrical structure, and appropriate text-critical grounds. |
+| **Philological sign-off** | A grounded conclusion that the text, the translation, the assignment of speakers, the gaps, and the editorial decisions have been checked against defined standards. It may require an independent reviewer. |
+| **Issue register** | The list of unresolved problems, with their location, current evidence, severity, and the conditions for considering them handled. |
 
-## Phân loại sai sót trong đối chiếu văn bản
+## A taxonomy of errors in text collation
 
-| Thuật ngữ | Giải thích |
+| Term | Explanation |
 | --- | --- |
-| **Bỏ sót** (omission) | Một phần nội dung có trong nguyên tác nhưng không xuất hiện trong bản dịch hoặc bản biên tập. |
-| **Lặp thừa** (duplication) | Một nội dung bị đưa vào nhiều lần ngoài chủ ý của tác giả hoặc người biên tập. |
-| **Thêm ngoài nguồn** (addition) | Nội dung được đưa vào chính văn nhưng không có căn cứ tương ứng trong nguyên tác. Một lời giải thích được ghi rõ là chú thích không nhất thiết thuộc loại lỗi này. |
-| **Nhầm người nói** (wrong speaker) | Lời thoại được gán cho nhân vật khác với nhân vật tương ứng trong văn bản nguồn. |
-| **Lệch ranh giới** (boundary shift) | Nội dung được đặt sai vị trí giữa hai dòng thơ, hai lượt lời hoặc hai đoạn văn, làm sai quan hệ đối ứng với nguồn. |
-| **Lệch đối ứng nội dung** (semantic misalignment) | Một đơn vị trong bản dịch được liên kết với vị trí nguồn không tương ứng về nội dung hoặc ý nghĩa. |
+| **Omission** | Content present in the original that does not appear in the translation or edition. |
+| **Duplication** | Content introduced more than once, contrary to the intent of the author or editor. |
+| **Addition** | Content placed in the main text without a corresponding basis in the original. An explanation clearly labeled as a note does not necessarily belong to this error class. |
+| **Wrong speaker** | A speech attributed to a character other than the one speaking in the source text. |
+| **Boundary shift** | Content placed at the wrong position between two verse lines, two speech turns, or two paragraphs, distorting the correspondence with the source. |
+| **Semantic misalignment** | A unit in the translation linked to a source position that does not correspond in content or meaning. |
 
-## Bài học từ thực tế sản xuất
+## Lessons from real production
 
-Trong dự án *Nữ Bái Thần*, việc kiểm tra đủ 1.392 vị trí tham chiếu không ngăn được sự xuất hiện của các lỗi bỏ sót, lặp thừa và nhầm người nói. Ví dụ này cho thấy cơ chế sai lệch có thể tồn tại ngay cả khi số lượng vị trí tham chiếu đầy đủ: nội dung bị gộp, dịch chuyển hoặc lặp lại giữa các vị trí. Vì thế, kiểm định cấu trúc kỹ thuật không được sử dụng thay cho [xác nhận ngữ văn](../quality-release/quality-model.md); hai loại kiểm định này bổ sung cho nhau.
+In a real production project, checking the full set of reference positions (thousands of them) still did not prevent omissions, duplications, and wrong-speaker errors from appearing. This shows that mechanisms of misalignment can exist even when the number of reference positions is complete: content gets merged, shifted, or repeated between positions. Structural validation therefore cannot replace [philological sign-off](../quality-release/quality-model.md); the two kinds of checking complement each other.
 
-Bảng thuật ngữ liên quan: [Hệ thống định vị và tra cứu](locators-and-references.md), [Kiểm soát chất lượng và phát hành](quality-assurance.md).
+Related pages: [Locators and references](locators-and-references.md), [Quality assurance and release](quality-assurance.md).

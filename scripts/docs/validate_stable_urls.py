@@ -13,9 +13,12 @@ def nav_files(v):
   for x in v.values(): out += nav_files(x)
  return out
 def url_for(md):
- if md=='index.md': return '/'
- if md.endswith('/index.md'): return '/'+md[:-8]
- return '/'+md[:-3]+'/'
+ vi=md.endswith('.vi.md')
+ if vi: md=md[:-6]+'.md'
+ prefix='/vi/' if vi else '/'
+ if md=='index.md': return prefix
+ if md.endswith('/index.md'): return prefix+md[:-8]
+ return prefix+md[:-3]+'/'
 def main():
  cfg=yaml.safe_load((ROOT/'mkdocs.yml').read_text())
  current={url_for(p.relative_to(ROOT/'wiki').as_posix()) for p in (ROOT/'wiki').rglob('*.md')}

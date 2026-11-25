@@ -26,6 +26,82 @@ theme:
       icon: material/weather-sunny
       name: Switch to light mode
 plugins:
+- i18n:
+    docs_structure: suffix
+    default_language: en
+    languages:
+    - locale: en
+      default: true
+      name: English
+      build: true
+    - locale: vi
+      name: Tiếng Việt
+      build: true
+      nav_translations:
+      - Home: Trang chủ
+      - Getting Started: Bắt đầu
+      - Beginner Handbook: Cẩm nang cho người mới
+      - What is PSE?: PSE là gì?
+      - Install and Check PSE: Cài đặt và kiểm tra PSE
+      - Choose a Book Profile: Chọn hồ sơ trình bày
+      - Create Your First Project: Tạo dự án đầu tiên
+      - Understand the Project Folder: Hiểu thư mục dự án
+      - Replace the Starter Content: Thay nội dung khởi đầu
+      - Build and Check Your PDF: Tạo lập và kiểm tra PDF
+      - First Troubleshooting: Xử lý sự cố lần đầu
+      - A Complete Worked Example: Một ví dụ làm trọn vẹn
+      - Where to Go Next: Bước tiếp theo
+      - Glossary: Bảng thuật ngữ
+      - Overview and Principles: Tổng quan và nguyên tắc
+      - Textual Scholarship: Nguồn văn bản và kiểm định ngữ văn
+      - Semantic Structure: Cấu trúc logic của văn bản
+      - Locators and References: Hệ thống định vị và tra cứu
+      - Typography and Layout: Thiết kế chữ và chế bản
+      - Build and Versioning: Tạo lập ấn bản và phiên bản
+      - Quality Assurance and Release: Kiểm soát chất lượng và phát hành
+      - How PSE Works: PSE hoạt động thế nào
+      - Architecture Overview: Tổng quan kiến trúc
+      - Presentation System: Hệ thống trình bày
+      - Book Profiles: Hồ sơ trình bày đầu sách
+      - Book Features: Tính năng sách
+      - Overview: Tổng quan
+      - Academic Monograph: Sách chuyên khảo
+      - Bilingual Edition: Ấn bản song ngữ
+      - Critical Edition: Ấn bản khảo cứu
+      - Drama: Kịch
+      - Edited Collection: Tuyển tập
+      - Literary Fiction: Văn học
+      - Structural Hierarchy: Phân cấp cấu trúc
+      - Publication Metadata: Siêu dữ liệu xuất bản
+      - Typography and Page Grid: Thiết kế chữ và hệ thống trang
+      - Margins and Side Material: Lề và nội dung bên
+      - Parallel Text: Văn bản song song
+      - Critical Apparatus: Khảo chú
+      - Locators and Stable Addresses: Định vị và địa chỉ ổn định
+      - Verse and Drama Semantics: Ngữ nghĩa thơ và kịch
+      - Bibliography, Index, and Scholarly Matter: Thư mục, chỉ dẫn và vật liệu học thuật
+      - Multilingual Text: Văn bản đa ngôn ngữ
+      - Workflows: Quy trình làm việc
+      - Everyday Edit–Build–Check Cycle: Chu trình sửa–tạo lập–kiểm tra hằng ngày
+      - Clean Build and Reproducibility: Tạo lập sạch và khả năng tái tạo
+      - Human Review: Đọc soát bởi con người
+      - Recipient Proofs: Bản đọc soát cho người nhận
+      - Prepare a Publication Release: Chuẩn bị phát hành ấn bản
+      - After Release: Sau phát hành
+      - Quality and Release: Chất lượng và phát hành
+      - Quality Model: Mô hình chất lượng
+      - Working PDF, Proof, and Release: PDF hoạt động, bản đọc soát và phát hành
+      - Output Inspection: Kiểm định đầu ra
+      - Release Verification: Kiểm chứng phát hành
+      - Audit Evidence: Bằng chứng kiểm toán
+      - Historical Releases: Các phát hành trước
+      - Release Checklist: Danh sách kiểm tra phát hành
+      - Customization: Tùy biến
+      - Typography: Thiết kế chữ
+      - Page Layout: Bố cục trang
+      - Reference: Tham khảo
+      - Documentation Release Evidence: Bằng chứng phát hành tài liệu
+      - CI and Maintenance: CI và bảo trì
 - search
 extra_css:
 - assets/stylesheets/pse.css
@@ -51,14 +127,14 @@ nav:
   - First Troubleshooting: getting-started/troubleshooting.md
   - A Complete Worked Example: getting-started/worked-example.md
   - Where to Go Next: getting-started/next-steps.md
-- Bảng thuật ngữ (Glossary):
-  - Tổng quan và nguyên tắc: glossary/index.md
-  - Nguồn văn bản và kiểm định ngữ văn: glossary/textual-scholarship.md
-  - Cấu trúc logic của văn bản: glossary/semantic-structure.md
-  - Hệ thống định vị và tra cứu: glossary/locators-and-references.md
-  - Thiết kế chữ và chế bản: glossary/typography-and-layout.md
-  - Tạo lập ấn bản và phiên bản: glossary/build-and-versioning.md
-  - Kiểm soát chất lượng và phát hành: glossary/quality-assurance.md
+- Glossary:
+  - Overview and Principles: glossary/index.md
+  - Textual Scholarship: glossary/textual-scholarship.md
+  - Semantic Structure: glossary/semantic-structure.md
+  - Locators and References: glossary/locators-and-references.md
+  - Typography and Layout: glossary/typography-and-layout.md
+  - Build and Versioning: glossary/build-and-versioning.md
+  - Quality Assurance and Release: glossary/quality-assurance.md
 - How PSE Works:
   - Architecture Overview: how-pse-works/architecture-overview.md
   - Presentation System: how-pse-works/presentation-system.md

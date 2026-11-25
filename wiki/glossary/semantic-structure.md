@@ -1,30 +1,30 @@
 ---
-title: Cấu trúc logic của văn bản
-description: Phân biệt cách văn bản được tổ chức theo chức năng với cách văn bản được trình bày trên trang sách.
+title: Semantic Structure
+description: Distinguishing how a text is organized by function from how it is presented on the page.
 ---
 
-# Cấu trúc logic của văn bản
+# Semantic structure
 
-Một nguyên tắc quan trọng trong PSE là phân biệt **văn bản được tổ chức như thế nào** với **văn bản được trình bày như thế nào trên trang sách**.
+An important principle in PSE is to distinguish **how a text is organized** from **how it is presented on the page**.
 
-| Thuật ngữ | Giải thích |
+| Term | Explanation |
 | --- | --- |
-| **Cấu trúc logic** (logical structure) | Cách nội dung được tổ chức theo chức năng và quan hệ: chương, mục, đoạn văn, lời thoại, chú thích, bảng biểu. Cấu trúc này tồn tại độc lập với hình thức trình bày. |
-| **Đơn vị nguồn** (source unit) | Đơn vị nhỏ nhất được nhận diện và quản lý theo quy ước của văn bản nền, chẳng hạn một câu thơ, một đoạn đánh số hoặc một tiểu mục. |
-| **Phần văn bản nguồn** (source section) | Một bộ phận nội dung được xác định trong tài liệu nguồn, chẳng hạn chương, cảnh kịch, phần chính văn hoặc phần khảo chú. |
-| **Lượt lời** (speaker turn) | Một lần phát ngôn của một nhân vật trong tác phẩm đối thoại hoặc kịch. Một lượt lời có thể gồm nhiều câu thơ hoặc chỉ là một phần của câu thơ. |
-| **Ranh giới câu thơ** (verse boundary) | Điểm bắt đầu và kết thúc của một câu thơ theo quy ước của văn bản nguồn, không phụ thuộc vào số dòng chữ trên trang sách. |
-| **Câu thơ chung lượt lời** (shared verse) | Một câu thơ có lời của hai hoặc nhiều nhân vật. Việc thay đổi người nói không tự động tạo thành một câu thơ mới. |
-| **Phần nối tiếp** (continuation) | Phần nội dung tiếp tục một đơn vị đã bắt đầu trước đó. Nó không nhất thiết tạo ra một đơn vị nguồn hoặc số tham chiếu mới. |
-| **Chỉ dẫn sân khấu** (stage direction) | Phần mô tả hành động, sự xuất hiện, rời sân khấu hoặc tình huống biểu diễn. Chỉ dẫn do người biên tập bổ sung cần được phân biệt với lời thoại nguyên tác. |
-| **Dòng chữ vật lý** (physical line) | Một hàng chữ thực tế xuất hiện trên trang sau khi dàn trang. Một câu thơ có thể chiếm nhiều dòng chữ vật lý. |
-| **Dàn lại dòng và trang** (reflow) | Quá trình chữ tự động thay đổi vị trí, xuống dòng hoặc chuyển trang khi nội dung, kiểu chữ, khổ sách hay lề trang thay đổi. |
-| **Đánh dấu theo chức năng** (semantic markup) | Xác định một đoạn nội dung là gì thay vì chỉ quy định nó trông như thế nào. Ví dụ, đánh dấu một đoạn là lời thoại thay vì chỉ yêu cầu in đậm tên nhân vật. |
+| **Logical structure** | The way content is organized by function and relation: chapters, sections, paragraphs, speeches, notes, tables. This structure exists independently of its presentation. |
+| **Source unit** | The smallest unit identified and managed under the conventions of the copy-text, for example a verse line, a numbered passage, or a subsection. |
+| **Source section** | A portion of content identified in the source document, for example a chapter, a dramatic scene, the main text, or the critical apparatus. |
+| **Speaker turn** | One utterance by one character in a dialogic or dramatic work. A speech may span several verse lines or contain only part of one. |
+| **Verse boundary** | The start and end of a verse line by the conventions of the source text, independent of the number of printed lines on the page. |
+| **Shared verse** | A verse line containing the words of two or more speakers. A change of speaker does not automatically create a new verse line. |
+| **Continuation** | Content that continues a unit begun earlier. It does not necessarily create a new source unit or reference number. |
+| **Stage direction** | A description of action, entrance, exit, or performance situation. Editorial stage directions must be distinguished from the original dialogue. |
+| **Physical line** | An actual row of type on the page after typesetting. One verse line may occupy several physical lines. |
+| **Reflow** | The process by which text automatically changes position, wraps, or moves between pages when content, type, trim size, or margins change. |
+| **Semantic markup** | Identifying what a passage is, rather than only how it should look. For example, marking a passage as a speech instead of merely bolding a speaker name. |
 
-## Một câu thơ không nhất thiết là một dòng chữ
+## A verse line is not necessarily a physical line
 
-Cùng một văn bản, khi dàn ở khổ sách rộng hoặc khổ sách hẹp, sẽ cho số trang và số dòng chữ vật lý khác nhau. Nhưng định danh của hai câu thơ, ví dụ 810 và 811, vẫn giữ nguyên. Định danh thuộc về văn bản; vị trí vật lý thuộc về ấn bản cụ thể.
+The same text, set in a wide trim or a narrow trim, will produce different page counts and different physical lines. But the identity of verse lines, say 810 and 811, stays the same. Identity belongs to the text; physical position belongs to the specific edition.
 
-Đây là lý do không thể xây dựng một hệ thống làm sách đáng tin cậy chỉ bằng cách định dạng từng trang. Nếu nội dung được tổ chức theo chức năng ngay từ đầu, cùng một văn bản có thể được trình bày ở nhiều khổ sách và định dạng mà vẫn bảo toàn cấu trúc.
+This is why a trustworthy book-production system cannot be built by formatting pages one by one. If content is organized by function from the start, the same text can be presented at multiple trim sizes and formats while preserving its structure.
 
-Bảng thuật ngữ liên quan: [Nguồn văn bản và kiểm định ngữ văn](textual-scholarship.md), [Hệ thống định vị và tra cứu](locators-and-references.md).
+Related pages: [Textual scholarship](textual-scholarship.md), [Locators and references](locators-and-references.md).
