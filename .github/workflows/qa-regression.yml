@@ -97,5 +97,6 @@ jobs:
     if: always()
     runs-on: ubuntu-latest
     steps:
-      - name: Workflow result
-        run: exit ${{ (needs.source-contracts.result == 'success' && needs.installed-runtime.result == 'success' && needs.linux-typesetting.result == 'success') && 0 || 1 }}
+      - name: Fail if any required job did not succeed
+        if: ${{ needs.source-contracts.result != 'success' || needs.installed-runtime.result != 'success' || needs.linux-typesetting.result != 'success' }}
+        run: exit 1

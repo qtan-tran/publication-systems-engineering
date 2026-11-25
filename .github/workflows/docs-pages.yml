@@ -81,5 +81,6 @@ jobs:
     if: always()
     runs-on: ubuntu-latest
     steps:
-      - name: Workflow result
-        run: exit ${{ (needs.build.result == 'success' && (needs.deploy.result == 'success' || needs.deploy.result == 'skipped')) && 0 || 1 }}
+      - name: Fail if build failed or deploy did not succeed or skip
+        if: ${{ needs.build.result != 'success' || (needs.deploy.result != 'success' && needs.deploy.result != 'skipped') }}
+        run: exit 1
